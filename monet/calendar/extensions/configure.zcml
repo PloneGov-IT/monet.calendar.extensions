@@ -17,5 +17,10 @@
       description=""
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+      
+  <class class="Products.ATContentTypes.interface.folder.IATFolder">
+      <allow interface=".interfaces.IMonetCalendarSection" />
+      <allow interface=".interfaces.IMonetCalendarSearchRoot" />
+  </class>
 
 </configure>
