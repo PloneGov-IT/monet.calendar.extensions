@@ -1,0 +1,9 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="monet.calendar.extensions">
+
+  <include package="plone.app.contentmenu" />
+
+
+</configure>
