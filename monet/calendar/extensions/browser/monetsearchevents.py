@@ -1,5 +1,6 @@
 from Products.Five.browser import BrowserView
 from monet.calendar.extensions.interfaces import IMonetCalendarSection, IMonetCalendarSearchRoot
+from monet.calendar.event.interfaces import IMonetEvent
 from Acquisition import aq_chain
 from Products.CMFCore.utils import getToolByName
 
@@ -39,3 +40,12 @@ class MonetSearchEvents(BrowserView):
         if brains:
             return brains[0]
         return None
+    
+    def getEventsInParent(self,parent):
+        """Return all events found in the parent folder"""
+        pcatalog = getToolByName(self, 'portal_catalog')
+        query = {}
+        query['object_provides'] = IMonetEvent.__identifier__
+        query['path'] = parent.getPath()
+        brains = pcatalog.searchResults(**query)
+        return brains
