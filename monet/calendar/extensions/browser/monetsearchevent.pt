@@ -29,36 +29,14 @@
                 
         <div tal:replace="structure provider:plone.abovecontentbody" />
 
-        <div tal:define="subsite view/getSubSiteParentFolder">
-        	<tal:blockif condition="subsite">
-        		<tal:ciccio define="calendarsection python: view.getCalendarSection(subsite)">
-	        		<tal:block condition="calendarsection">
-	        			<tal:ciccio define="events python: view.getEventsInParent(calendarsection)">
-			        		<tal:block repeat="event events"
-			        				   content="event/Title">
-			        			cs
-			        		</tal:block>
-		        		</tal:ciccio>
-	        		</tal:block>
-	        		<tal:block condition="not: calendarsection">
-	        			No calendar section in subsite
-	        		</tal:block>
-        		</tal:ciccio>
-        	</tal:blockif>
-        	<tal:blockelse condition="not: subsite"
-        					define="calendarsection view/getCalendarSectionParentNoSubSite">
-        		<tal:block condition="calendarsection">
-        			<tal:ciccio define="events python: view.getEventsInParent(calendarsection)">
-			        		<tal:block repeat="event events"
-			        				   content="event/Title">
-			        			cs
-			        		</tal:block>
-		        		</tal:ciccio>
-        		</tal:block>
-        		<tal:block condition="not: calendarsection">
-        			No calendar section in subsite
-        		</tal:block>
-        	</tal:blockelse>
+        <div tal:define="subsite view/getSubSiteParentFolder;
+        				 calendarsection python: subsite and view.getCalendarSection(subsite) or view.getCalendarSectionParentNoSubSite();"
+			 tal:condition="calendarsection">
+			 <div tal:define="events python: view.getEventsInParent(calendarsection)">
+			 	<tal:block repeat="event events" content="event/Title">
+			        event
+			    </tal:block>
+			 </div>
         </div>
 
         <div tal:replace="structure provider:plone.belowcontentbody" />
