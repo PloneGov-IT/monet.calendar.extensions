@@ -1,5 +1,13 @@
-<div id="search-event-bar" i18n:domain="monet.calendar.extensions">
-      
+<div id="search-event-bar" i18n:domain="monet.calendar.extensions"
+	 tal:define="starting_year nothing;
+	 			 ending_year nothing;
+				 future_years nothing;
+				 date_components_support_view context/@@date_components_support;
+				 values python:date_components_support_view.result(0, 0, starting_year, ending_year, future_years);
+				 years values/years;
+				 months values/months;
+				 days values/days;">
+				 
 	<form name="searchBar"
           action="monetsearchevents"
           class="searchBar">
@@ -32,6 +40,32 @@
 	                            				id eventT">
 								dummy
 						</option>
+				</select>
+		      </td>
+		      <td class="searchBarFrom">
+		        <select class="searchBarFromDay"
+		      		name="fromDay:int"
+	                id="fromDay">
+	                    <option value="#"
+                				tal:repeat="day days"
+                				tal:attributes="value day/value; selected day/selected"
+                				tal:content="day/id">day</option>
+				</select>
+				<select class="searchBarFromMonth"
+		      		name="fromMonth:int"
+	                id="fromMonth">
+	                    <option value="#"
+                				tal:repeat="month months"
+                				tal:attributes="value month/value; selected month/selected"
+                				tal:content="month/title">month name</option>
+				</select>
+				<select class="searchBarFromYear"
+		      		name="fromYear:int"
+	                id="fromYear">
+	                    <option value="#"
+                  				tal:repeat="year years"
+                  				tal:attributes="value year/value; selected year/selected"
+                  				tal:content="year/id">year</option>
 				</select>
 		      </td>
 		      <td>
