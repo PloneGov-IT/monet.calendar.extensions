@@ -1,0 +1,47 @@
+<div id="search-event-bar" i18n:domain="monet.calendar.extensions">
+      
+	<form name="searchBar"
+          action="monetsearchevents"
+          class="searchBar">
+		<table>
+			<tr>
+		      <th><label for="SearchableText" i18n:translate="label_search_event">Search event</label></th>
+		      <th><label for="getEventType:list" i18n:translate="label_in">In</label></th>
+		      <th />
+			</tr>
+			<tr>
+		      <td>
+				<input class="searchBarText"
+					name="SearchableText"
+					type="text"
+					tal:attributes="value request/SearchableText|nothing;"
+					/>
+		      </td>
+		      <td>
+		      	<select class="searchBarIn"
+					name="getEventType"
+	                id="getEventType"
+	                tal:define="all_events_label view/monetAllEvents;
+	                			firstelem python:['all_events',];
+	                			usedGetEventType python:list(here.portal_catalog.uniqueValuesFor('getEventType'));
+	                			usedEventTypes python:firstelem+usedGetEventType">
+	                    <option value="#"
+	                            tal:repeat="eventT usedEventTypes"
+	                            tal:content="python: eventT=='all_events' and all_events_label or eventT"
+	                            tal:attributes="value python: view.valueGetEventType(eventT);
+	                            				id eventT">
+								dummy
+						</option>
+				</select>
+		      </td>
+		      <td>
+		      	  <input class="searchBarButton"
+					type="submit"
+					value="Search"
+					i18n:attributes="value label_search;"
+					/>
+		      </td>
+			</tr>
+		</table>
+    </form>
+</div>

@@ -5,5 +5,22 @@
 
   <include package="plone.app.contentmenu" />
 
-
+  <!-- Render the document byline -->
+  <browser:viewlet
+    for="monet.calendar.event.interfaces.IMonetCalendar"
+	name="monet.bar.searchevents"
+	manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+	class=".viewlets.SearchBar"
+    template="searchbar.pt"
+    permission="zope2.View"
+    />
+    
+  <browser:page
+	for="monet.calendar.extensions.interfaces.IMonetCalendarSection"
+	name="monetsearchevents"
+	class=".monetsearchevents.MonetSearchEvents"
+	template="monetsearchevent.pt"
+	permission="zope2.View"
+	/>
+	
 </configure>

@@ -1,0 +1,7 @@
+<html>
+	<body>
+		<div tal:content='request/form'>
+			request
+		</div>
+	</body>
+</html>
