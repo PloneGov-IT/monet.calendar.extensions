@@ -1,0 +1,49 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-06-01 09:47+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: monet.calendar.extensions\n"
+
+#. Default: "-- All events --"
+#: ./browser/viewlets.py:8
+msgid "label_all_events"
+msgstr ""
+
+#. Default: "From"
+#: ./browser/searchbar.pt:18
+msgid "label_from"
+msgstr ""
+
+#. Default: "In"
+#: ./browser/searchbar.pt:17
+msgid "label_in"
+msgstr ""
+
+#. Default: "Search"
+#: ./browser/searchbar.pt:100
+msgid "label_search"
+msgstr ""
+
+#. Default: "Search event"
+#: ./browser/searchbar.pt:16
+msgid "label_search_event"
+msgstr ""
+
+#. Default: "To"
+#: ./browser/searchbar.pt:19
+msgid "label_to"
+msgstr ""
+

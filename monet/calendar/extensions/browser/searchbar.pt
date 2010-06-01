@@ -11,16 +11,19 @@
 	<form name="searchBar"
           action="monetsearchevents"
           class="searchBar">
-		<table>
+		<table class="listing">
 			<tr>
 		      <th><label for="SearchableText" i18n:translate="label_search_event">Search event</label></th>
-		      <th><label for="getEventType:list" i18n:translate="label_in">In</label></th>
+		      <th><label for="getEventType" i18n:translate="label_in">In</label></th>
+		      <th><label for="fromDay" i18n:translate="label_from">From</label></th>
+		      <th><label for="toDay" i18n:translate="label_to">To</label></th>
 		      <th />
 			</tr>
 			<tr>
 		      <td>
 				<input class="searchBarText"
 					name="SearchableText"
+					id="SearchableText"
 					type="text"
 					tal:attributes="value request/SearchableText|nothing;"
 					/>
@@ -68,8 +71,34 @@
                   				tal:content="year/id">year</option>
 				</select>
 		      </td>
+		      <td class="searchBarTo">
+		        <select class="searchBarToDay"
+		      		name="toDay:int"
+	                id="toDay">
+	                    <option value="#"
+                				tal:repeat="day days"
+                				tal:attributes="value day/value; selected day/selected"
+                				tal:content="day/id">day</option>
+				</select>
+				<select class="searchBarToMonth"
+		      		name="toMonth:int"
+	                id="toMonth">
+	                    <option value="#"
+                				tal:repeat="month months"
+                				tal:attributes="value month/value; selected month/selected"
+                				tal:content="month/title">month name</option>
+				</select>
+				<select class="searchBarToYear"
+		      		name="toYear:int"
+	                id="toYear">
+	                    <option value="#"
+                  				tal:repeat="year years"
+                  				tal:attributes="value year/value; selected year/selected"
+                  				tal:content="year/id">year</option>
+				</select>
+		      </td>
 		      <td>
-		      	  <input class="searchBarButton"
+		      	  <input class="searchButton"
 					type="submit"
 					value="Search"
 					i18n:attributes="value label_search;"

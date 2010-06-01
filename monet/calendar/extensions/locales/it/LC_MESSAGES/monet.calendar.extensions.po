@@ -1,0 +1,46 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: monet.calendar.extensions\n"
+"POT-Creation-Date: 2010-06-01 09:47+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: monet.calendar.extensions\n"
+
+#. Default: "-- All events --"
+#: ./browser/viewlets.py:8
+msgid "label_all_events"
+msgstr "-- Tutti gli eventi --"
+
+#. Default: "From"
+#: ./browser/searchbar.pt:18
+msgid "label_from"
+msgstr "Dal"
+
+#. Default: "In"
+#: ./browser/searchbar.pt:17
+msgid "label_in"
+msgstr "In"
+
+#. Default: "Search"
+#: ./browser/searchbar.pt:100
+msgid "label_search"
+msgstr "Cerca"
+
+#. Default: "Search event"
+#: ./browser/searchbar.pt:16
+msgid "label_search_event"
+msgstr "Cerca evento"
+
+#. Default: "To"
+#: ./browser/searchbar.pt:19
+msgid "label_to"
+msgstr "Al"
+
