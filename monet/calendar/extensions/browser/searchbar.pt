@@ -3,7 +3,7 @@
 	 			 ending_year nothing;
 				 future_years nothing;
 				 date_components_support_view context/@@date_components_support;
-				 values python:date_components_support_view.result(0, 0, starting_year, ending_year, future_years);
+				 values python:date_components_support_view.result(None, 0, starting_year, ending_year, future_years);
 				 years values/years;
 				 months values/months;
 				 days values/days;">
