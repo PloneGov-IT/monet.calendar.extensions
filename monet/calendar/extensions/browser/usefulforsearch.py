@@ -37,9 +37,13 @@ class UsefulForSearchEvents(object):
         return None
     
     def getCalendarSectionPath(self):
+        
         subsite = self.getSubSiteParentFolder()
         if subsite:
             calendarsection = self.getCalendarSection(subsite)
         else:
             calendarsection = self.getCalendarSectionParentNoSubSite()
-        return calendarsection.getObject().absolute_url()
+        if calendarsection:
+            return calendarsection.getObject().absolute_url()
+        else:
+            return None
