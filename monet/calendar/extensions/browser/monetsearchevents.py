@@ -52,6 +52,10 @@ class MonetSearchEvents(BrowserView):
         query['object_provides'] = IMonetEvent.__identifier__
         query['path'] = parent.getPath()
         query['sort_on'] = 'getObjPositionInParent'
+        if self.request.form.get('SearchableText'):
+            query['SearchableText'] = self.request.form.get('SearchableText')
+        if self.request.form.get('getEventType'):
+            query['getEventType'] = self.request.form.get('getEventType')
         brains = pcatalog.searchResults(**query)
         return brains
     
