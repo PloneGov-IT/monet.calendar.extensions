@@ -61,26 +61,25 @@
                     ><tal:block repeat="day week"
                         ><tal:day define="daynumber day/day;"
                             ><tal:isday condition="daynumber"
-                                ><tal:block define="day_event day/event;
-                                                    is_today day/is_today"
-                                    ><td class="event"
-                                        tal:condition="day_event"
-                                        tal:attributes="class python:is_today and 'todayevent' or 'event'"
-                                       ><strong><a href=""
-                                           tal:attributes="href string:${portal_url}/search?${view/getReviewStateString}start.query:record:list:date=${day/date_string}+23%3A59%3A59&amp;start.range:record=max&amp;end.query:record:list:date=${day/date_string}+00%3A00%3A00&amp;end.range:record=min;
-                                                           title day/eventstring;"
-                                           tal:content="daynumber">
-                                           31
-                                       </a
-                                    ></strong></td
-                                    ><tal:notdayevent tal:condition="not: day_event"
-                                        ><td tal:condition="python:is_today"
-                                             class="todaynoevent"><strong 
-                                             tal:content="daynumber">31</strong></td
-                                        ><td tal:condition="python:not is_today"
-                                             tal:content="daynumber">31</td
-                                    ></tal:notdayevent
-                                ></tal:block
+                                ><tal:block define="is_today day/is_today;
+                                					date_string python: view.getDateString(daynumber)"
+                                    ><tal:notdayevent>
+                                         <td tal:condition="python:is_today" class="todaynoevent">
+                                             <strong>
+                                             	<a href="" tal:attributes="href string:${portal_url}/monetsearchevents?${view/getReviewStateString}start.query:record:list:date=${date_string}+23%3A59%3A59&amp;start.range:record=max&amp;end.query:record:list:date=${date_string}+00%3A00%3A00&amp;end.range:record=min;"
+                                                           tal:content="daynumber">
+                                             		31
+                                             	</a>
+                                             </strong>
+                                         </td>
+                                         <td tal:condition="python:not is_today">
+                                             <a href="" tal:attributes="href string:${portal_url}/monetsearchevents?${view/getReviewStateString}start.query:record:list:date=${date_string}+23%3A59%3A59&amp;start.range:record=max&amp;end.query:record:list:date=${date_string}+00%3A00%3A00&amp;end.range:record=min;"
+                                                        tal:content="daynumber">
+                                             		31
+                                             </a>
+                                         </td>
+                                    </tal:notdayevent>
+                                </tal:block
                             ></tal:isday
                             ><tal:notisday condition="not: daynumber"
                                 ><td></td
