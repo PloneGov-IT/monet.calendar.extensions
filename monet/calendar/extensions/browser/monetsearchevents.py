@@ -33,8 +33,11 @@ class MonetSearchEvents(BrowserView,UsefulForSearchEvents):
         
         form = self.request.form
         
-        if form.get('day'):
-            return events
+        if form.get('date'):
+            date = form.get('date').split('-')
+            date_from = date_to = datetime(int(date[0]),int(date[1]),int(date[2])).date()
+            filtered_events = self.filterEventsByDate(events,date_from,date_to)
+            return filtered_events
         elif self.notEmptyArgumentsDate(form.get('fromDay'),form.get('fromMonth'),form.get('fromYear')) or self.notEmptyArgumentsDate(form.get('toDay'),form.get('toMonth'),form.get('toYear')):
             date_from = self.writeDate(form.get('fromDay'),form.get('fromMonth'),form.get('fromYear'))
             date_to = self.writeDate(form.get('toDay'),form.get('toMonth'),form.get('toYear'))
