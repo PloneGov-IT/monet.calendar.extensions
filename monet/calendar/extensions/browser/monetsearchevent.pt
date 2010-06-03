@@ -34,12 +34,8 @@
 			 tal:condition="calendarsection">
 			 <div tal:define="events python: view.getEventsInParent(calendarsection);
 			 				  dict_filter_events python: view.getEventsFromTo(events)">
-			 	<tal:error condition="dict_filter_events/errors"
-			 			   content="dict_filter_events/message_error">
-			        error message
-			    </tal:error>
-			    <tal:events condition="not: dict_filter_events/errors"
-			 			    repeat="event dict_filter_events/events">
+			 	<tal:events condition="dict_filter_events"
+			 			    repeat="event dict_filter_events">
 			 		<tal:event content="event/Title">
 			 			events
 			 		</tal:event>
