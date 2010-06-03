@@ -68,7 +68,7 @@
                                          <td tal:condition="python:is_today" class="todaynoevent">
                                              <strong>
                                              	<a href="" tal:condition="calendar_section_path"
-                                             			   tal:attributes="href string:${calendar_section_path}/monetsearchevents?${view/getReviewStateString}start.query:record:list:date=${date_string}+23%3A59%3A59&amp;start.range:record=max&amp;end.query:record:list:date=${date_string}+00%3A00%3A00&amp;end.range:record=min;"
+                                             			   tal:attributes="href string:${calendar_section_path}/monetsearchevents?date=${date_string}"
                                                            tal:content="daynumber">
                                              		31
                                              	</a>
@@ -80,7 +80,7 @@
                                          </td>
                                          <td tal:condition="python:not is_today">
                                              <a href="" tal:condition="calendar_section_path"
-                                             			tal:attributes="href string:${calendar_section_path}/monetsearchevents?${view/getReviewStateString}start.query:record:list:date=${date_string}+23%3A59%3A59&amp;start.range:record=max&amp;end.query:record:list:date=${date_string}+00%3A00%3A00&amp;end.range:record=min;"
+                                             			tal:attributes="href string:${calendar_section_path}/monetsearchevents?date=${date_string}"
                                                         tal:content="daynumber">
                                              		31
                                              </a>
