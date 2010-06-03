@@ -5,7 +5,8 @@
                 url_quote_plus nocall:view/url_quote_plus;
                 showPrevMonth view/showPrevMonth;
                 showNextMonth view/showNextMonth;
-                year view/year;">
+                year view/year;
+				calendar_section_path view/getCalendarSectionPath">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
@@ -66,14 +67,14 @@
                                     ><tal:notdayevent>
                                          <td tal:condition="python:is_today" class="todaynoevent">
                                              <strong>
-                                             	<a href="" tal:attributes="href string:${portal_url}/monetsearchevents?${view/getReviewStateString}start.query:record:list:date=${date_string}+23%3A59%3A59&amp;start.range:record=max&amp;end.query:record:list:date=${date_string}+00%3A00%3A00&amp;end.range:record=min;"
+                                             	<a href="" tal:attributes="href string:${calendar_section_path}/monetsearchevents?${view/getReviewStateString}start.query:record:list:date=${date_string}+23%3A59%3A59&amp;start.range:record=max&amp;end.query:record:list:date=${date_string}+00%3A00%3A00&amp;end.range:record=min;"
                                                            tal:content="daynumber">
                                              		31
                                              	</a>
                                              </strong>
                                          </td>
                                          <td tal:condition="python:not is_today">
-                                             <a href="" tal:attributes="href string:${portal_url}/monetsearchevents?${view/getReviewStateString}start.query:record:list:date=${date_string}+23%3A59%3A59&amp;start.range:record=max&amp;end.query:record:list:date=${date_string}+00%3A00%3A00&amp;end.range:record=min;"
+                                             <a href="" tal:attributes="href string:${calendar_section_path}/monetsearchevents?${view/getReviewStateString}start.query:record:list:date=${date_string}+23%3A59%3A59&amp;start.range:record=max&amp;end.query:record:list:date=${date_string}+00%3A00%3A00&amp;end.range:record=min;"
                                                         tal:content="daynumber">
                                              		31
                                              </a>

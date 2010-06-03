@@ -1,10 +1,11 @@
 from plone.app.portlets.portlets.calendar import Assignment,Renderer,AddForm
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from monet.calendar.extensions.browser.usefulforsearch import UsefulForSearchEvents
 
 class Assignment(Assignment):
     """"""
 
-class Renderer(Renderer):
+class Renderer(Renderer,UsefulForSearchEvents):
     """"""
     _template = ViewPageTemplateFile('monetcalendar.pt')
     

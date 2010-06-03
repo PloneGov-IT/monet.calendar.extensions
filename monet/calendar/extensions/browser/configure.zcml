@@ -23,4 +23,11 @@
 	permission="zope2.View"
 	/>
 	
+  <browser:page
+	for="*"
+	name="usefulforsearch"
+	class=".usefulforsearch.UsefulForSearchEvents"
+	permission="zope2.View"
+	/>
+	
 </configure>
