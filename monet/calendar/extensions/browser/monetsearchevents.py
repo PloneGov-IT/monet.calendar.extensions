@@ -1,25 +1,24 @@
 from Products.Five.browser import BrowserView
-from monet.calendar.extensions.interfaces import IMonetCalendarSection, IMonetCalendarSearchRoot
 from monet.calendar.event.interfaces import IMonetEvent
-from Acquisition import aq_chain
+from Acquisition import aq_inner
 from Products.CMFCore.utils import getToolByName
 from datetime import datetime, timedelta
 from monet.calendar.extensions import eventMessageFactory as _
 from Products.statusmessages.interfaces import IStatusMessage
 from zope.component import getMultiAdapter
-from monet.calendar.extensions.browser.usefulforsearch import UsefulForSearchEvents
 
-class MonetSearchEvents(BrowserView,UsefulForSearchEvents):
+class MonetSearchEvents(BrowserView):
     
     def __init__(self, context, request):
         BrowserView.__init__(self, context, request)
     
-    def getEventsInParent(self,parent):
+    def getEventsInParent(self):
         """Return all events found in the parent folder"""
+        context = aq_inner(self.context)
         pcatalog = getToolByName(self, 'portal_catalog')
         query = {}
         query['object_provides'] = IMonetEvent.__identifier__
-        query['path'] = parent.getPath()
+        query['path'] = '/'.join(context.getPhysicalPath())
         query['sort_on'] = 'getObjPositionInParent'
         if self.request.form.get('SearchableText'):
             query['SearchableText'] = self.request.form.get('SearchableText')
@@ -28,17 +27,16 @@ class MonetSearchEvents(BrowserView,UsefulForSearchEvents):
         brains = pcatalog.searchResults(**query)
         return brains
     
-    def getEventsFromTo(self,events):
-        """Filter events by date"""
-        
+    def getFromTo(self):
+        date = None
+        dates = {'date':'','date_from':'','date_to':''}
         form = self.request.form
         
         if form.get('date'):
             date = form.get('date').split('-')
-            date_from = date_to = datetime(int(date[0]),int(date[1]),int(date[2])).date()
-            filtered_events = self.filterEventsByDate(events,date_from,date_to)
-            return filtered_events
-        elif self.notEmptyArgumentsDate(form.get('fromDay'),form.get('fromMonth'),form.get('fromYear')) or self.notEmptyArgumentsDate(form.get('toDay'),form.get('toMonth'),form.get('toYear')):
+            date = datetime(int(date[0]),int(date[1]),int(date[2])).date()
+            
+        if self.notEmptyArgumentsDate(form.get('fromDay'),form.get('fromMonth'),form.get('fromYear')) or self.notEmptyArgumentsDate(form.get('toDay'),form.get('toMonth'),form.get('toYear')):
             date_from = self.writeDate(form.get('fromDay'),form.get('fromMonth'),form.get('fromYear'))
             date_to = self.writeDate(form.get('toDay'),form.get('toMonth'),form.get('toYear'))
             if not date_from or not date_to:
@@ -60,13 +58,15 @@ class MonetSearchEvents(BrowserView,UsefulForSearchEvents):
                 self.request.response.redirect(url + '/@@monetsearchevents')
                 return
             else:
-                filtered_events = self.filterEventsByDate(events,date_from,date_to)
-                return filtered_events
-        else:
-            date_from = date_to = datetime.now().date()
-            filtered_events = self.filterEventsByDate(events,date_from,date_to)
-            return filtered_events
+                dates = {'date':date or date_from,'date_from':date_from,'date_to':date_to}
         
+        if dates['date']:
+            return dates
+        else:
+            date = datetime.now().date()
+            dates = {'date':date}
+            return dates
+    
     def notEmptyArgumentsDate(self,day,month,year):
         """Check the date viewlets's parameters"""
         if day or month or year:
@@ -96,9 +96,19 @@ class MonetSearchEvents(BrowserView,UsefulForSearchEvents):
         else:
             return True
     
-    def filterEventsByDate(self,events,date_from,date_to):
+    def filterEventsByDate(self,events,date):
         """Filter events by date"""
+        
         filtered_events = []
+        
+        for event in events:
+            dates_event = event.getObject().getDates()
+            if date in dates_event:
+                filtered_events.append(event)
+
+        return filtered_events
+    
+    def getDateInterval(self,date_from,date_to):
         interval = []
         duration = (date_to - date_from).days
         while(duration > 0):
@@ -106,11 +116,17 @@ class MonetSearchEvents(BrowserView,UsefulForSearchEvents):
             interval.append(day)
             duration -= 1
         interval.append(date_to)
-        
-        for event in events:
-            dates_event = event.getObject().getDates()
-            if set(interval).intersection(set(dates_event)):
-                filtered_events.append(event)
-
-        return filtered_events
+        return interval
+    
+    def getPreviousDate(self,date,date_from):
+        if date == date_from:
+            return None
+        else:
+            return date - timedelta(1)
+    
+    def getNextDate(self,date,date_to):
+        if date == date_to:
+            return None
+        else:
+            return date + timedelta(1)
         

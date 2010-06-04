@@ -9,7 +9,9 @@
 <body>
 
 <div metal:fill-slot="main">
-    <tal:main-macro metal:define-macro="main">
+    <tal:main-macro metal:define-macro="main"
+    	define="dates view/getFromTo;
+    			date dates/date">
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 
@@ -29,22 +31,58 @@
                 
         <div tal:replace="structure provider:plone.abovecontentbody" />
 
-        <div tal:define="subsite view/getSubSiteParentFolder;
-        				 calendarsection python: subsite and view.getCalendarSection(subsite) or view.getCalendarSectionParentNoSubSite();"
-			 tal:condition="calendarsection">
-			 <div tal:define="events python: view.getEventsInParent(calendarsection);
-			 				  dict_filter_events python: view.getEventsFromTo(events)">
+        <div tal:define="events view/getEventsInParent;
+			 		     dict_filter_events python: view.filterEventsByDate(events,date)">
+			 	<tal:prova content="date">
+			 			events
+			 	</tal:prova>
 			 	<tal:events condition="dict_filter_events"
 			 			    repeat="event dict_filter_events">
 			 		<tal:event content="event/Title">
 			 			events
 			 		</tal:event>
 			    </tal:events>
-			 </div>
         </div>
 
         <div tal:replace="structure provider:plone.belowcontentbody" />
-
+        
+        <div tal:condition="python: dates.has_key('date_from') and dates.has_key('date_to')">
+			 <div tal:define="interval python: view.getDateInterval(dates['date_from'],dates['date_to']);
+			 				  day_prev python: view.getPreviousDate(date,dates['date_from']);
+			 				  day_next python: view.getNextDate(date,dates['date_to'])">
+		 		<tal:previousday>
+			 		<a href='#' tal:condition="day_prev"
+			 		   tal:attributes="href string:${request/URL}?date=${day_prev}&SearchableText=${request/form/SearchableText}&getEventType=${request/form/getEventType}&fromDay%3Aint=${request/form/fromDay}&fromMonth%3Aint=${request/form/fromMonth}&fromYear%3Aint=${request/form/fromYear}&toDay%3Aint=${request/form/toDay}&toMonth%3Aint=${request/form/toMonth}&toYear%3Aint=${request/form/toYear}">	
+			 			<<
+			 		</a>
+			 		<tal:notday_prev tal:condition="not: day_prev">
+			 			<<
+			 		</tal:notday_prev>
+		 		</tal:previousday>
+			 	<tal:dayint repeat="day interval">
+			 		<a href='#'
+			 		   tal:condition="python: not day==date"
+			 		   tal:attributes="href string:${request/URL}?date=${day}&SearchableText=${request/form/SearchableText}&getEventType=${request/form/getEventType}&fromDay%3Aint=${request/form/fromDay}&fromMonth%3Aint=${request/form/fromMonth}&fromYear%3Aint=${request/form/fromYear}&toDay%3Aint=${request/form/toDay}&toMonth%3Aint=${request/form/toMonth}&toYear%3Aint=${request/form/toYear}"	
+			 		   tal:content="python: day.day">
+			 		   	day
+			 		</a>
+			 		<tal:block tal:condition="python: day==date"
+			 				   tal:content="python: day.day">
+			 			day
+			 		</tal:block>
+			    </tal:dayint>
+			    <tal:nextday>
+			    	<a href='#' tal:condition="day_next"
+			 		  tal:attributes="href string:${request/URL}?date=${day_next}&SearchableText=${request/form/SearchableText}&getEventType=${request/form/getEventType}&fromDay%3Aint=${request/form/fromDay}&fromMonth%3Aint=${request/form/fromMonth}&fromYear%3Aint=${request/form/fromYear}&toDay%3Aint=${request/form/toDay}&toMonth%3Aint=${request/form/toMonth}&toYear%3Aint=${request/form/toYear}">	
+			 			>>
+			 		</a>
+			 		<tal:notday_next tal:condition="not: day_next">
+			 			>>
+			 		</tal:notday_next>
+			 	</tal:nextday>
+			 </div>
+		</div>
+		
     </tal:main-macro>
 </div>
 
