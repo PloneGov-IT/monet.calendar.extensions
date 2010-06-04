@@ -28,7 +28,9 @@ class MonetSearchEvents(BrowserView):
         return brains
     
     def getFromTo(self):
-        date = None
+        """Create dates from the parameters"""
+        
+        date = date_from = date_to = ''
         dates = {'date':'','date_from':'','date_to':''}
         form = self.request.form
         
@@ -44,21 +46,21 @@ class MonetSearchEvents(BrowserView):
                 IStatusMessage(self.request).addStatusMessage(message_error,type="error")
                 url = getMultiAdapter((self.context, self.request),name='absolute_url')()
                 self.request.response.redirect(url + '/@@monetsearchevents')
-                return 
             elif self.checkInvalidDateGreaterThan(date_from,date_to):
                 message_error = _(u'label_failed_gtinterval', default=u'The second data parameter (TO) must be greater than or equal to the first data parameter (FROM), so that the range of days specified is not negative. Re-enter the dates, please.')
                 IStatusMessage(self.request).addStatusMessage(message_error,type="error")
                 url = getMultiAdapter((self.context, self.request),name='absolute_url')()
                 self.request.response.redirect(url + '/@@monetsearchevents')
-                return
             elif self.checkInvalidDateInterval(date_from,date_to):
                 message_error = _(u'label_failed_interval', default=u'The search of events must be less than 30 days. Re-enter the dates, please.')
                 IStatusMessage(self.request).addStatusMessage(message_error,type="error")
                 url = getMultiAdapter((self.context, self.request),name='absolute_url')()
                 self.request.response.redirect(url + '/@@monetsearchevents')
-                return
-            else:
-                dates = {'date':date or date_from,'date_from':date_from,'date_to':date_to}
+        
+        if date_from and date_to and date_from == date_to:
+            dates = {'date':date or date_from}
+        else:
+            dates = {'date':date or date_from,'date_from':date_from,'date_to':date_to}
         
         if dates['date']:
             return dates
@@ -80,7 +82,7 @@ class MonetSearchEvents(BrowserView):
             date = datetime(year,month,day).date()
             return date
         except StandardError:
-            return None
+            return ''
         
     def checkInvalidDateGreaterThan(self,date_from,date_to):
         """Check the dates DAL AL"""

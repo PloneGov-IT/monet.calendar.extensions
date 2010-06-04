@@ -46,7 +46,7 @@
 
         <div tal:replace="structure provider:plone.belowcontentbody" />
         
-        <div tal:condition="python: dates.has_key('date_from') and dates.has_key('date_to')">
+        <div tal:condition="python: (dates.has_key('date_from') and dates['date_from']) and (dates.has_key('date_to') and dates['date_to'])">
 			 <div tal:define="interval python: view.getDateInterval(dates['date_from'],dates['date_to']);
 			 				  day_prev python: view.getPreviousDate(date,dates['date_from']);
 			 				  day_next python: view.getNextDate(date,dates['date_to'])">
