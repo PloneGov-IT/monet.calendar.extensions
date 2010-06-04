@@ -6,14 +6,14 @@ class UsefulForSearchEvents(object):
         
     def getSubSiteParentFolder(self):
         """Return the first parent folder found that implements the interface IMonetCalendarSearchRoot"""
-        for parent in aq_chain(self):
+        for parent in aq_chain(self.context):
             if IMonetCalendarSearchRoot.providedBy(parent):
                 return parent
         return None
         
     def getCalendarSection(self,subsite):
         """Return the first folder found that implements the interface IMonetCalendarSection"""
-        pcatalog = getToolByName(self, 'portal_catalog')
+        pcatalog = getToolByName(self.context, 'portal_catalog')
         query = {}
         query['object_provides'] = IMonetCalendarSection.__identifier__
         query['path'] = '/'.join(subsite.getPhysicalPath())
@@ -25,7 +25,7 @@ class UsefulForSearchEvents(object):
         
     def getCalendarSectionParentNoSubSite(self):
         """Return the first folder found in the site (no sub-site) that implements the interface IMonetCalendarSection"""
-        portal=getToolByName(self, 'portal_url').getPortalObject()
+        portal=getToolByName(self.context, 'portal_url').getPortalObject()
         pcatalog = getToolByName(self, 'portal_catalog')
         query = {}
         query['object_provides'] = IMonetCalendarSection.__identifier__
@@ -37,7 +37,6 @@ class UsefulForSearchEvents(object):
         return None
     
     def getCalendarSectionPath(self):
-        
         subsite = self.getSubSiteParentFolder()
         if subsite:
             calendarsection = self.getCalendarSection(subsite)

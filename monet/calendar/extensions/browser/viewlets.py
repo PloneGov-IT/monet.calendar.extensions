@@ -1,7 +1,8 @@
 from plone.app.layout.viewlets.common import ViewletBase
 from monet.calendar.extensions import eventMessageFactory as _
+from monet.calendar.extensions.browser.usefulforsearch import UsefulForSearchEvents
 
-class SearchBar(ViewletBase):
+class SearchBar(ViewletBase,UsefulForSearchEvents):
     """"""
     
     def monetAllEvents(self):
