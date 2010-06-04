@@ -1,12 +1,12 @@
 from monet.calendar.extensions.interfaces import IMonetCalendarSection, IMonetCalendarSearchRoot
-from Acquisition import aq_chain
+from Acquisition import aq_chain, aq_inner
 from Products.CMFCore.utils import getToolByName
 
 class UsefulForSearchEvents(object):
         
     def getSubSiteParentFolder(self):
         """Return the first parent folder found that implements the interface IMonetCalendarSearchRoot"""
-        for parent in aq_chain(self.context):
+        for parent in aq_chain(aq_inner(self.context)):
             if IMonetCalendarSearchRoot.providedBy(parent):
                 return parent
         return None
