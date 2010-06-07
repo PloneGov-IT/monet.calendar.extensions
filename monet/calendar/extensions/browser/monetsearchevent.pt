@@ -68,16 +68,25 @@
 				 		</div>
 				 		<div class="SearchEvent" tal:repeat="event events">
 				 			<div class="SearchEventTitle">
-				 				<label tal:content="event/title">
-					 				title
-					 			</label>
-				 			</div>
-				 			<div class="SearchEventDescription" tal:content="event/description">
-				 				description
-				 			</div>
-				 			<div class="SearchEventLocation" tal:content="event/getLocation">
-				 				location
-				 			</div>
+					            <metal:field use-macro="python:event.widget('title', mode='view')">
+					            	title
+					            </metal:field>
+					        </div>
+				 			<div class="SearchEventDescription">
+					            <metal:field use-macro="python:event.widget('description', mode='view')">
+					            	description
+					            </metal:field>
+					        </div>
+				 			<div class="SearchEventLocation">
+					            <metal:field use-macro="python:event.widget('location', mode='view')">
+					            	location
+					            </metal:field>
+					        </div>
+				 			<div class="SearchEventTime">
+					            <metal:field use-macro="python:event.widget('time', mode='view')">
+					            	time
+					            </metal:field>
+					        </div>
 				 			<div class="SearchEventType" tal:define="event_types event/getEventType">
 				 				<span tal:condition="event_types" tal:content="python: event_types[0]">
 				 					eventType
