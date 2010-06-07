@@ -19,7 +19,10 @@
 <div metal:fill-slot="main">
     <tal:main-macro metal:define-macro="main"
     	define="dates view/getFromTo;
-    			date dates/date">
+    			date dates/date;
+    			events view/getEventsInParent;
+    			list_filter_events python: view.filterEventsByDate(events,date);
+    			dict_sorted_events python: view.sortedEventsBySlots(list_filter_events)">
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 
@@ -38,8 +41,8 @@
         </p>
                 
         <div tal:replace="structure provider:plone.abovecontentbody" />
-
-		<h2 class="monetEventDate" tal:define="wdn python: view.getWeekdayName(date);
+        
+        <h2 class="monetEventDate" tal:define="wdn python: view.getWeekdayName(date);
 											   mon python: view.getMonthName(date)">
 			<tal:wdn content="wdn">
 				wdn
@@ -53,60 +56,64 @@
 			<tal:year content="date/year">
 				year
 			</tal:year>
-		</h2>
-		
-        <div tal:define="events view/getEventsInParent;
-			 		     dict_filter_events python: view.filterEventsByDate(events,date);
-			 		     keys python: dict_filter_events['sequence_slots']">
-			 	<div class="fieldSearchKey" tal:repeat="key keys">
-			 		<tal:keys define="events python: dict_filter_events[key]"
-							  condition="events">
-				 		<div class="SearchKey">
-					 		<label tal:content="python: view.getSlotsName(key)">
-					 			slot
-					 		</label>
-				 		</div>
-				 		<div class="SearchEvent" tal:repeat="event events">
-				 			<div class="SearchEventTitle">
-					            <metal:field use-macro="python:event.widget('title', mode='view')">
-					            	title
-					            </metal:field>
-					        </div>
-				 			<div class="SearchEventDescription">
-					            <metal:field use-macro="python:event.widget('description', mode='view')">
-					            	description
-					            </metal:field>
-					        </div>
-				 			<div class="SearchEventLocation">
-					            <metal:field use-macro="python:event.widget('location', mode='view')">
-					            	location
-					            </metal:field>
-					        </div>
-				 			<div class="SearchEventTime">
-					            <metal:field use-macro="python:event.widget('time', mode='view')">
-					            	time
-					            </metal:field>
-					        </div>
-				 			<div class="SearchEventType" tal:define="event_types event/getEventType">
-				 				<span tal:condition="event_types" tal:content="python: event_types[0]">
-				 					eventType
-				 				</span>
-				 				<span tal:condition="python: len(event_types) > 1" 
-				 					  tal:repeat="event_type python: event_types[1:]">
-									|
-									<span tal:content="event_type">
-				 						eventType
-				 					</span>
-								</span>
-				 			</div>
-				 		</div>
-				 	</tal:keys>	
-			    </div>
-        </div>
+			</h2>
 
-        <div tal:replace="structure provider:plone.belowcontentbody" />
-        
-        <div tal:condition="python: (dates.has_key('date_from') and dates['date_from']) and (dates.has_key('date_to') and dates['date_to'])">
+		<tal:notlistFE condition="not: list_filter_events">
+			<div>
+        		<p i18n:translate="no_events_found">No events were found.</p>
+    		</div>	
+		</tal:notlistFE>
+
+		<tal:listFE condition="list_filter_events">
+	        <div tal:define="keys python: dict_sorted_events['sequence_slots']">
+				 	<div class="fieldSearchKey" tal:repeat="key keys">
+				 		<tal:keys define="events python: dict_sorted_events[key]"
+								  condition="events">
+					 		<div class="SearchKey">
+						 		<label tal:content="python: view.getSlotsName(key)">
+						 			slot
+						 		</label>
+					 		</div>
+					 		<div class="SearchEvent" tal:repeat="event events">
+					 			<div class="SearchEventTitle">
+						            <metal:field use-macro="python:event.widget('title', mode='view')">
+						            	title
+						            </metal:field>
+						        </div>
+					 			<div class="SearchEventDescription">
+						            <metal:field use-macro="python:event.widget('description', mode='view')">
+						            	description
+						            </metal:field>
+						        </div>
+					 			<div class="SearchEventLocation">
+						            <metal:field use-macro="python:event.widget('location', mode='view')">
+						            	location
+						            </metal:field>
+						        </div>
+					 			<div class="SearchEventTime">
+						            <metal:field use-macro="python:event.widget('time', mode='view')">
+						            	time
+						            </metal:field>
+						        </div>
+					 			<div class="SearchEventType" tal:define="event_types event/getEventType">
+					 				<span tal:condition="event_types" tal:content="python: event_types[0]">
+					 					eventType
+					 				</span>
+					 				<span tal:condition="python: len(event_types) > 1" 
+					 					  tal:repeat="event_type python: event_types[1:]">
+										|
+										<span tal:content="event_type">
+					 						eventType
+					 					</span>
+									</span>
+					 			</div>
+					 		</div>
+					 	</tal:keys>	
+				    </div>
+	        </div>
+		</tal:listFE>
+	        
+        <div class="searchPages" tal:condition="python: (dates.has_key('date_from') and dates['date_from']) and (dates.has_key('date_to') and dates['date_to'])">
 			 <div tal:define="interval python: view.getDateInterval(dates['date_from'],dates['date_to']);
 			 				  day_prev python: view.getPreviousDate(date,dates['date_from']);
 			 				  day_next python: view.getNextDate(date,dates['date_to'])">
@@ -142,6 +149,8 @@
 			 	</tal:nextday>
 			 </div>
 		</div>
+		
+		<div tal:replace="structure provider:plone.belowcontentbody" />
 		
     </tal:main-macro>
 </div>

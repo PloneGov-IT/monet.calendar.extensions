@@ -110,19 +110,28 @@ class MonetSearchEvents(BrowserView):
     def filterEventsByDate(self,events,date):
         """Filter events by date"""
         
-        filtered_events = {'morning':[],
-                           'afternoon':[],
-                           'night':[],
-                           'allday':[],
-                           'sequence_slots':['morning','afternoon','night','allday']}
+        filtered_events = []
+        
         for event in events:
             event = event.getObject()
             dates_event = event.getDates()
             if date in dates_event:
-                for key in filtered_events.keys():
-                    if event.getSlots() == key:
-                        filtered_events[key].append(event)
+                filtered_events.append(event)
         return filtered_events
+    
+    def sortedEventsBySlots(self,events):
+        """Sorted events by slot"""
+    
+        sorted_events = {'morning':[],
+                         'afternoon':[],
+                         'night':[],
+                         'allday':[],
+                         'sequence_slots':['morning','afternoon','night','allday']}
+        for event in events:
+            for key in sorted_events.keys():
+                if event.getSlots() == key:
+                    sorted_events[key].append(event)
+        return sorted_events
     
     def getDateInterval(self,date_from,date_to):
         interval = []
@@ -147,8 +156,8 @@ class MonetSearchEvents(BrowserView):
             return date + timedelta(1)
         
     def getWeekdayName(self,date):
-        msgid = self._translation_service.day_msgid(date.isoweekday())
-        english = self._translation_service.weekday_english(date.isoweekday())
+        msgid = date.isoweekday() == 7 and self._translation_service.day_msgid(0) or self._translation_service.day_msgid(date.isoweekday())
+        english = date.isoweekday() == 7 and self._translation_service.weekday_english(0) or self._translation_service.weekday_english(date.isoweekday())
         return _(msgid, default=english)
         
     def getMonthName(self,date):
