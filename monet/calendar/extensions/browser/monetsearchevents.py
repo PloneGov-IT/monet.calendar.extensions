@@ -15,6 +15,13 @@ SlotsVocab = {'morning':_(u'Morning'),
               'night':_(u'Night'),
               'allday':_(u'All day')}
 
+ParameterDatesList = ['fromYear',
+                      'fromMonth',
+                      'fromDay',
+                      'toYear',
+                      'toMonth',
+                      'toDay']
+
 class MonetSearchEvents(BrowserView):
     
     def __init__(self, context, request):
@@ -29,10 +36,12 @@ class MonetSearchEvents(BrowserView):
         query['object_provides'] = IMonetEvent.__identifier__
         query['path'] = '/'.join(context.getPhysicalPath())
         query['sort_on'] = 'getObjPositionInParent'
-        if self.request.form.get('SearchableText'):
-            query['SearchableText'] = self.request.form.get('SearchableText')
-        if self.request.form.get('getEventType'):
-            query['getEventType'] = self.request.form.get('getEventType')
+        
+        for key in self.request.form.keys():
+            if not key in ParameterDatesList:
+                if self.request.form.get(key):
+                    query[key] = self.request.form.get(key)
+        
         brains = pcatalog.searchResults(**query)
         return brains
     
