@@ -121,14 +121,26 @@ class MonetSearchEvents(BrowserView):
     
     def sortedEventsBySlots(self,events):
         """Sorted events by slot"""
+        
+        mp = getToolByName(self,'portal_properties')
+        special_event_types = mp.monet_calendar_event_properties.special_event_types
     
         sorted_events = {'morning':[],
                          'afternoon':[],
                          'night':[],
                          'allday':[],
                          'sequence_slots':['morning','afternoon','night','allday']}
+        sorted_events_keys = sorted_events.keys()
+        
         for event in events:
-            for key in sorted_events.keys():
+            inter = list(set(event.getEventType()).intersection(set(special_event_types)))
+            if inter:
+                if not inter[0] in sorted_events['sequence_slots']:
+                    sorted_events['sequence_slots'].append(inter[0])
+                    sorted_events[inter[0]] = []
+                sorted_events[inter[0]].append(event)
+                continue
+            for key in sorted_events_keys:
                 if event.getSlots() == key:
                     sorted_events[key].append(event)
         return sorted_events
@@ -166,4 +178,6 @@ class MonetSearchEvents(BrowserView):
         return PLMF(msgid, default=english)
     
     def getSlotsName(self,key):
-        return SlotsVocab[key]
+        mp = getToolByName(self,'portal_properties')
+        special_event_types = mp.monet_calendar_event_properties.special_event_types
+        return (key in special_event_types) and key or SlotsVocab[key]

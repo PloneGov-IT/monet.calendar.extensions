@@ -56,7 +56,7 @@
 			<tal:year content="date/year">
 				year
 			</tal:year>
-			</h2>
+		</h2>
 
 		<tal:notlistFE condition="not: list_filter_events">
 			<div>
@@ -66,50 +66,50 @@
 
 		<tal:listFE condition="list_filter_events">
 	        <div tal:define="keys python: dict_sorted_events['sequence_slots']">
-				 	<div class="fieldSearchKey" tal:repeat="key keys">
-				 		<tal:keys define="events python: dict_sorted_events[key]"
-								  condition="events">
-					 		<div class="SearchKey">
-						 		<label tal:content="python: view.getSlotsName(key)">
-						 			slot
-						 		</label>
-					 		</div>
-					 		<div class="SearchEvent" tal:repeat="event events">
-					 			<div class="SearchEventTitle">
-						            <metal:field use-macro="python:event.widget('title', mode='view')">
-						            	title
-						            </metal:field>
-						        </div>
-					 			<div class="SearchEventDescription">
-						            <metal:field use-macro="python:event.widget('description', mode='view')">
-						            	description
-						            </metal:field>
-						        </div>
-					 			<div class="SearchEventLocation">
-						            <metal:field use-macro="python:event.widget('location', mode='view')">
-						            	location
-						            </metal:field>
-						        </div>
-					 			<div class="SearchEventTime">
-						            <metal:field use-macro="python:event.widget('time', mode='view')">
-						            	time
-						            </metal:field>
-						        </div>
-					 			<div class="SearchEventType" tal:define="event_types event/getEventType">
-					 				<span tal:condition="event_types" tal:content="python: event_types[0]">
-					 					eventType
-					 				</span>
-					 				<span tal:condition="python: len(event_types) > 1" 
-					 					  tal:repeat="event_type python: event_types[1:]">
-										|
-										<span tal:content="event_type">
-					 						eventType
-					 					</span>
-									</span>
-					 			</div>
-					 		</div>
-					 	</tal:keys>	
-				    </div>
+			 	<div class="fieldSearchKey" tal:repeat="key keys">
+			 		<tal:keys define="events python: dict_sorted_events[key]"
+							  condition="events">
+				 		<div class="SearchKey">
+					 		<label tal:content="python: view.getSlotsName(key)">
+					 			slot
+					 		</label>
+				 		</div>
+				 		<div class="SearchEvent" tal:repeat="event events">
+				 			<div class="SearchEventTitle">
+					            <metal:field use-macro="python:event.widget('title', mode='view')">
+					            	title
+					            </metal:field>
+					        </div>
+				 			<div class="SearchEventDescription">
+					            <metal:field use-macro="python:event.widget('description', mode='view')">
+					            	description
+					            </metal:field>
+					        </div>
+				 			<div class="SearchEventLocation">
+					            <metal:field use-macro="python:event.widget('location', mode='view')">
+					            	location
+					            </metal:field>
+					        </div>
+				 			<div class="SearchEventTime">
+					            <metal:field use-macro="python:event.widget('time', mode='view')">
+					            	time
+					            </metal:field>
+					        </div>
+				 			<div class="SearchEventType" tal:define="event_types event/getEventType">
+				 				<span tal:condition="event_types" tal:content="python: event_types[0]">
+				 					eventType
+				 				</span>
+				 				<span tal:condition="python: len(event_types) > 1" 
+				 					  tal:repeat="event_type python: event_types[1:]">
+									|
+									<span tal:content="event_type">
+				 						eventType
+				 					</span>
+								</span>
+				 			</div>
+				 		</div>
+				 	</tal:keys>	
+			    </div>
 	        </div>
 		</tal:listFE>
 	        
