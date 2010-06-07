@@ -30,4 +30,9 @@
 	permission="zope2.View"
 	/>
 	
+  <browser:resourceDirectory
+  	name="monet.calendar.extensions.stylesheets"
+	directory="stylesheets"
+	/>
+
 </configure>

@@ -60,36 +60,41 @@ msgid "label_to"
 msgstr "Al"
 
 #. Default: "Friday"
-#: datetime name of a day, format %A
 msgid "weekday_fri"
 msgstr "Venerdì"
 
 #. Default: "Monday"
-#: datetime name of a day, format %A
 msgid "weekday_mon"
 msgstr "Lunedì"
 
 #. Default: "Saturday"
-#: datetime name of a day, format %A
 msgid "weekday_sat"
 msgstr "Sabato"
 
 #. Default: "Sunday"
-#: datetime name of a day, format %A
 msgid "weekday_sun"
 msgstr "Domenica"
 
 #. Default: "Thursday"
-#: datetime name of a day, format %A
 msgid "weekday_thu"
 msgstr "Giovedì"
 
 #. Default: "Tuesday"
-#: datetime name of a day, format %A
 msgid "weekday_tue"
 msgstr "Martedì"
 
 #. Default: "Wednesday"
-#: datetime name of a day, format %A
 msgid "weekday_wed"
 msgstr "Mercoledì"
+
+msgid "Afternoon"
+msgstr "Pomeriggio"
+
+msgid "All day"
+msgstr "Tutto il giorno"
+
+msgid "Morning"
+msgstr "Mattina"
+
+msgid "Night"
+msgstr "Sera"

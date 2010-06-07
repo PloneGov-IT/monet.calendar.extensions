@@ -6,6 +6,14 @@
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="monet.calendar.extensions">
 
+<head>
+    <metal:css fill-slot="css_slot">
+        <style type="text/css" media="all"
+            tal:content="string: @import url(${context/portal_url}/++resource++monet.calendar.extensions.stylesheets/monetcalendarsearchevent.css)">
+        </style>
+    </metal:css>
+</head>
+
 <body>
 
 <div metal:fill-slot="main">
@@ -48,16 +56,43 @@
 		</h2>
 		
         <div tal:define="events view/getEventsInParent;
-			 		     dict_filter_events python: view.filterEventsByDate(events,date)">
-			 	<tal:prova content="date" >
-			 			events
-			 	</tal:prova>
-			 	<tal:events condition="dict_filter_events"
-			 			    repeat="event dict_filter_events">
-			 		<tal:event content="event/Title">
-			 			events
-			 		</tal:event>
-			    </tal:events>
+			 		     dict_filter_events python: view.filterEventsByDate(events,date);
+			 		     keys python: dict_filter_events['sequence_slots']">
+			 	<div class="fieldSearchKey" tal:repeat="key keys">
+			 		<tal:keys define="events python: dict_filter_events[key]"
+							  condition="events">
+				 		<div class="SearchKey">
+					 		<label tal:content="python: view.getSlotsName(key)">
+					 			slot
+					 		</label>
+				 		</div>
+				 		<div class="SearchEvent" tal:repeat="event events">
+				 			<div class="SearchEventTitle">
+				 				<label tal:content="event/title">
+					 				title
+					 			</label>
+				 			</div>
+				 			<div class="SearchEventDescription" tal:content="event/description">
+				 				description
+				 			</div>
+				 			<div class="SearchEventLocation" tal:content="event/getLocation">
+				 				location
+				 			</div>
+				 			<div class="SearchEventType" tal:define="event_types event/getEventType">
+				 				<span tal:condition="event_types" tal:content="python: event_types[0]">
+				 					eventType
+				 				</span>
+				 				<span tal:condition="python: len(event_types) > 1" 
+				 					  tal:repeat="event_type python: event_types[1:]">
+									|
+									<span tal:content="event_type">
+				 						eventType
+				 					</span>
+								</span>
+				 			</div>
+				 		</div>
+				 	</tal:keys>	
+			    </div>
         </div>
 
         <div tal:replace="structure provider:plone.belowcontentbody" />

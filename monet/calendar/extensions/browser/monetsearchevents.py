@@ -7,7 +7,13 @@ from monet.calendar.extensions import eventMessageFactory as _
 from Products.statusmessages.interfaces import IStatusMessage
 from zope.component import getMultiAdapter
 from zope.i18nmessageid import MessageFactory
+
 PLMF = MessageFactory('plonelocales')
+
+SlotsVocab = {'morning':_(u'Morning'),
+              'afternoon':_(u'Afternoon'),
+              'night':_(u'Night'),
+              'allday':_(u'All day')}
 
 class MonetSearchEvents(BrowserView):
     
@@ -104,13 +110,18 @@ class MonetSearchEvents(BrowserView):
     def filterEventsByDate(self,events,date):
         """Filter events by date"""
         
-        filtered_events = []
-        
+        filtered_events = {'morning':[],
+                           'afternoon':[],
+                           'night':[],
+                           'allday':[],
+                           'sequence_slots':['morning','afternoon','night','allday']}
         for event in events:
-            dates_event = event.getObject().getDates()
+            event = event.getObject()
+            dates_event = event.getDates()
             if date in dates_event:
-                filtered_events.append(event)
-
+                for key in filtered_events.keys():
+                    if event.getSlots() == key:
+                        filtered_events[key].append(event)
         return filtered_events
     
     def getDateInterval(self,date_from,date_to):
@@ -144,5 +155,6 @@ class MonetSearchEvents(BrowserView):
         msgid   = self._translation_service.month_msgid(date.month)
         english = self._translation_service.month_english(date.month)
         return PLMF(msgid, default=english)
-        
-        
+    
+    def getSlotsName(self,key):
+        return SlotsVocab[key]
