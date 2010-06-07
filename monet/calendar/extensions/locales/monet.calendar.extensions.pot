@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-06-07 07:35+0000\n"
+"POT-Creation-Date: 2010-06-07 13:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +17,39 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: monet.calendar.extensions\n"
 
+#: ./browser/monetsearchevents.py:14
+msgid "Afternoon"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:16
+msgid "All day"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:13
+msgid "Morning"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:15
+msgid "Night"
+msgstr ""
+
 #. Default: "-- All events --"
 #: ./browser/viewlets.py:9
 msgid "label_all_events"
 msgstr ""
 
 #. Default: "The date arguments are not valid, re-enter the dates, please."
-#: ./browser/monetsearchevents.py:48
+#: ./browser/monetsearchevents.py:54
 msgid "label_failed_arguments"
 msgstr ""
 
 #. Default: "The second data parameter (TO) must be greater than or equal to the first data parameter (FROM), so that the range of days specified is not negative. Re-enter the dates, please."
-#: ./browser/monetsearchevents.py:53
+#: ./browser/monetsearchevents.py:59
 msgid "label_failed_gtinterval"
 msgstr ""
 
 #. Default: "The search of events must be less than 30 days. Re-enter the dates, please."
-#: ./browser/monetsearchevents.py:58
+#: ./browser/monetsearchevents.py:64
 msgid "label_failed_interval"
 msgstr ""
 

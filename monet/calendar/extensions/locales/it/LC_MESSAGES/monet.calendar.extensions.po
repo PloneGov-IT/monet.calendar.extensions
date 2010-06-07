@@ -98,3 +98,7 @@ msgstr "Mattina"
 
 msgid "Night"
 msgstr "Sera"
+
+#. Default: "No events were found."
+msgid "no_events_found"
+msgstr "Nessun evento è stato trovato."
