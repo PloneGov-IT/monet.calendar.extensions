@@ -6,11 +6,14 @@ from datetime import datetime, timedelta
 from monet.calendar.extensions import eventMessageFactory as _
 from Products.statusmessages.interfaces import IStatusMessage
 from zope.component import getMultiAdapter
+from zope.i18nmessageid import MessageFactory
+PLMF = MessageFactory('plonelocales')
 
 class MonetSearchEvents(BrowserView):
     
     def __init__(self, context, request):
         BrowserView.__init__(self, context, request)
+        self._translation_service = getToolByName(self.context, 'translation_service')
     
     def getEventsInParent(self):
         """Return all events found in the parent folder"""
@@ -131,4 +134,15 @@ class MonetSearchEvents(BrowserView):
             return None
         else:
             return date + timedelta(1)
+        
+    def getWeekdayName(self,date):
+        msgid = self._translation_service.day_msgid(date.isoweekday())
+        english = self._translation_service.weekday_english(date.isoweekday())
+        return _(msgid, default=english)
+        
+    def getMonthName(self,date):
+        msgid   = self._translation_service.month_msgid(date.month)
+        english = self._translation_service.month_english(date.month)
+        return PLMF(msgid, default=english)
+        
         

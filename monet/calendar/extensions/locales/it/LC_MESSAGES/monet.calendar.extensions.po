@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2010-06-03 11:48+0000\n"
+"POT-Creation-Date: 2010-06-07 07:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,47 +15,81 @@ msgstr ""
 "Domain: monet.calendar.extensions\n"
 
 #. Default: "-- All events --"
-#: ./browser/viewlets.py:8
+#: ./browser/viewlets.py:9
 msgid "label_all_events"
 msgstr "-- Tutti gli eventi --"
 
 #. Default: "The date arguments are not valid, re-enter the dates, please."
-#: ./browser/monetsearchevents.py:69
+#: ./browser/monetsearchevents.py:48
 msgid "label_failed_arguments"
 msgstr "Gli argomenti date non sono validi, inserire nuovamente le date."
 
 #. Default: "The second data parameter (TO) must be greater than or equal to the first data parameter (FROM), so that the range of days specified is not negative. Re-enter the dates, please."
-#: ./browser/monetsearchevents.py:75
+#: ./browser/monetsearchevents.py:53
 msgid "label_failed_gtinterval"
 msgstr "Il secondo parametro data (AL) deve essere superiore o uguale al primo parametro data (DAL), in modo tale che l'intervallo dei giorni specificato non sia negativo. Inserire nuovamente le date."
 
 #. Default: "The search of events must be less than 30 days. Re-enter the dates, please."
-#: ./browser/monetsearchevents.py:81
+#: ./browser/monetsearchevents.py:58
 msgid "label_failed_interval"
 msgstr "La ricerca degli eventi deve essere inferiore ai 30 giorni. Inserire nuovamente le date."
 
 #. Default: "From"
-#: ./browser/searchbar.pt:18
+#: ./browser/searchbar.pt:20
 msgid "label_from"
 msgstr "Dal"
 
 #. Default: "In"
-#: ./browser/searchbar.pt:17
+#: ./browser/searchbar.pt:19
 msgid "label_in"
 msgstr "In"
 
 #. Default: "Search"
-#: ./browser/searchbar.pt:101
+#: ./browser/searchbar.pt:103
 msgid "label_search"
 msgstr "Cerca"
 
 #. Default: "Search event"
-#: ./browser/searchbar.pt:16
+#: ./browser/searchbar.pt:18
 msgid "label_search_event"
 msgstr "Cerca evento"
 
 #. Default: "To"
-#: ./browser/searchbar.pt:19
+#: ./browser/searchbar.pt:21
 msgid "label_to"
 msgstr "Al"
 
+#. Default: "Friday"
+#: datetime name of a day, format %A
+msgid "weekday_fri"
+msgstr "Venerdì"
+
+#. Default: "Monday"
+#: datetime name of a day, format %A
+msgid "weekday_mon"
+msgstr "Lunedì"
+
+#. Default: "Saturday"
+#: datetime name of a day, format %A
+msgid "weekday_sat"
+msgstr "Sabato"
+
+#. Default: "Sunday"
+#: datetime name of a day, format %A
+msgid "weekday_sun"
+msgstr "Domenica"
+
+#. Default: "Thursday"
+#: datetime name of a day, format %A
+msgid "weekday_thu"
+msgstr "Giovedì"
+
+#. Default: "Tuesday"
+#: datetime name of a day, format %A
+msgid "weekday_tue"
+msgstr "Martedì"
+
+#. Default: "Wednesday"
+#: datetime name of a day, format %A
+msgid "weekday_wed"
+msgstr "Mercoledì"

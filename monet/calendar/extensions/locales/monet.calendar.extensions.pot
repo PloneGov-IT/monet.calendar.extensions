@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-06-03 11:48+0000\n"
+"POT-Creation-Date: 2010-06-07 07:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,47 +18,47 @@ msgstr ""
 "Domain: monet.calendar.extensions\n"
 
 #. Default: "-- All events --"
-#: ./browser/viewlets.py:8
+#: ./browser/viewlets.py:9
 msgid "label_all_events"
 msgstr ""
 
 #. Default: "The date arguments are not valid, re-enter the dates, please."
-#: ./browser/monetsearchevents.py:69
+#: ./browser/monetsearchevents.py:48
 msgid "label_failed_arguments"
 msgstr ""
 
 #. Default: "The second data parameter (TO) must be greater than or equal to the first data parameter (FROM), so that the range of days specified is not negative. Re-enter the dates, please."
-#: ./browser/monetsearchevents.py:75
+#: ./browser/monetsearchevents.py:53
 msgid "label_failed_gtinterval"
 msgstr ""
 
 #. Default: "The search of events must be less than 30 days. Re-enter the dates, please."
-#: ./browser/monetsearchevents.py:81
+#: ./browser/monetsearchevents.py:58
 msgid "label_failed_interval"
 msgstr ""
 
 #. Default: "From"
-#: ./browser/searchbar.pt:18
+#: ./browser/searchbar.pt:20
 msgid "label_from"
 msgstr ""
 
 #. Default: "In"
-#: ./browser/searchbar.pt:17
+#: ./browser/searchbar.pt:19
 msgid "label_in"
 msgstr ""
 
 #. Default: "Search"
-#: ./browser/searchbar.pt:101
+#: ./browser/searchbar.pt:103
 msgid "label_search"
 msgstr ""
 
 #. Default: "Search event"
-#: ./browser/searchbar.pt:16
+#: ./browser/searchbar.pt:18
 msgid "label_search_event"
 msgstr ""
 
 #. Default: "To"
-#: ./browser/searchbar.pt:19
+#: ./browser/searchbar.pt:21
 msgid "label_to"
 msgstr ""
 
