@@ -42,6 +42,7 @@
 	                            tal:repeat="eventT usedEventTypes"
 	                            tal:content="python: eventT=='all_events' and all_events_label or eventT"
 	                            tal:attributes="value python: view.valueGetEventType(eventT);
+	                            				selected python: view.valueGetEventType(eventT) == view.getDefaultEventType();
 	                            				id eventT">
 								dummy
 						</option>

@@ -14,3 +14,12 @@ class SearchBar(ViewletBase,UsefulForSearchEvents):
         else:
             return value
         
+    def getDefaultEventType(self):
+        
+        form = self.request.form
+        
+        if form.has_key('getEventType'):
+            return form.get('getEventType')
+        else:
+            return ''
+        
