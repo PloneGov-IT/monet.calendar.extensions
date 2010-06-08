@@ -22,4 +22,12 @@ class SearchBar(ViewletBase,UsefulForSearchEvents):
             return form.get('getEventType')
         else:
             return ''
+    
+    def getDefaultDataParameter(self,elem,arg):
         
+        form = self.request.form
+        
+        if form.has_key(arg):
+            return int(elem['value']) == form.get(arg)
+        else:
+            return elem['selected']
