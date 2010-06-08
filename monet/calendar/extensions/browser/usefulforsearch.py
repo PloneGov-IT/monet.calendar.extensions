@@ -45,4 +45,13 @@ class UsefulForSearchEvents(object):
         if calendarsection:
             return calendarsection.getObject().absolute_url()
         else:
-            return None
+            portal=getToolByName(self.context, 'portal_url').getPortalObject()
+            return portal.absolute_url()
+        
+    def getSubSitePath(self):
+        subsite = self.getSubSiteParentFolder()
+        if subsite:
+            return subsite.absolute_url()
+        else:
+            return ''
+    
