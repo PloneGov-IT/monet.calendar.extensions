@@ -6,7 +6,8 @@
                 showPrevMonth view/showPrevMonth;
                 showNextMonth view/showNextMonth;
                 year view/year;
-				calendar_section_path view/getCalendarSectionPath">
+				calendar_section_path view/getCalendarSectionPath;
+				subsite_path view/getSubSitePath">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
@@ -68,7 +69,7 @@
                                          <td tal:condition="python:is_today" class="todaynoevent">
                                              <strong>
                                              	<a href="" tal:condition="calendar_section_path"
-                                             			   tal:attributes="href string:${calendar_section_path}/monetsearchevents?date=${date_string}"
+                                             			   tal:attributes="href string:${calendar_section_path}/monetsearchevents?date=${date_string}&path=${subsite_path}"
                                                            tal:content="daynumber">
                                              		31
                                              	</a>
@@ -80,7 +81,7 @@
                                          </td>
                                          <td tal:condition="python:not is_today">
                                              <a href="" tal:condition="calendar_section_path"
-                                             			tal:attributes="href string:${calendar_section_path}/monetsearchevents?date=${date_string}"
+                                             			tal:attributes="href string:${calendar_section_path}/monetsearchevents?date=${date_string}&path=${subsite_path}"
                                                         tal:content="daynumber">
                                              		31
                                              </a>
