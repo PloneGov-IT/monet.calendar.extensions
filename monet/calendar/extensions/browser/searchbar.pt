@@ -7,7 +7,8 @@
 				 years values/years;
 				 months values/months;
 				 days values/days;
-				 calendar_section_path view/getCalendarSectionPath">
+				 calendar_section_path view/getCalendarSectionPath;
+				 subsite_path view/getSubSitePath">
 				 
 	<form name="searchBar"
           action="monetsearchevents"
@@ -106,6 +107,12 @@
                   				tal:content="year/id">year</option>
 				</select>
 		      </td>
+		      <input class="searchBarPath"
+				name="path"
+				id="path"
+				type="hidden"
+				tal:attributes="value subsite_path;"
+				/>
 		      <td>
 		      	  <input class="searchButton"
 					type="submit"
