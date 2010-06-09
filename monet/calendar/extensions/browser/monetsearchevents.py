@@ -34,7 +34,6 @@ class MonetSearchEvents(BrowserView):
         pcatalog = getToolByName(self, 'portal_catalog')
         query = {}
         query['object_provides'] = IMonetEvent.__identifier__
-        query['path'] = '/'.join(context.getPhysicalPath())
         query['sort_on'] = 'getObjPositionInParent'
         
         for key in self.request.form.keys():

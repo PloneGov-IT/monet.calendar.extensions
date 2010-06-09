@@ -51,7 +51,7 @@ class UsefulForSearchEvents(object):
     def getSubSitePath(self):
         subsite = self.getSubSiteParentFolder()
         if subsite:
-            return subsite.absolute_url()
+            return '/'.join(subsite.getPhysicalPath())
         else:
             return ''
     
