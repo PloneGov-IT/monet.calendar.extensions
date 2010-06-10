@@ -96,13 +96,13 @@
 					            </metal:field>
 					        </div>
 				 			<div class="SearchEventType" tal:define="event_types event/getEventType">
-				 				<span tal:condition="event_types" tal:content="python: event_types[0]">
+				 				<span tal:condition="event_types" i18n:domain="monet.calendar.event" i18n:translate="" tal:content="python: event_types[0]">
 				 					eventType
 				 				</span>
 				 				<span tal:condition="python: len(event_types) > 1" 
 				 					  tal:repeat="event_type python: event_types[1:]">
 									|
-									<span tal:content="event_type">
+									<span i18n:domain="monet.calendar.event" i18n:translate="" tal:content="event_type">
 				 						eventType
 				 					</span>
 								</span>
