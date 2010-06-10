@@ -90,13 +90,13 @@ msgstr "Mercoledì"
 msgid "Afternoon"
 msgstr "Pomeriggio"
 
-msgid "All day"
+msgid "All day long"
 msgstr "Tutto il giorno"
 
 msgid "Morning"
-msgstr "Mattina"
+msgstr "Mattino"
 
-msgid "Night"
+msgid "Evening"
 msgstr "Sera"
 
 #. Default: "No events were found."

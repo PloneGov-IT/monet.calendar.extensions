@@ -12,8 +12,8 @@ PLMF = MessageFactory('plonelocales')
 
 SlotsVocab = {'morning':_(u'Morning'),
               'afternoon':_(u'Afternoon'),
-              'night':_(u'Night'),
-              'allday':_(u'All day')}
+              'night':_(u'Evening'),
+              'allday':_(u'All day long')}
 
 ParameterDatesList = ['fromYear',
                       'fromMonth',
