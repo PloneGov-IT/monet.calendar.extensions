@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-06-07 13:13+0000\n"
+"POT-Creation-Date: 2010-06-10 15:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,20 +17,104 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: monet.calendar.extensions\n"
 
-#: ./browser/monetsearchevents.py:14
+#: ./browser/monetsearchevents.py:15
 msgid "Afternoon"
 msgstr ""
 
-#: ./browser/monetsearchevents.py:16
-msgid "All day"
+#: ./browser/monetsearchevents.py:17
+msgid "All day long"
 msgstr ""
 
-#: ./browser/monetsearchevents.py:13
+#: ./browser/monetsearchevents.py:153
+msgid "Books"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:148
+msgid "Children's events"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:143
+msgid "Cinema and videos"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:146
+msgid "Circuses and street performances"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:138
+msgid "Concerts"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:137
+msgid "Conferences, seminars and workshops"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:136
+msgid "Conventions and round tables"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:144
+msgid "Dance"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:16
+msgid "Evening"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:140
+msgid "Exhibitions"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:145
+msgid "Folklore and festivals"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:151
+msgid "Guided tours"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:135
+msgid "Markets"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:150
+msgid "Memorial days"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:14
 msgid "Morning"
 msgstr ""
 
-#: ./browser/monetsearchevents.py:15
-msgid "Night"
+#: ./browser/monetsearchevents.py:142
+msgid "Music"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:149
+msgid "Openings, unveilings"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:154
+msgid "Other events"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:139
+msgid "Performances"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:152
+msgid "Prizes and competitions"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:147
+msgid "Sports and games"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:141
+msgid "Theatre"
+msgstr ""
+
+#: ./browser/monetsearchevents.py:134
+msgid "Trade fairs, expositions and markets"
 msgstr ""
 
 #. Default: "-- All events --"
@@ -39,42 +123,47 @@ msgid "label_all_events"
 msgstr ""
 
 #. Default: "The date arguments are not valid, re-enter the dates, please."
-#: ./browser/monetsearchevents.py:54
+#: ./browser/monetsearchevents.py:63
 msgid "label_failed_arguments"
 msgstr ""
 
 #. Default: "The second data parameter (TO) must be greater than or equal to the first data parameter (FROM), so that the range of days specified is not negative. Re-enter the dates, please."
-#: ./browser/monetsearchevents.py:59
+#: ./browser/monetsearchevents.py:68
 msgid "label_failed_gtinterval"
 msgstr ""
 
 #. Default: "The search of events must be less than 30 days. Re-enter the dates, please."
-#: ./browser/monetsearchevents.py:64
+#: ./browser/monetsearchevents.py:73
 msgid "label_failed_interval"
 msgstr ""
 
 #. Default: "From"
-#: ./browser/searchbar.pt:20
+#: ./browser/searchbar.pt:21
 msgid "label_from"
 msgstr ""
 
 #. Default: "In"
-#: ./browser/searchbar.pt:19
+#: ./browser/searchbar.pt:20
 msgid "label_in"
 msgstr ""
 
 #. Default: "Search"
-#: ./browser/searchbar.pt:103
+#: ./browser/searchbar.pt:117
 msgid "label_search"
 msgstr ""
 
 #. Default: "Search event"
-#: ./browser/searchbar.pt:18
+#: ./browser/searchbar.pt:19
 msgid "label_search_event"
 msgstr ""
 
 #. Default: "To"
-#: ./browser/searchbar.pt:21
+#: ./browser/searchbar.pt:22
 msgid "label_to"
+msgstr ""
+
+#. Default: "No events were found."
+#: ./browser/monetsearchevent.pt:63
+msgid "no_events_found"
 msgstr ""
 

@@ -7,6 +7,7 @@ from monet.calendar.extensions import eventMessageFactory as _
 from Products.statusmessages.interfaces import IStatusMessage
 from zope.component import getMultiAdapter
 from zope.i18nmessageid import MessageFactory
+from Products.Archetypes.atapi import DisplayList
 
 PLMF = MessageFactory('plonelocales')
 
@@ -131,7 +132,10 @@ class MonetSearchEvents(BrowserView):
         """Sorted events by slot"""
         
         mp = getToolByName(self,'portal_properties')
-        special_event_types = mp.monet_calendar_event_properties.special_event_types
+        special_event_types_pro = mp.monet_calendar_event_properties.special_event_types
+        special_event_types = DisplayList()
+        for etype in special_event_types_pro:
+            special_event_types.add(etype,_(etype))
     
         sorted_events = {'morning':[],
                          'afternoon':[],
@@ -187,5 +191,10 @@ class MonetSearchEvents(BrowserView):
     
     def getSlotsName(self,key):
         mp = getToolByName(self,'portal_properties')
-        special_event_types = mp.monet_calendar_event_properties.special_event_types
-        return (key in special_event_types) and key or SlotsVocab[key]
+        
+        special_event_types_pro = mp.monet_calendar_event_properties.special_event_types
+        special_event_types = DisplayList()
+        for etype in special_event_types_pro:
+            special_event_types.add(etype,_(etype))
+        
+        return (key in special_event_types) and special_event_types.getValue(key) or SlotsVocab[key]
