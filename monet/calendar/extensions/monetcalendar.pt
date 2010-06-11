@@ -68,24 +68,24 @@
                                     ><tal:notdayevent>
                                          <td tal:condition="python:is_today" class="todaynoevent">
                                              <strong>
-                                             	<a href="" tal:condition="calendar_section_path"
+                                             	<a href="" tal:condition="python: calendar_section_path != portal_url"
                                              			   tal:attributes="href string:${calendar_section_path}/monetsearchevents?date=${date_string}&path=${subsite_path}"
                                                            tal:content="daynumber">
                                              		31
                                              	</a>
-                                             	<tal:notpath tal:condition="not: calendar_section_path"
+                                             	<tal:notpath tal:condition="python: calendar_section_path == portal_url"
                                              				 tal:content="daynumber">
                                              		daynumber
                                              	</tal:notpath>
                                              </strong>
                                          </td>
                                          <td tal:condition="python:not is_today">
-                                             <a href="" tal:condition="calendar_section_path"
+                                             <a href="" tal:condition="python: calendar_section_path != portal_url"
                                              			tal:attributes="href string:${calendar_section_path}/monetsearchevents?date=${date_string}&path=${subsite_path}"
                                                         tal:content="daynumber">
                                              		31
                                              </a>
-                                             <tal:notpath tal:condition="not: calendar_section_path"
+                                             <tal:notpath tal:condition="python: calendar_section_path == portal_url"
                                              			  tal:content="daynumber">
                                              		daynumber
                                              </tal:notpath>
