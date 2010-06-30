@@ -69,40 +69,50 @@
 			 	<div class="fieldSearchKey" tal:repeat="key keys">
 			 		<tal:keys define="events python: dict_sorted_events[key]"
 							  condition="events">
-				 		<div class="SearchKey">
-					 		<label tal:content="python: view.getSlotsName(key)">
-					 			slot
-					 		</label>
-				 		</div>
+				 		<h3 class="SearchKey" tal:content="python: view.getSlotsName(key)">
+							Morning
+				 		</h3>
 				 		<div class="SearchEvent" tal:repeat="event events">
-				 			<div class="SearchEventTitle">
-					            <metal:field use-macro="python:event.widget('title', mode='view')">
-					            	title
-					            </metal:field>
-					        </div>
-				 			<div class="SearchEventDescription">
+				 			<h4 class="SearchEventTitle">
+				 				<a tal:attributes="href event/absolute_url">
+						            <metal:field use-macro="python:event.widget('title', mode='view')">
+						            	title
+						            </metal:field>
+								</a>
+					        </h4>
+				 			<p class="documentDescription SearchEventDescription">
 					            <metal:field use-macro="python:event.widget('description', mode='view')">
 					            	description
 					            </metal:field>
-					        </div>
+					        </p>
 				 			<div class="SearchEventLocation">
-					            <metal:field use-macro="python:event.widget('location', mode='view')">
+				 				<strong i18n:translate="">Where</strong>:<br/>
+					            <span tal:replace="event/getLocation">
 					            	location
-					            </metal:field>
+					            </span><br tal:condition="python: event.getLocation() and event.getAddress()"/>
+					            <span tal:replace="event/getAddress">
+					            	address
+					            </span>							
 					        </div>
 				 			<div class="SearchEventTime">
-					            <metal:field use-macro="python:event.widget('time', mode='view')">
-					            	time
-					            </metal:field>
+				 				<strong i18n:translate="">When</strong>
+								<div class="SearchEventTimeText">
+						            <metal:field use-macro="python:event.widget('time', mode='view')">
+						            	time
+						            </metal:field>
+								</div>
 					        </div>
 				 			<div class="SearchEventType" tal:define="event_types event/getEventType">
-				 				<span tal:condition="event_types" i18n:domain="monet.calendar.event" i18n:translate="" tal:content="python: event_types[0]">
+				 				<strong i18n:translate="">Event type</strong>:
+				 				<span tal:condition="event_types" i18n:domain="monet.calendar.event"
+								      i18n:translate="" tal:content="python: event_types[0]" class="discreet">
 				 					eventType
 				 				</span>
 				 				<span tal:condition="python: len(event_types) > 1" 
 				 					  tal:repeat="event_type python: event_types[1:]">
 									|
-									<span i18n:domain="monet.calendar.event" i18n:translate="" tal:content="event_type">
+									<span i18n:domain="monet.calendar.event" i18n:translate=""
+									      tal:content="event_type" class="discreet">
 				 						eventType
 				 					</span>
 								</span>
@@ -119,17 +129,17 @@
 			 				  day_next python: view.getNextDate(date,dates['date_to'])">
 		 		<tal:previousday>
 			 		<a href='#' tal:condition="day_prev"
-			 		   tal:attributes="href string:${request/URL}?date=${day_prev}&SearchableText=${request/form/SearchableText}&getEventType=${request/form/getEventType}&fromDay%3Aint=${request/form/fromDay}&fromMonth%3Aint=${request/form/fromMonth}&fromYear%3Aint=${request/form/fromYear}&toDay%3Aint=${request/form/toDay}&toMonth%3Aint=${request/form/toMonth}&toYear%3Aint=${request/form/toYear}">	
-			 			<<
+			 		   tal:attributes="href string:${request/URL}?date=${day_prev}&amp;SearchableText=${request/form/SearchableText}&amp;getEventType=${request/form/getEventType}&amp;fromDay%3Aint=${request/form/fromDay}&amp;fromMonth%3Aint=${request/form/fromMonth}&amp;fromYear%3Aint=${request/form/fromYear}&amp;toDay%3Aint=${request/form/toDay}&amp;toMonth%3Aint=${request/form/toMonth}&amp;toYear%3Aint=${request/form/toYear}">	
+			 			 &laquo;
 			 		</a>
 			 		<tal:notday_prev tal:condition="not: day_prev">
-			 			<<
+			 			 &laquo;
 			 		</tal:notday_prev>
 		 		</tal:previousday>
 			 	<tal:dayint repeat="day interval">
 			 		<a href='#'
 			 		   tal:condition="python: not day==date"
-			 		   tal:attributes="href string:${request/URL}?date=${day}&SearchableText=${request/form/SearchableText}&getEventType=${request/form/getEventType}&fromDay%3Aint=${request/form/fromDay}&fromMonth%3Aint=${request/form/fromMonth}&fromYear%3Aint=${request/form/fromYear}&toDay%3Aint=${request/form/toDay}&toMonth%3Aint=${request/form/toMonth}&toYear%3Aint=${request/form/toYear}"	
+			 		   tal:attributes="href string:${request/URL}?date=${day}&amp;SearchableText=${request/form/SearchableText}&amp;getEventType=${request/form/getEventType}&amp;fromDay%3Aint=${request/form/fromDay}&amp;fromMonth%3Aint=${request/form/fromMonth}&amp;fromYear%3Aint=${request/form/fromYear}&amp;toDay%3Aint=${request/form/toDay}&amp;toMonth%3Aint=${request/form/toMonth}&amp;toYear%3Aint=${request/form/toYear}"	
 			 		   tal:content="python: day.day">
 			 		   	day
 			 		</a>
@@ -139,12 +149,12 @@
 			 		</tal:block>
 			    </tal:dayint>
 			    <tal:nextday>
-			    	<a href='#' tal:condition="day_next"
+			    	<a href="#" tal:condition="day_next"
 			 		  tal:attributes="href string:${request/URL}?date=${day_next}&SearchableText=${request/form/SearchableText}&getEventType=${request/form/getEventType}&fromDay%3Aint=${request/form/fromDay}&fromMonth%3Aint=${request/form/fromMonth}&fromYear%3Aint=${request/form/fromYear}&toDay%3Aint=${request/form/toDay}&toMonth%3Aint=${request/form/toMonth}&toYear%3Aint=${request/form/toYear}">	
-			 			>>
+			 			&raquo;
 			 		</a>
 			 		<tal:notday_next tal:condition="not: day_next">
-			 			>>
+			 			&raquo;
 			 		</tal:notday_next>
 			 	</tal:nextday>
 			 </div>

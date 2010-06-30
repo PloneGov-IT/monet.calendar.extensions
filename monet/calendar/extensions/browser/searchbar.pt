@@ -2,11 +2,14 @@
 	 tal:define="starting_year nothing;
 	 			 ending_year nothing;
 				 future_years nothing;
-				 date_components_support_view context/@@date_components_support;
+				 date_components_support_view nocall:context/@@date_components_support;
 				 values python:date_components_support_view.result(None, 0, starting_year, ending_year, future_years);
 				 years values/years;
+				 years python:years[1:];
 				 months values/months;
+				 months python:months[1:];
 				 days values/days;
+				 days python:days[1:];
 				 calendar_section_path view/getCalendarSectionPath;
 				 subsite_path view/getSubSitePath">
 				 
@@ -14,7 +17,7 @@
           action="monetsearchevents"
           tal:attributes="action string: ${calendar_section_path}/@@monetsearchevents"
           class="searchBar">
-		<table class="listing">
+		<table class="listing searchBarTable">
 			<tr>
 		      <th><label for="SearchableText" i18n:translate="label_search_event">Search event</label></th>
 		      <th><label for="getEventType" i18n:translate="label_in">In</label></th>

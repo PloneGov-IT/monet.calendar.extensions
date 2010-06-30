@@ -19,3 +19,13 @@
 .SearchEventTitle{
  font-weight : bold;
 }
+
+.SearchEventTimeText {
+	padding: 0.2em;
+	margin: 0.2em 0em;
+	background-color: #f0f0f0;
+}
+
+table.searchBarTable {
+	width: 100%;
+}

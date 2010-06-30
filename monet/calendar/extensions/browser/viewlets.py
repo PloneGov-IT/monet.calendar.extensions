@@ -1,11 +1,20 @@
+# -*- coding: utf-8 -*-
+
 from plone.app.layout.viewlets.common import ViewletBase
 from monet.calendar.extensions import eventMessageFactory as _
 from monet.calendar.extensions.browser.usefulforsearch import UsefulForSearchEvents
 from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.atapi import DisplayList
 
-class SearchBar(ViewletBase,UsefulForSearchEvents):
+from DateTime import DateTime
+
+class SearchBar(ViewletBase, UsefulForSearchEvents):
     """"""
+    
+    def __init__(self, context, request, view, manager):
+        ViewletBase.__init__(self, context, request, view, manager)
+        now = DateTime()
+        self.today = now.strftime("%Y-%m-%d").split("-")
     
     def monetAllEvents(self):
         return _(u'label_all_events', default=u'-- All events --')
@@ -32,7 +41,13 @@ class SearchBar(ViewletBase,UsefulForSearchEvents):
         if form.has_key(arg):
             return int(elem['value']) == form.get(arg)
         else:
-            return elem['selected']
+            # return today date
+            if arg=='fromDay' or arg=='toDay':
+                return int(self.today[2])==int(elem['value'])
+            elif arg=='fromMonth' or arg=='toMonth':
+                return int(self.today[1])==int(elem['value'])
+            elif arg=='fromYear' or arg=='toYear':
+                return int(self.today[0])==int(elem['value'])
         
     def getEventTypeName(self,key):
         mp = getToolByName(self,'portal_properties')
