@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2010-06-30 14:35+0000\n"
+"POT-Creation-Date: 2010-07-01 13:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,17 +22,77 @@ msgstr "Pomeriggio"
 msgid "All day long"
 msgstr "Tutto il giorno"
 
+msgid "Books"
+msgstr "Libri"
+
+msgid "Children's events"
+msgstr "Iniziative per bambini"
+
+msgid "Cinema and videos"
+msgstr "Cinema, Video e Proiezioni"
+
+msgid "Circuses and street performances"
+msgstr "Circo, Spettacoli di strada e Luna Park"
+
+msgid "Concerts"
+msgstr "Concerti"
+
+msgid "Conferences, seminars and workshops"
+msgstr "Conferenze, Seminari, Incontri e Lezioni"
+
+msgid "Conventions and round tables"
+msgstr "Congressi e Convegni"
+
+msgid "Dance"
+msgstr "Danza"
+
 #: ./browser/monetsearchevents.py:16
 msgid "Evening"
 msgstr "Sera"
 
-#: ./browser/monetsearchevent.pt:104
+#: ./browser/monetsearchevent.pt:106
 msgid "Event type"
 msgstr "Tipo di evento"
+
+msgid "Exhibitions"
+msgstr "Mostre"
+
+msgid "Folklore and festivals"
+msgstr "Sagre e Feste"
+
+msgid "Guided tours"
+msgstr "Visite guidate"
+
+msgid "Markets"
+msgstr "Mercati"
+
+msgid "Memorial days"
+msgstr "Anniversari e Commemorazioni"
 
 #: ./browser/monetsearchevents.py:14
 msgid "Morning"
 msgstr "Mattino"
+
+msgid "Music"
+msgstr "Musica"
+
+msgid "Openings, unveilings"
+msgstr "Inaugurazioni"
+
+msgid "Performances"
+msgstr "Spettacoli"
+
+msgid "Prizes and competitions"
+msgstr "Premiazioni di concorsi"
+
+msgid "Sports and games"
+msgstr "Manifestazioni sportive"
+
+msgid "Theatre"
+msgstr "Teatro"
+
+msgid "Trade fairs, expositions and markets"
+msgstr "Fiere, Esposizioni e Mostre Mercato"
 
 #: ./browser/monetsearchevent.pt:98
 msgid "When"
@@ -91,4 +151,32 @@ msgstr "Al"
 #: ./browser/monetsearchevent.pt:63
 msgid "no_events_found"
 msgstr "Nessun evento è stato trovato."
+
+#. Default: "Friday"
+msgid "weekday_fri"
+msgstr "Venerdì"
+
+#. Default: "Monday"
+msgid "weekday_mon"
+msgstr "Lunedì"
+
+#. Default: "Saturday"
+msgid "weekday_sat"
+msgstr "Sabato"
+
+#. Default: "Sunday"
+msgid "weekday_sun"
+msgstr "Domenica"
+
+#. Default: "Thursday"
+msgid "weekday_thu"
+msgstr "Giovedì"
+
+#. Default: "Tuesday"
+msgid "weekday_tue"
+msgstr "Martedì"
+
+#. Default: "Wednesday"
+msgid "weekday_wed"
+msgstr "Mercoledì"
 
