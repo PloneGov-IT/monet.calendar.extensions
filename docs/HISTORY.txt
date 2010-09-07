@@ -1,12 +1,17 @@
 Changelog
 =========
 
+0.2.1 (Unreleased)
+------------------
+
+- search bar was not showing event type values not inside vocabulary [keul]
+
 0.2.0
 -----
 
 - A lot of fixes, and better translations
 
 0.1.0
--------------------
+-----
 
 - Initial release
