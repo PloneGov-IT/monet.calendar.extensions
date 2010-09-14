@@ -29,3 +29,8 @@
 table.searchBarTable {
 	width: 100%;
 }
+
+input.searchDisabled {
+	color: white;
+	background-color: red;
+}

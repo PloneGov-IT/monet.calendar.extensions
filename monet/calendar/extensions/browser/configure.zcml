@@ -19,10 +19,16 @@
 	for="monet.calendar.extensions.interfaces.IMonetCalendarSection"
 	name="monetsearchevents"
 	class=".monetsearchevents.MonetSearchEvents"
-	template="monetsearchevent.pt"
 	permission="zope2.View"
 	/>
-	
+
+  <browser:page
+	for="monet.calendar.extensions.interfaces.IMonetCalendarSection"
+	name="monetsearchevents_validation"
+	class=".monetsearchevents.MonetFormSearchValidation"
+	permission="zope2.View"
+	/>
+
   <browser:page
 	for="*"
 	name="usefulforsearch"
@@ -34,5 +40,10 @@
   	name="monet.calendar.extensions.stylesheets"
 	directory="stylesheets"
 	/>
+
+  <browser:resourceDirectory
+    name="monet.calendar.ext.js"
+    directory="javascript"
+    />
 
 </configure>

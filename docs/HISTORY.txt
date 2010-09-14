@@ -1,17 +1,19 @@
 Changelog
 =========
 
-0.2.1 (Unreleased)
+0.3.0 (Unreleased)
 ------------------
 
-- search bar was not showing event type values not inside vocabulary [keul]
+* search bar was not showing event type values not inside vocabulary [keul]
+* added jQuery calendar widget for search viewlet [keul]
+* added AJAX check of date validation [keul]
 
 0.2.0
 -----
 
-- A lot of fixes, and better translations
+* A lot of fixes, and better translations
 
 0.1.0
 -----
 
-- Initial release
+* Initial release

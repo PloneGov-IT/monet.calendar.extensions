@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from Products.Five.browser import BrowserView
 from monet.calendar.event.interfaces import IMonetEvent
 from Acquisition import aq_inner
@@ -8,6 +10,16 @@ from Products.statusmessages.interfaces import IStatusMessage
 from zope.component import getMultiAdapter
 from zope.i18nmessageid import MessageFactory
 from Products.Archetypes.atapi import DisplayList
+
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
+try:
+    # python2.6
+    import json
+except ImportError:
+    # python2.4
+    import simplejson as json
+
 
 PLMF = MessageFactory('plonelocales')
 
@@ -23,28 +35,92 @@ ParameterDatesList = ['fromYear',
                       'toMonth',
                       'toDay']
 
-class MonetSearchEvents(BrowserView):
-    
+class MonetFormSearchValidation(BrowserView):
+    """Simple view for perform AJAX form validation"""
+
     def __init__(self, context, request):
         BrowserView.__init__(self, context, request)
         self._translation_service = getToolByName(self.context, 'translation_service')
-    
-    def getEventsInParent(self):
-        """Return all events found in the parent folder"""
-        context = aq_inner(self.context)
-        pcatalog = getToolByName(self, 'portal_catalog')
-        query = {}
-        query['object_provides'] = IMonetEvent.__identifier__
-        query['sort_on'] = 'getObjPositionInParent'
+
+    def _validate(self, date_from, date_to, directLocalization=False):
+        """Perform a date validation
+        return the error message or an empty string is validation pass
+        """
+        key = default = None
+        message_error = ''
+        if not date_from or not date_to:
+            key, default = (u'label_failed_arguments',
+                            u'Dates are not valid, please retry.')
+        elif self.checkInvalidDateGreaterThan(date_from,date_to):
+            key, default = (u'label_failed_gtinterval',
+                            u'The second date (TO) must be greater than or equal to the first date (FROM). Please re-enter dates.')
+        elif self.checkInvalidDateInterval(date_from,date_to):
+            key, default = (u'label_failed_interval',
+                            u'The search of events must be inside a range or 30 days. Please re-enter dates.')
+        if key:
+            if not directLocalization:
+                message_error = _(key, default=default)
+            else:
+                translation_service = getToolByName(self.context,'translation_service')
+                message_error = self._translation_service.utranslate(domain='monet.calendar.extensions',
+                                                                     msgid=key,
+                                                                     default=default,
+                                                                     context=self.context)
+        return message_error
+
+    def checkInvalidDateGreaterThan(self,date_from,date_to):
+        """Check the dates DAL AL"""
+        if date_to >= date_from:
+            return False
+        else:
+            return True
         
-        for key in self.request.form.keys():
-            if not key in ParameterDatesList:
-                if self.request.form.get(key):
-                    query[key] = self.request.form.get(key)
+    def checkInvalidDateInterval(self,date_from,date_to):
+        """Check the dates DAL AL"""
+        if not (date_to - date_from).days > 30:
+            return False
+        else:
+            return True
+
+    def writeDate(self, day, month, year):
+        """Up the date"""
+        try:
+            date = datetime(int(year),int(month),int(day)).date()
+            return date
+        except StandardError:
+            self.context.plone_log("Error in date conversion: %s" % str(int(year),int(month),int(day)))
+            return ''
+
+    def __call__(self, *args, **kw):
+        response = self.request.response
+        response.setHeader('content-type','application/json');
+        response.addHeader("Cache-Control", "no-cache")
+        response.addHeader("Pragma", "no-cache")
+
+        form = self.request.form
+        date_from = self.writeDate(form.get('fromDay'),form.get('fromMonth'),form.get('fromYear'))
+        date_to = self.writeDate(form.get('toDay'),form.get('toMonth'),form.get('toYear'))
+        message_error = self._validate(date_from, date_to, directLocalization=True)
         
-        brains = pcatalog.searchResults(**query)
-        return brains
+        return json.dumps({'title': u'!!!',
+                           'error': message_error})
+
+
+class MonetSearchEvents(BrowserView, MonetFormSearchValidation):
+    """View for the events search page"""
+
+    template = ViewPageTemplateFile("monetsearchevent.pt")
     
+    def __call__(self, *args, **kw):
+        return self.template()
+
+    def notEmptyArgumentsDate(self,day,month,year):
+        """Check the date viewlets's parameters"""
+        if day or month or year:
+            return True
+        else:
+            return False
+
     def getFromTo(self):
         """Create dates from the parameters"""
         
@@ -59,21 +135,13 @@ class MonetSearchEvents(BrowserView):
         if self.notEmptyArgumentsDate(form.get('fromDay'),form.get('fromMonth'),form.get('fromYear')) or self.notEmptyArgumentsDate(form.get('toDay'),form.get('toMonth'),form.get('toYear')):
             date_from = self.writeDate(form.get('fromDay'),form.get('fromMonth'),form.get('fromYear'))
             date_to = self.writeDate(form.get('toDay'),form.get('toMonth'),form.get('toYear'))
-            if not date_from or not date_to:
-                message_error = _(u'label_failed_arguments', default=u'The date arguments are not valid, re-enter the dates, please.')
+            message_error = self._validate(date_from, date_to)
+            if message_error:
                 IStatusMessage(self.request).addStatusMessage(message_error,type="error")
-                url = getMultiAdapter((self.context, self.request),name='absolute_url')()
-                self.request.response.redirect(url + '/@@monetsearchevents')
-            elif self.checkInvalidDateGreaterThan(date_from,date_to):
-                message_error = _(u'label_failed_gtinterval', default=u'The second data parameter (TO) must be greater than or equal to the first data parameter (FROM), so that the range of days specified is not negative. Re-enter the dates, please.')
-                IStatusMessage(self.request).addStatusMessage(message_error,type="error")
-                url = getMultiAdapter((self.context, self.request),name='absolute_url')()
-                self.request.response.redirect(url + '/@@monetsearchevents')
-            elif self.checkInvalidDateInterval(date_from,date_to):
-                message_error = _(u'label_failed_interval', default=u'The search of events must be less than 30 days. Re-enter the dates, please.')
-                IStatusMessage(self.request).addStatusMessage(message_error,type="error")
-                url = getMultiAdapter((self.context, self.request),name='absolute_url')()
-                self.request.response.redirect(url + '/@@monetsearchevents')
+            
+            # BBB: silly redirect... perform validation BEFORE page rendering!
+            url = getMultiAdapter((self.context, self.request),name='absolute_url')()
+            self.request.response.redirect(url + '/@@monetsearchevents')
         
         if date_from and date_to and date_from == date_to:
             dates = {'date':date or date_from}
@@ -86,44 +154,31 @@ class MonetSearchEvents(BrowserView):
             date = datetime.now().date()
             dates = {'date':date}
             return dates
-    
-    def notEmptyArgumentsDate(self,day,month,year):
-        """Check the date viewlets's parameters"""
-        if day or month or year:
-            return True
-        else:
-            return False
-    
-    def writeDate(self,day,month,year):
-        """Up the date"""
-        try:
-            date = datetime(year,month,day).date()
-            return date
-        except StandardError:
-            return ''
+
+    def getEventsInParent(self):
+        """Return all events found in the parent folder"""
+        context = aq_inner(self.context)
+        pcatalog = getToolByName(self, 'portal_catalog')
+        query = {}
+        query['object_provides'] = IMonetEvent.__identifier__
+        query['sort_on'] = 'getObjPositionInParent'
         
-    def checkInvalidDateGreaterThan(self,date_from,date_to):
-        """Check the dates DAL AL"""
-        if date_to >= date_from:
-            return False
-        else:
-            return True
+        for key in self.request.form.keys():
+            if not key in ParameterDatesList:
+                if self.request.form.get(key):
+                    query[key] = self.request.form.get(key)
         
-    def checkInvalidDateInterval(self,date_from,date_to):
-        """Check the dates DAL AL"""
-        if not (date_to - date_from).days > 30:
-            return False
-        else:
-            return True
+        brains = pcatalog.searchResults(**query)
+        return brains    
     
-    def filterEventsByDate(self,events,date):
+    def filterEventsByDate(self, events, date):
         """Filter events by date"""
         
         filtered_events = []
         
         for event in events:
-            event = event.getObject()
-            dates_event = event.getDates()
+            #event = event.getObject()
+            dates_event = event.getDates
             if date in dates_event:
                 filtered_events.append(event)
         return filtered_events
@@ -145,7 +200,7 @@ class MonetSearchEvents(BrowserView):
         sorted_events_keys = sorted_events.keys()
         
         for event in events:
-            inter = list(set(event.getEventType()).intersection(set(special_event_types)))
+            inter = list(set(event.getEventType).intersection(set(special_event_types)))
             if inter:
                 if not inter[0] in sorted_events['sequence_slots']:
                     sorted_events['sequence_slots'].append(inter[0])

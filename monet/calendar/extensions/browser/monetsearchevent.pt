@@ -74,22 +74,18 @@
 				 		</h3>
 				 		<div class="SearchEvent" tal:repeat="event events">
 				 			<h4 class="SearchEventTitle">
-				 				<a tal:attributes="href event/absolute_url">
-						            <metal:field use-macro="python:event.widget('title', mode='view')">
-						            	title
-						            </metal:field>
+				 				<a tal:attributes="href event/getURL">
+						            <span tal:replace="event/Title" />
 								</a>
 					        </h4>
 				 			<p class="documentDescription SearchEventDescription">
-					            <metal:field use-macro="python:event.widget('description', mode='view')">
-					            	description
-					            </metal:field>
+					            <span tal:replace="event/Description" />
 					        </p>
 				 			<div class="SearchEventLocation">
 				 				<strong i18n:translate="">Where</strong>:<br/>
 					            <span tal:replace="event/getLocation">
 					            	location
-					            </span><br tal:condition="python: event.getLocation() and event.getAddress()"/>
+					            </span><br tal:condition="python: event.getLocation and event.getAddress"/>
 					            <span tal:replace="event/getAddress">
 					            	address
 					            </span>							
@@ -97,9 +93,7 @@
 				 			<div class="SearchEventTime">
 				 				<strong i18n:translate="">When</strong>
 								<div class="SearchEventTimeText">
-						            <metal:field use-macro="python:event.widget('time', mode='view')">
-						            	time
-						            </metal:field>
+						            <p tal:replace="structure event/getTime" />
 								</div>
 					        </div>
 				 			<div class="SearchEventType" tal:define="event_types event/getEventType">

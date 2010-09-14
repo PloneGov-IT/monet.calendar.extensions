@@ -13,7 +13,7 @@
 				 calendar_section_path view/getCalendarSectionPath;
 				 subsite_path view/getSubSitePath">
 				 
-	<form name="searchBar"
+	<form id="searchBar"
           action="monetsearchevents"
           tal:attributes="action string: ${calendar_section_path}/@@monetsearchevents"
           class="searchBar">
@@ -117,7 +117,8 @@
 				tal:attributes="value subsite_path;"
 				/>
 		      <td>
-		      	  <input class="searchButton"
+		      	  <input class="searchButton allowMultiSubmit"
+				    id="searchEvents"
 					type="submit"
 					value="Search"
 					i18n:attributes="value label_search;"

@@ -101,3 +101,15 @@ msgstr ""
 #. Default: "Wednesday"
 msgid "weekday_wed"
 msgstr ""
+
+#. Default: "Dates are not valid, please retry."
+msgid "label_failed_arguments"
+msgstr ""
+
+#. Default: "The second date (TO) must be greater than or equal to the first date (FROM). Please re-enter dates."
+msgid "label_failed_gtinterval"
+msgstr ""
+
+#. Default: "The search of events must be inside a range or 30 days. Please re-enter dates."
+msgid "label_failed_interval"
+msgstr ""
