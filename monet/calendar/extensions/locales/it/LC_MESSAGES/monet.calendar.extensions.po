@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2010-09-14 15:42+0000\n"
+"POT-Creation-Date: 2010-09-15 15:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,11 +14,11 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: monet.calendar.extensions\n"
 
-#: ./browser/monetsearchevents.py:27
+#: ./browser/monetsearchevents.py:31
 msgid "Afternoon"
 msgstr "Pomeriggio"
 
-#: ./browser/monetsearchevents.py:29
+#: ./browser/monetsearchevents.py:33
 msgid "All day long"
 msgstr "Tutto il giorno"
 
@@ -46,7 +46,7 @@ msgstr "Congressi e Convegni"
 msgid "Dance"
 msgstr "Danza"
 
-#: ./browser/monetsearchevents.py:28
+#: ./browser/monetsearchevents.py:32
 msgid "Evening"
 msgstr "Sera"
 
@@ -56,6 +56,9 @@ msgstr "Tipo di evento"
 
 msgid "Exhibitions"
 msgstr "Mostre"
+
+msgid "Festivals"
+msgstr "Festival, rassegna"
 
 msgid "Folklore and festivals"
 msgstr "Sagre e Feste"
@@ -69,7 +72,7 @@ msgstr "Mercati"
 msgid "Memorial days"
 msgstr "Anniversari e Commemorazioni"
 
-#: ./browser/monetsearchevents.py:26
+#: ./browser/monetsearchevents.py:30
 msgid "Morning"
 msgstr "Mattino"
 
@@ -117,7 +120,7 @@ msgstr "La seconda data (A) deve essere maggiore della prima data (DA). Prego, r
 
 #. Default: "The search of events must be inside a range or 30 days. Please re-enter dates."
 msgid "label_failed_interval"
-msgstr "La ricerca di eventi deve limitarsi ad un intervallo di 30 giorno. Prego re-inserire le date."
+msgstr "La ricerca di eventi deve limitarsi ad un intervallo di 30 giorni. Prego re-inserire le date."
 
 #. Default: "From"
 #: ./browser/searchbar.pt:24
@@ -145,7 +148,7 @@ msgid "label_to"
 msgstr "Al"
 
 #. Default: "No events were found."
-#: ./browser/monetsearchevent.pt:63
+#: ./browser/monetsearchevent.pt:62
 msgid "no_events_found"
 msgstr "Nessun evento è stato trovato."
 

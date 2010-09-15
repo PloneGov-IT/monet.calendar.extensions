@@ -5,4 +5,5 @@
  <column value="getLocation"/>
  <column value="getAddress"/>
  <column value="getTime"/>
+ <column value="getSlots"/>
 </object>

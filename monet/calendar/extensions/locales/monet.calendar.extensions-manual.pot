@@ -74,6 +74,9 @@ msgstr ""
 msgid "Openings, unveilings"
 msgstr ""
 
+msgid "Festivals"
+msgstr ""
+
 #. Default: "Friday"
 msgid "weekday_fri"
 msgstr ""

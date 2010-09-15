@@ -1,17 +1,21 @@
 # -*- coding: utf-8 -*-
 
-from Products.Five.browser import BrowserView
-from monet.calendar.event.interfaces import IMonetEvent
-from Acquisition import aq_inner
-from Products.CMFCore.utils import getToolByName
 from datetime import datetime, timedelta
-from monet.calendar.extensions import eventMessageFactory as _
-from Products.statusmessages.interfaces import IStatusMessage
+
 from zope.component import getMultiAdapter
 from zope.i18nmessageid import MessageFactory
+
+from Acquisition import aq_inner, aq_parent
+from Products.Five.browser import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
+from Products.CMFCore.utils import getToolByName
+from Products.statusmessages.interfaces import IStatusMessage
 from Products.Archetypes.atapi import DisplayList
 
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from monet.calendar.event.interfaces import IMonetEvent
+from monet.calendar.extensions import eventMessageFactory as _
+from monet.calendar.extensions.browser.usefulforsearch import UsefulForSearchEvents
 
 try:
     # python2.6
@@ -61,7 +65,6 @@ class MonetFormSearchValidation(BrowserView):
             if not directLocalization:
                 message_error = _(key, default=default)
             else:
-                translation_service = getToolByName(self.context,'translation_service')
                 message_error = self._translation_service.utranslate(domain='monet.calendar.extensions',
                                                                      msgid=key,
                                                                      default=default,
@@ -82,10 +85,13 @@ class MonetFormSearchValidation(BrowserView):
         else:
             return True
 
-    def writeDate(self, day, month, year):
+    def writeDate(self, day, month, year, toMidnight=False):
         """Up the date"""
         try:
-            date = datetime(int(year),int(month),int(day)).date()
+            if toMidnight:
+                date = datetime(int(year), int(month), int(day), 23, 59).date()
+            else:
+                date = datetime(int(year), int(month), int(day)).date()
             return date
         except StandardError:
             self.context.plone_log("Error in date conversion: %s" % str(int(year),int(month),int(day)))
@@ -99,20 +105,21 @@ class MonetFormSearchValidation(BrowserView):
 
         form = self.request.form
         date_from = self.writeDate(form.get('fromDay'),form.get('fromMonth'),form.get('fromYear'))
-        date_to = self.writeDate(form.get('toDay'),form.get('toMonth'),form.get('toYear'))
+        date_to = self.writeDate(form.get('toDay'),form.get('toMonth'),form.get('toYear'), toMidnight=True)
         message_error = self._validate(date_from, date_to, directLocalization=True)
         
-        return json.dumps({'title': u'!!!',
+        return json.dumps({'title': self._translation_service.utranslate(domain='plone',
+                                                                         msgid='Error',
+                                                                         default=u'Error',
+                                                                         context=self.context),
                            'error': message_error})
 
 
-class MonetSearchEvents(BrowserView, MonetFormSearchValidation):
+class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
     """View for the events search page"""
 
     template = ViewPageTemplateFile("monetsearchevent.pt")
-    
-    def __call__(self, *args, **kw):
-        return self.template()
+    __call__ = template
 
     def notEmptyArgumentsDate(self,day,month,year):
         """Check the date viewlets's parameters"""
@@ -132,37 +139,39 @@ class MonetSearchEvents(BrowserView, MonetFormSearchValidation):
             date = form.get('date').split('-')
             date = datetime(int(date[0]),int(date[1]),int(date[2])).date()
             
-        if self.notEmptyArgumentsDate(form.get('fromDay'),form.get('fromMonth'),form.get('fromYear')) or self.notEmptyArgumentsDate(form.get('toDay'),form.get('toMonth'),form.get('toYear')):
-            date_from = self.writeDate(form.get('fromDay'),form.get('fromMonth'),form.get('fromYear'))
-            date_to = self.writeDate(form.get('toDay'),form.get('toMonth'),form.get('toYear'))
+        if self.notEmptyArgumentsDate(form.get('fromDay'), form.get('fromMonth'), form.get('fromYear')) or \
+                        self.notEmptyArgumentsDate(form.get('toDay'), form.get('toMonth'), form.get('toYear')):
+            date_from = self.writeDate(form.get('fromDay'), form.get('fromMonth'), form.get('fromYear'))
+            date_to = self.writeDate(form.get('toDay'), form.get('toMonth'), form.get('toYear'), toMidnight=True)
             message_error = self._validate(date_from, date_to)
             if message_error:
-                IStatusMessage(self.request).addStatusMessage(message_error,type="error")
-            
-            # BBB: silly redirect... perform validation BEFORE page rendering!
-            url = getMultiAdapter((self.context, self.request),name='absolute_url')()
-            self.request.response.redirect(url + '/@@monetsearchevents')
+                IStatusMessage(self.request).addStatusMessage(message_error,type="error")            
+                # BBB: silly redirect... must perform validation BEFORE page rendering!
+                url = getMultiAdapter((self.context, self.request), name='absolute_url')()
+                self.request.response.redirect(url + '/@@monetsearchevents')
         
+        # One day search only
         if date_from and date_to and date_from == date_to:
             dates = {'date':date or date_from}
+        # Multiple days
         else:
             dates = {'date':date or date_from,'date_from':date_from,'date_to':date_to}
         
         if dates['date']:
             return dates
-        else:
-            date = datetime.now().date()
-            dates = {'date':date}
-            return dates
+        return {'date': datetime.now().date()}
 
     def getEventsInParent(self):
-        """Return all events found in the parent folder"""
+        """Return all events found in the parent folder
+        """
         context = aq_inner(self.context)
         pcatalog = getToolByName(self, 'portal_catalog')
         query = {}
         query['object_provides'] = IMonetEvent.__identifier__
-        query['sort_on'] = 'getObjPositionInParent'
-        
+        if self.request.form.get('path') is None:
+            query['path'] = self.getSubSitePath()
+
+        # Now copy al other request parameter in the catalog query
         for key in self.request.form.keys():
             if not key in ParameterDatesList:
                 if self.request.form.get(key):
@@ -208,7 +217,7 @@ class MonetSearchEvents(BrowserView, MonetFormSearchValidation):
                 sorted_events[inter[0]].append(event)
                 continue
             for key in sorted_events_keys:
-                if event.getSlots() == key:
+                if event.getSlots == key:
                     sorted_events[key].append(event)
         return sorted_events
     

@@ -1,17 +1,21 @@
 Changelog
 =========
 
-0.3.0 (Unreleased)
+0.3.0 (2010-09-15)
 ------------------
 
 * search bar was not showing event type values not inside vocabulary [keul]
+* make catalog search instead of loading full objects [keul]
 * added jQuery calendar widget for search viewlet [keul]
 * added AJAX check of date validation [keul]
+* optimization [keul]
+* code refactoring [keul]
+* translation changes [keul]
 
 0.2.0
 -----
 
-* A lot of fixes, and better translations
+* A lot of fixes, and better translations [fdelia]
 
 0.1.0
 -----

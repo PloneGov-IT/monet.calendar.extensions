@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2010-09-14 15:42+0000\n"
+"POT-Creation-Date: 2010-09-15 15:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,11 +14,11 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: monet.calendar.extensions\n"
 
-#: ./browser/monetsearchevents.py:27
+#: ./browser/monetsearchevents.py:31
 msgid "Afternoon"
 msgstr ""
 
-#: ./browser/monetsearchevents.py:29
+#: ./browser/monetsearchevents.py:33
 msgid "All day long"
 msgstr ""
 
@@ -46,7 +46,7 @@ msgstr ""
 msgid "Dance"
 msgstr ""
 
-#: ./browser/monetsearchevents.py:28
+#: ./browser/monetsearchevents.py:32
 msgid "Evening"
 msgstr ""
 
@@ -55,6 +55,9 @@ msgid "Event type"
 msgstr ""
 
 msgid "Exhibitions"
+msgstr ""
+
+msgid "Festivals"
 msgstr ""
 
 msgid "Folklore and festivals"
@@ -69,7 +72,7 @@ msgstr ""
 msgid "Memorial days"
 msgstr ""
 
-#: ./browser/monetsearchevents.py:26
+#: ./browser/monetsearchevents.py:30
 msgid "Morning"
 msgstr ""
 
@@ -145,7 +148,7 @@ msgid "label_to"
 msgstr ""
 
 #. Default: "No events were found."
-#: ./browser/monetsearchevent.pt:63
+#: ./browser/monetsearchevent.pt:62
 msgid "no_events_found"
 msgstr ""
 

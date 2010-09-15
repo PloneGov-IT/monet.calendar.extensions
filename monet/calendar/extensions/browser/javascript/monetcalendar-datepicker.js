@@ -3,7 +3,7 @@
  */
 
 jQuery.plonesimplemessage = function(title, message, element) {
-	element.empty().append('<dt>'+title+'</dt>').append('<dd>'+message+'</dd>').fadeIn();
+    element.empty().append('<dt>'+title+'</dt>').append('<dd>'+message+'</dd>').slideDown('fast');
 };
 
 jq(document).ready(function() {
@@ -26,23 +26,44 @@ jq(document).ready(function() {
      */
     if (call_context.indexOf('/portal_factory')>-1) {
         call_context=call_context.substring(0,call_context.indexOf('/portal_factory')+1);
-    }
+    };
     
     var lang = jq("html").attr("lang") || 'en';
     if (lang !== 'en') {
         jq("head").append('<script type="text/javascript" src="jquery.ui.datepicker-' + lang + '.js"></script>');
-    }
+    };
     
-    var getDateFrom = function(suffix) {
-          return new Date(parseInt(jq("#"+suffix+"Year").val()),
-                        parseInt(jq("#"+suffix+"Month").val())-1,
-                        parseInt(jq("#"+suffix+"Day").val())
-                        )
-    }
-	
-	var messages = jq('<dl id="dateErrors" class="portalMessage error" style="display:none"></dl>');
-	jq("#searchBar").prepend(messages);
+    /**
+     * Perform an AJAX call to validate the date fields
+     */
+    var paramsRemoteValidation = function() {
+        jq.getJSON(call_context+ '/@@monetsearchevents_validation',
+                   {
+                       fromDay: jq("#fromDay").val(), fromMonth: jq("#fromMonth").val(), fromYear: jq("#fromYear").val(),
+                       toDay: jq("#toDay").val(), toMonth: jq("#toMonth").val(), toYear: jq("#toYear").val()
+                   },
+                   function(data, textStatus) {
+                           if (data.error) {
+                               if (jq.plonesimplemessage) {
+                                jq.plonesimplemessage(data.title, data.error, jq("#dateErrors"));
+                            }
+                            else {
+                                alert(data.error);
+                            }
+                            jq("#searchEvents").addClass("searchDisabled");                                                
+                        }
+                        else {
+                            jq("#dateErrors").slideUp('fast');
+                            jq("#searchEvents").removeClass('searchDisabled');
+                        }
+                   }
+        );
+    };
     
+    var messages = jq('<dl id="dateErrors" class="portalMessage error" style="display:none"></dl>');
+    jq("#searchBar").prepend(messages);
+    
+    // Controls over the calendars
     var suffixes = ['from', 'to'];
     jq(".searchBarFrom,.searchBarTo").each(function(index, elem) {
         // from searchBarXXX get XXX
@@ -59,39 +80,25 @@ jq(document).ready(function() {
                                 return {}
                               },
                               onSelect: function(dateText, inst) {
-                                var ds = dateText.split("-");
-                                jq("#"+suffix+"Year").val(ds[0]);
-                                jq("#"+suffix+"Month").val(ds[1]);
-                                jq("#"+suffix+"Day").val(ds[2]);
-                                // Now the AJAX verification
-                                jq.getJSON(call_context+ '/@@monetsearchevents_validation',
-                                           {
-                                               fromDay: jq("#fromDay").val(), fromMonth: jq("#fromMonth").val(), fromYear: jq("#fromYear").val(),
-                                               toDay: jq("#toDay").val(), toMonth: jq("#toMonth").val(), toYear: jq("#toYear").val()
-                                           },
-                                           function(data, textStatus) {
-										   		if (data.error) {
-											   		if (jq.plonesimplemessage) {
-														jq.plonesimplemessage(data.title, data.error, jq("#dateErrors"));
-													}
-													else {
-														alert(data.error);
-													}
-													jq("#searchEvents").addClass("searchDisabled");												
-												}
-												else {
-													jq("#dateErrors").fadeOut();
-													jq("#searchEvents").removeClass('searchDisabled');
-												}
-                                                            
-                                           }
-                                );
+                                    var ds = dateText.split("-");
+                                    jq("#"+suffix+"Year").val(ds[0]);
+                                    jq("#"+suffix+"Month").val(ds[1]);
+                                    jq("#"+suffix+"Day").val(ds[2]);
+                                    // Now the AJAX validation
+                                    paramsRemoteValidation();
                               },
                             }, jq.datepicker.regional[lang]
         );
-		
-		jq("#searchEvents").click(function(e) {
-			if (jq(this).hasClass("searchDisabled")) e.preventDefault();
-		});
+        
+        jq("#searchEvents").click(function(e) {
+            if (jq(this).hasClass("searchDisabled")) e.preventDefault();
+        });
     });
+    
+    // Controls over combos
+    jq(".searchBarFrom select,.searchBarTo select").change(function(e) {
+        // Now the AJAX validation
+        paramsRemoteValidation();
+    });
+    
 });

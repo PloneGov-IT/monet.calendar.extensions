@@ -9,7 +9,7 @@ from Products.Archetypes.atapi import DisplayList
 from DateTime import DateTime
 
 class SearchBar(ViewletBase, UsefulForSearchEvents):
-    """"""
+    """Search form viewlet for enabled content types"""
     
     def __init__(self, context, request, view, manager):
         ViewletBase.__init__(self, context, request, view, manager)
