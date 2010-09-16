@@ -94,7 +94,7 @@ class MonetFormSearchValidation(BrowserView):
                 date = datetime(int(year), int(month), int(day)).date()
             return date
         except StandardError:
-            self.context.plone_log("Error in date conversion: %s" % str(int(year),int(month),int(day)))
+            self.context.plone_log("Error in date conversion: %s-%s-%s" % (year, month, day))
             return ''
 
     def __call__(self, *args, **kw):

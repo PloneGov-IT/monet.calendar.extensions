@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.3.1 (Unreleased)
+------------------
+
+* Error reporting... date error! [keul]
+
 0.3.0 (2010-09-15)
 ------------------
 
