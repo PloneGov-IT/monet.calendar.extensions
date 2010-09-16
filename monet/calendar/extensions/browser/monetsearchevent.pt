@@ -7,7 +7,7 @@
       i18n:domain="monet.calendar.extensions">
 
 <head>
-    <metal:css fill-slot="css_slot">
+    <metal:css fill-slot="style_slot">
         <style type="text/css" media="all"
             tal:content="string: @import url(${context/portal_url}/++resource++monet.calendar.extensions.stylesheets/monetcalendarsearchevent.css)">
         </style>
