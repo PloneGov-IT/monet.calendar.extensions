@@ -1,13 +1,11 @@
-.fieldSearchKey{
+/* Calendar Search Events view syles */
+ 
+.fieldSearchKey {
  margin-top : 2em;
  margin-bottom : 2em;
 }
 
-.SearchKey{
- margin-bottom : 0.8em;
-}
-
-.SearchEvent{
+.searchEvent {
  margin-bottom : 1em;
  margin-bottom : 1em;
 }
@@ -16,21 +14,39 @@
  text-align : center;
 }
 
-.SearchEventTitle{
- font-weight : bold;
-}
-
-.SearchEventTimeText {
+.searchEventTimeText {
 	padding: 0.2em;
 	margin: 0.2em 0em;
 	background-color: #f0f0f0;
 }
 
 table.searchBarTable {
-	width: 100%;
+	width: 99%;
 }
 
 input.searchDisabled {
 	color: white;
 	background-color: red;
+}
+
+.daySum {
+	border: 1px solid #8CACBB;
+	border-collapse: collapse;
+	width: 99%;
+}
+
+.daySum caption {
+	font-size: 120%;
+	font-weight: bold;
+	text-align: left;
+}
+
+.daySum th,
+.daySum td {
+	border: 1px solid #8CACBB;
+	width: 25%;
+}
+
+.daySum th {
+	background-color: #DEE7EC;
 }

@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.3.1'
+version = '0.4.0'
 
 setup(name='monet.calendar.extensions',
       version=version,
@@ -28,5 +28,7 @@ setup(name='monet.calendar.extensions',
       ],
       entry_points="""
       # -*- Entry points: -*-
+      [z3c.autoinclude.plugin]
+      target = plone
       """,
       )

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2010-09-15 15:00+0000\n"
+"POT-Creation-Date: 2010-09-21 15:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,6 +48,10 @@ msgstr ""
 
 #: ./browser/monetsearchevents.py:32
 msgid "Evening"
+msgstr ""
+
+#: ./browser/monetsearchevent.pt:131
+msgid "Event"
 msgstr ""
 
 #: ./browser/monetsearchevent.pt:100
@@ -148,7 +152,7 @@ msgid "label_to"
 msgstr ""
 
 #. Default: "No events were found."
-#: ./browser/monetsearchevent.pt:62
+#: ./browser/monetsearchevent.pt:63
 msgid "no_events_found"
 msgstr ""
 

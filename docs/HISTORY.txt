@@ -1,11 +1,18 @@
 Changelog
 =========
 
+0.4.0 (Unreleased)
+------------------
+
+* fixed classes name to Plone standard camelCase format [keul] 
+* removed day-browse commands [keul]
+* now a search on more days will display all days [keul]
+
 0.3.1 (Unreleased)
 ------------------
 
-* Error reporting... date error! [keul]
-* Removed deprecated "css_slot" [keul]
+* rrror reporting... date error! [keul]
+* removed deprecated "css_slot" [keul]
 
 0.3.0 (2010-09-15)
 ------------------

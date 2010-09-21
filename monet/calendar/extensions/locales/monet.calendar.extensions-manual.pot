@@ -116,3 +116,6 @@ msgstr ""
 #. Default: "The search of events must be inside a range or 30 days. Please re-enter dates."
 msgid "label_failed_interval"
 msgstr ""
+
+msgid "Event"
+msgstr ""

@@ -39,6 +39,10 @@ ParameterDatesList = ['fromYear',
                       'toMonth',
                       'toDay']
 
+def daterange(start_date, end_date):
+    for n in range((end_date - start_date).days):
+        yield start_date + timedelta(n)
+
 class MonetFormSearchValidation(BrowserView):
     """Simple view for perform AJAX form validation"""
 
@@ -85,14 +89,12 @@ class MonetFormSearchValidation(BrowserView):
         else:
             return True
 
-    def writeDate(self, day, month, year, toMidnight=False):
-        """Up the date"""
+    def writeDate(self, day, month, year):
+        """Write down the value of the date.
+        Date is normalized, removing days fraction data like gour timing
+        """
         try:
-            if toMidnight:
-                date = datetime(int(year), int(month), int(day), 23, 59).date()
-            else:
-                date = datetime(int(year), int(month), int(day)).date()
-            return date
+            return datetime(int(year), int(month), int(day)).date()
         except StandardError:
             self.context.plone_log("Error in date conversion: %s-%s-%s" % (year, month, day))
             return ''
@@ -105,7 +107,7 @@ class MonetFormSearchValidation(BrowserView):
 
         form = self.request.form
         date_from = self.writeDate(form.get('fromDay'),form.get('fromMonth'),form.get('fromYear'))
-        date_to = self.writeDate(form.get('toDay'),form.get('toMonth'),form.get('toYear'), toMidnight=True)
+        date_to = self.writeDate(form.get('toDay'),form.get('toMonth'),form.get('toYear'))
         message_error = self._validate(date_from, date_to, directLocalization=True)
         
         return json.dumps({'title': self._translation_service.utranslate(domain='plone',
@@ -142,7 +144,7 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
         if self.notEmptyArgumentsDate(form.get('fromDay'), form.get('fromMonth'), form.get('fromYear')) or \
                         self.notEmptyArgumentsDate(form.get('toDay'), form.get('toMonth'), form.get('toYear')):
             date_from = self.writeDate(form.get('fromDay'), form.get('fromMonth'), form.get('fromYear'))
-            date_to = self.writeDate(form.get('toDay'), form.get('toMonth'), form.get('toYear'), toMidnight=True)
+            date_to = self.writeDate(form.get('toDay'), form.get('toMonth'), form.get('toYear'))
             message_error = self._validate(date_from, date_to)
             if message_error:
                 IStatusMessage(self.request).addStatusMessage(message_error,type="error")            
@@ -151,7 +153,7 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
                 self.request.response.redirect(url + '/@@monetsearchevents')
         
         # One day search only
-        if date_from and date_to and date_from == date_to:
+        if date_from and date_to and date_to==date_from:
             dates = {'date':date or date_from}
         # Multiple days
         else:
@@ -181,15 +183,20 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
         return brains    
     
     def filterEventsByDate(self, events, date):
-        """Filter events by date"""
-        
+        """Filter passed events by date"""
         filtered_events = []
-        
         for event in events:
-            #event = event.getObject()
-            dates_event = event.getDates
-            if date in dates_event:
+            if date in event.getDates:
                 filtered_events.append(event)
+        return filtered_events
+
+    def filterEventsByRange(self, events, dates, datee):
+        """Filter passed events a range of dates
+        @return: a structure like this: [ (date_1, [event1, event2, ...]), (date_2, [event3, ...]), ... ]
+        """
+        filtered_events = []
+        for d in daterange(dates, datee+timedelta(1)):
+            filtered_events.append( (d, self.filterEventsByDate(events, d)) )
         return filtered_events
     
     def sortedEventsBySlots(self,events):
