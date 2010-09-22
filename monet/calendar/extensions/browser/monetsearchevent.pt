@@ -170,15 +170,14 @@
 	                             </div>
 							</td>
 						</tr>
+						<tr tal:condition="python:not day[1]">
+							<td i18n:translate="no_events_found" colspan="4">
+								No events were found.
+							</td>
+						</tr>
 					</tbody>
-					
 				</table>
-
 			</div>
-
-	        <tal:notlistFE condition="not: list_filter_events">
-				<p i18n:translate="no_events_found">No events were found.</p>
-	        </tal:notlistFE>
 
 		</tal:events>
 		</tal:multidays>
