@@ -119,3 +119,6 @@ msgstr ""
 
 msgid "Event"
 msgstr ""
+
+msgid "date_format_long"
+msgstr ""

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2010-09-21 15:40+0000\n"
+"POT-Creation-Date: 2010-09-22 09:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,11 +14,11 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: monet.calendar.extensions\n"
 
-#: ./browser/monetsearchevents.py:31
+#: ./browser/monetsearchevents.py:37
 msgid "Afternoon"
 msgstr "Pomeriggio"
 
-#: ./browser/monetsearchevents.py:33
+#: ./browser/monetsearchevents.py:39
 msgid "All day long"
 msgstr "Tutto il giorno"
 
@@ -46,15 +46,15 @@ msgstr "Congressi e Convegni"
 msgid "Dance"
 msgstr "Danza"
 
-#: ./browser/monetsearchevents.py:32
+#: ./browser/monetsearchevents.py:38
 msgid "Evening"
 msgstr "Sera"
 
-#: ./browser/monetsearchevent.pt:131
+#: ./browser/monetsearchevent.pt:130
 msgid "Event"
 msgstr "Evento"
 
-#: ./browser/monetsearchevent.pt:100
+#: ./browser/monetsearchevent.pt:98
 msgid "Event type"
 msgstr "Tipo di evento"
 
@@ -76,7 +76,7 @@ msgstr "Mercati"
 msgid "Memorial days"
 msgstr "Anniversari e Commemorazioni"
 
-#: ./browser/monetsearchevents.py:30
+#: ./browser/monetsearchevents.py:36
 msgid "Morning"
 msgstr "Mattino"
 
@@ -108,6 +108,9 @@ msgstr "Orari"
 #: ./browser/monetsearchevent.pt:85
 msgid "Where"
 msgstr "Dove"
+
+msgid "date_format_long"
+msgstr "${A} ${d} ${B} ${Y}"
 
 #. Default: "-- All events --"
 #: ./browser/viewlets.py:20

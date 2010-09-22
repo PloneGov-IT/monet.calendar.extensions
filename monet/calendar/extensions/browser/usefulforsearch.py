@@ -54,4 +54,8 @@ class UsefulForSearchEvents(object):
         if subsite:
             return '/'.join(subsite.getPhysicalPath())
         return ''
-    
+
+    def formatDateString(self,day):
+        """Return a date in YYYY-MM-DD format"""
+        return '%s-%s-%s' % (day.year, day.month, day.day)
+

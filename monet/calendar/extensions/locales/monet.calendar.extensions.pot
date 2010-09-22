@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2010-09-21 15:40+0000\n"
+"POT-Creation-Date: 2010-09-22 09:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,11 +14,11 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: monet.calendar.extensions\n"
 
-#: ./browser/monetsearchevents.py:31
+#: ./browser/monetsearchevents.py:37
 msgid "Afternoon"
 msgstr ""
 
-#: ./browser/monetsearchevents.py:33
+#: ./browser/monetsearchevents.py:39
 msgid "All day long"
 msgstr ""
 
@@ -46,15 +46,15 @@ msgstr ""
 msgid "Dance"
 msgstr ""
 
-#: ./browser/monetsearchevents.py:32
+#: ./browser/monetsearchevents.py:38
 msgid "Evening"
 msgstr ""
 
-#: ./browser/monetsearchevent.pt:131
+#: ./browser/monetsearchevent.pt:130
 msgid "Event"
 msgstr ""
 
-#: ./browser/monetsearchevent.pt:100
+#: ./browser/monetsearchevent.pt:98
 msgid "Event type"
 msgstr ""
 
@@ -76,7 +76,7 @@ msgstr ""
 msgid "Memorial days"
 msgstr ""
 
-#: ./browser/monetsearchevents.py:30
+#: ./browser/monetsearchevents.py:36
 msgid "Morning"
 msgstr ""
 
@@ -107,6 +107,9 @@ msgstr ""
 
 #: ./browser/monetsearchevent.pt:85
 msgid "Where"
+msgstr ""
+
+msgid "date_format_long"
 msgstr ""
 
 #. Default: "-- All events --"

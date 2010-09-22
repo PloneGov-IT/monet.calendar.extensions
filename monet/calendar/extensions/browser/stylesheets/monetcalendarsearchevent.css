@@ -45,6 +45,7 @@ input.searchDisabled {
 .daySum td {
 	border: 1px solid #8CACBB;
 	width: 25%;
+	padding: 0.2em 0.4em;
 }
 
 .daySum th {

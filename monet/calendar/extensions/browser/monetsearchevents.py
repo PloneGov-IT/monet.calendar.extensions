@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 
+import logging
 from datetime import datetime, timedelta
+from zope.i18n import translate
+
+from DateTime import DateTime
+from DateTime.interfaces import IDateTime
+from Products.CMFPlone.i18nl10n import _interp_regex, datetime_formatvariables, name_formatvariables
+from Products.CMFPlone.i18nl10n import weekdayname_msgid, monthname_msgid
 
 from zope.component import getMultiAdapter
 from zope.i18nmessageid import MessageFactory
@@ -10,6 +17,7 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.log import log
 from Products.statusmessages.interfaces import IStatusMessage
 from Products.Archetypes.atapi import DisplayList
 
@@ -98,6 +106,54 @@ class MonetFormSearchValidation(BrowserView):
         except StandardError:
             self.context.plone_log("Error in date conversion: %s-%s-%s" % (year, month, day))
             return ''
+
+    def toCalendarLocalizedTime(self, time):
+        """Convert a date in the calendar date format"""
+        time = DateTime(time.strftime("%Y-%m-%d"))
+
+        mapping = {}
+        formatstring = translate('date_format_long', 'monet.calendar.extensions', mapping, self.request)
+        
+        # get the format elements used in the formatstring
+        formatelements = _interp_regex.findall(formatstring)
+        # reformat the ${foo} to foo
+        formatelements = [el[2:-1] for el in formatelements]
+    
+        # add used elements to mapping
+        elements = [e for e in formatelements if e in datetime_formatvariables]
+    
+        # add weekday name, abbr. weekday name, month name, abbr month name
+        week_included = True
+        month_included = True
+    
+        name_elements = [e for e in formatelements if e in name_formatvariables]
+        if not ('a' in name_elements or 'A' in name_elements):
+            week_included = False
+        if not ('b' in name_elements or 'B' in name_elements):
+            month_included = False
+    
+        for key in elements:
+            mapping[key]=time.strftime('%'+key)
+    
+        if week_included:
+            weekday = int(time.strftime('%w')) # weekday, sunday = 0
+            if 'a' in name_elements:
+                mapping['a']=weekdayname_msgid_abbr(weekday)
+            if 'A' in name_elements:
+                mapping['A']=weekdayname_msgid(weekday)
+        if month_included:
+            monthday = int(time.strftime('%m')) # month, january = 1
+            if 'b' in name_elements:
+                mapping['b']=monthname_msgid_abbr(monthday)
+            if 'B' in name_elements:
+                mapping['B']=monthname_msgid(monthday)
+    
+        # translate translateable elements
+        for key in name_elements:
+            mapping[key] = translate(mapping[key], 'plonelocales', context=self.request, default=mapping[key])
+    
+        # translate the time string
+        return translate('date_format_long', 'monet.calendar.extensions', mapping, self.request)
 
     def __call__(self, *args, **kw):
         response = self.request.response

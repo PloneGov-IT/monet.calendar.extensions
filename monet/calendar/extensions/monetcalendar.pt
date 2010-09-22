@@ -54,8 +54,7 @@
                     ><tal:data tal:repeat="weekday view/getWeekdays"
                         ><th scope="col"
                              i18n:translate=""
-                             tal:content="weekday">Su</th
-                    ></tal:data>
+                             tal:content="weekday">Su</th></tal:data>
                 </tr>
             </thead>
             <tbody>

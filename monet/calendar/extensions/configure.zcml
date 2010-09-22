@@ -11,6 +11,11 @@
   
   <!-- Include the sub-packages that use their own configure.zcml files. -->
   <include package=".browser" />
+
+  <class class="Products.ATContentTypes.interface.folder.IATFolder">
+      <allow interface=".interfaces.IMonetCalendarSection" />
+      <allow interface=".interfaces.IMonetCalendarSearchRoot" />
+  </class>
   
   <!-- Register the installation GenericSetup extension profile -->
   <genericsetup:registerProfile
@@ -20,10 +25,13 @@
       description=""
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-      
-  <class class="Products.ATContentTypes.interface.folder.IATFolder">
-      <allow interface=".interfaces.IMonetCalendarSection" />
-      <allow interface=".interfaces.IMonetCalendarSearchRoot" />
-  </class>
+
+  <genericsetup:importStep
+	  name="monet.calendar.extensions"
+	  title="Monet Calendar Extensions configuration"
+	  description="Configures Monet Calendar Extensions properties configuration"
+	  handler="monet.calendar.extensions.exportimport.import_various">
+	  	<depends name="propertiestool" />
+  </genericsetup:importStep>
 
 </configure>
