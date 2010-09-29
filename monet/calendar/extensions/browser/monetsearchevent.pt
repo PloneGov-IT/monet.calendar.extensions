@@ -131,10 +131,10 @@
 						   tal:content="python:view.toCalendarLocalizedTime(day[0])">Mon 24/05</a></caption>
 					<thead>
 						<tr>
-						<th scope="col" i18n:translate="">Event</th>
-						<th scope="col" i18n:translate="">Where</th>
-						<th scope="col" i18n:translate="">When</th>
-						<th scope="col" i18n:translate="">Event type</th>
+						<th scope="col" class="evCol1" i18n:translate="">Event</th>
+						<th scope="col" class="evCol2" i18n:translate="">Where</th>
+						<th scope="col" class="evCol3" i18n:translate="">When</th>
+						<th scope="col" class="evCol4" i18n:translate="">Event type</th>
 						</tr>
 					</thead>
 					<tbody>
