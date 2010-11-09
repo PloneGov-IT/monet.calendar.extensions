@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.5.0 (2010-??-??)
+------------------
+
+* added a general message: "no results found" [mirco] 
+* hided the days with "no events found" when we search a range of date [mirco]
+* extended the interval of dates into the search; from 30 to 60 days [mirco]
+* inserted a summary of performed search on above the results [mirco]
+
 0.4.0 (2010-09-29)
 ------------------
 

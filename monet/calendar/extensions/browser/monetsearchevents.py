@@ -72,7 +72,7 @@ class MonetFormSearchValidation(BrowserView):
                             u'The second date (TO) must be greater than or equal to the first date (FROM). Please re-enter dates.')
         elif self.checkInvalidDateInterval(date_from,date_to):
             key, default = (u'label_failed_interval',
-                            u'The search of events must be inside a range or 30 days. Please re-enter dates.')
+                            u'The search of events must be inside a range or 60 days. Please re-enter dates.')
         if key:
             if not directLocalization:
                 message_error = _(key, default=default)
@@ -92,7 +92,7 @@ class MonetFormSearchValidation(BrowserView):
         
     def checkInvalidDateInterval(self,date_from,date_to):
         """Check the dates DAL AL"""
-        if not (date_to - date_from).days > 30:
+        if not (date_to - date_from).days > 60:
             return False
         else:
             return True
@@ -238,6 +238,24 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
         brains = pcatalog.searchResults(**query)
         return brains    
     
+    def getSummarySearchDates(self,dates):
+        """Return a part of the summary of the search from request
+        """
+        if dates.get('date_from') and dates.get('date_to'):
+            date_from = self.context.toLocalizedTime(dates.get('date_from').strftime('%m/%d/%Y'),long_format=0)
+            date_to = self.context.toLocalizedTime(dates.get('date_to').strftime('%m/%d/%Y'),long_format=0)
+            return _(u'summary_search_from_to',
+                    default='from ${date_from} to ${date_to}',
+                    mapping={'date_from':date_from,
+                             'date_to':date_to},
+                    )
+        else:
+            date = self.context.toLocalizedTime(dates.get('date').strftime('%m/%d/%Y'),long_format=0)
+            return _(u'summary_search_in',
+                    default='in ${date}',
+                    mapping={'date':date},
+                    )
+    
     def filterEventsByDate(self, events, date):
         """Filter passed events by date"""
         filtered_events = []
@@ -254,6 +272,12 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
         for d in daterange(dates, datee+timedelta(1)):
             filtered_events.append( (d, self.filterEventsByDate(events, d)) )
         return filtered_events
+    
+    def eventFound(self,list_event):
+        for day in list_event:
+            if day[1]:
+                return True
+        return False
     
     def sortedEventsBySlots(self,events):
         """Sorted events by slot"""

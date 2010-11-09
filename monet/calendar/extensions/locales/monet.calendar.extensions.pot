@@ -14,6 +14,16 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: monet.calendar.extensions\n"
 
+#. Default: "from $date_from to $date_to"
+#: ./browser/monetsearchevents.py:250
+msgid "summary_search_from_to"
+msgstr ""
+
+#. Default: "in $date"
+#: ./browser/monetsearchevents.py:257
+msgid "summary_search_in"
+msgstr ""
+
 #: ./browser/monetsearchevents.py:37
 msgid "Afternoon"
 msgstr ""
@@ -125,7 +135,7 @@ msgstr ""
 msgid "label_failed_gtinterval"
 msgstr ""
 
-#. Default: "The search of events must be inside a range or 30 days. Please re-enter dates."
+#. Default: "The search of events must be inside a range or 60 days. Please re-enter dates."
 msgid "label_failed_interval"
 msgstr ""
 

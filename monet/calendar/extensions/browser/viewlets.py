@@ -51,7 +51,6 @@ class SearchBar(ViewletBase, UsefulForSearchEvents):
         
     def getEventTypeName(self,key):
         mp = getToolByName(self,'portal_properties')
-        
         event_types_pro = mp.monet_calendar_event_properties.event_types
         event_types = DisplayList()
         for etype in event_types_pro:

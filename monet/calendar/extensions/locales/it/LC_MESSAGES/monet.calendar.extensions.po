@@ -14,6 +14,21 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: monet.calendar.extensions\n"
 
+#. Default: "from $date_from to $date_to"
+#: ./browser/monetsearchevents.py:250
+msgid "summary_search_from_to"
+msgstr "dal ${date_from} al ${date_to}"
+
+#. Default: "in $date"
+#: ./browser/monetsearchevents.py:257
+msgid "summary_search_in"
+msgstr "il ${date}"
+
+#. Results for the search: "
+#: ./browser/monetsearchevents.pt:42
+msgid "summary_label"
+msgstr "Risultati per la ricerca: "
+
 #: ./browser/monetsearchevents.py:37
 msgid "Afternoon"
 msgstr "Pomeriggio"
@@ -125,9 +140,9 @@ msgstr "Le date non sono valide, prego riprova."
 msgid "label_failed_gtinterval"
 msgstr "La seconda data (A) deve essere maggiore della prima data (DA). Prego, re-inserire le date"
 
-#. Default: "The search of events must be inside a range or 30 days. Please re-enter dates."
+#. Default: "The search of events must be inside a range or 60 days. Please re-enter dates."
 msgid "label_failed_interval"
-msgstr "La ricerca di eventi deve limitarsi ad un intervallo di 30 giorni. Prego re-inserire le date."
+msgstr "La ricerca di eventi deve limitarsi ad un intervallo di 60 giorni. Prego re-inserire le date."
 
 #. Default: "From"
 #: ./browser/searchbar.pt:24
