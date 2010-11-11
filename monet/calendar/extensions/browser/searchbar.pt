@@ -38,15 +38,12 @@
 		      	<select class="searchBarIn"
 					name="getEventType"
 	                id="getEventType"
-	                tal:define="all_events_label view/monetAllEvents;
-	                			firstelem python:['all_events',];
-	                			usedGetEventType python:list(here.portal_catalog.uniqueValuesFor('getEventType'));
-	                			usedEventTypes python:firstelem+usedGetEventType">
+	                tal:define="usedEventTypes python: view.usedEventTypes()">
 	                    <option value="#"
 	                            tal:repeat="eventT usedEventTypes"
-	                            tal:content="python: eventT=='all_events' and all_events_label or view.getEventTypeName(eventT) or eventT"
-	                            tal:attributes="value python: view.valueGetEventType(eventT);
-	                            				selected python: view.valueGetEventType(eventT) == view.getDefaultEventType();">
+	                            tal:content="python: eventT[1]"
+	                            tal:attributes="value python: eventT[0];
+	                            				selected python: eventT[0] == view.getDefaultEventType();">
 								dummy
 						</option>
 				</select>

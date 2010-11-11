@@ -5,6 +5,7 @@ Changelog
 ------------------
 
 * text fix into searchevents.pt [mirco] 
+* made alphabetic order for the "event type" of the viewlet for event search [mirco]
 
 0.5.0 (2010-11-09)
 ------------------

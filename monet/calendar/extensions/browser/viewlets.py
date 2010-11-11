@@ -57,3 +57,29 @@ class SearchBar(ViewletBase, UsefulForSearchEvents):
             event_types.add(etype,_(etype))
         
         return event_types.getValue(key)
+    
+    def usedEventTypes(self):
+        translation_service = getToolByName(self,'translation_service')
+        pc = getToolByName(self,'portal_catalog')
+        used_event_types = []
+        #add first element
+        label=translation_service.utranslate(msgid=u'label_all_events',
+                                             default=u'-- All events --',
+                                             domain="monet.calendar.extensions",
+                                             context=self)
+        first_element = [('',label),]
+        #get the EventType
+        used_get_event_type = pc.uniqueValuesFor('getEventType')
+        for event_type in used_get_event_type:
+            if not isinstance(event_type,unicode):
+                event_type = event_type.decode('utf8')
+            label=translation_service.utranslate(msgid=event_type,
+                                                 default=event_type,
+                                                 domain="monet.calendar.extensions",
+                                                 context=self)
+            used_event_types.append((event_type,label))
+        used_event_types.sort(key=lambda event: event[1].lower())
+        return first_element + used_event_types
+    
+            
+      
