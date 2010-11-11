@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.5.1 (2010-??-??) unreleased
+------------------
+
+* text fix into searchevents.pt [mirco] 
+
 0.5.0 (2010-11-09)
 ------------------
 

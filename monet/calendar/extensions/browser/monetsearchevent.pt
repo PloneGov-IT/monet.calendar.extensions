@@ -40,13 +40,13 @@
                 
         <div tal:replace="structure provider:plone.abovecontentbody" />
         	<span i18n:translate="summary_label">Results for the search: </span>
-        	<span tal:content="python: here.REQUEST.form.get('SearchableText') + ' + '"
+        	<span tal:content="python: here.REQUEST.form.get('SearchableText') + ', '"
         		  tal:condition="python: here.REQUEST.form.get('SearchableText',None)" />
        		<tal:event_type condition="python: here.REQUEST.form.get('getEventType',None)">
 	        	<span i18n:translate="" i18n:domain="monet.calendar.event"
 	        		  tal:content="python: here.REQUEST.form.get('getEventType')"
 	        		  />
-	        	<span> + </span>
+	        	<span>, </span>
         	</tal:event_type>
         	<span i18n:translate="" tal:content="python: view.getSummarySearchDates(dates)">
         		dal 13/10/2010 al 05/10/2010
