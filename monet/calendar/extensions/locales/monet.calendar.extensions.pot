@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2010-09-22 09:25+0000\n"
+"POT-Creation-Date: 2010-11-18 10:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,21 +14,11 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: monet.calendar.extensions\n"
 
-#. Default: "from $date_from to $date_to"
-#: ./browser/monetsearchevents.py:250
-msgid "summary_search_from_to"
-msgstr ""
-
-#. Default: "in $date"
-#: ./browser/monetsearchevents.py:257
-msgid "summary_search_in"
-msgstr ""
-
-#: ./browser/monetsearchevents.py:37
+#: ./browser/monetsearchevents.py:39
 msgid "Afternoon"
 msgstr ""
 
-#: ./browser/monetsearchevents.py:39
+#: ./browser/monetsearchevents.py:41
 msgid "All day long"
 msgstr ""
 
@@ -56,15 +46,15 @@ msgstr ""
 msgid "Dance"
 msgstr ""
 
-#: ./browser/monetsearchevents.py:38
+#: ./browser/monetsearchevents.py:40
 msgid "Evening"
 msgstr ""
 
-#: ./browser/monetsearchevent.pt:130
+#: ./browser/monetsearchevent.pt:155
 msgid "Event"
 msgstr ""
 
-#: ./browser/monetsearchevent.pt:98
+#: ./browser/monetsearchevent.pt:114
 msgid "Event type"
 msgstr ""
 
@@ -86,7 +76,7 @@ msgstr ""
 msgid "Memorial days"
 msgstr ""
 
-#: ./browser/monetsearchevents.py:36
+#: ./browser/monetsearchevents.py:38
 msgid "Morning"
 msgstr ""
 
@@ -111,11 +101,11 @@ msgstr ""
 msgid "Trade fairs, expositions and markets"
 msgstr ""
 
-#: ./browser/monetsearchevent.pt:94
+#: ./browser/monetsearchevent.pt:110
 msgid "When"
 msgstr ""
 
-#: ./browser/monetsearchevent.pt:85
+#: ./browser/monetsearchevent.pt:101
 msgid "Where"
 msgstr ""
 
@@ -150,7 +140,7 @@ msgid "label_in"
 msgstr ""
 
 #. Default: "Search"
-#: ./browser/searchbar.pt:120
+#: ./browser/searchbar.pt:110
 msgid "label_search"
 msgstr ""
 
@@ -167,6 +157,26 @@ msgstr ""
 #. Default: "No events were found."
 #: ./browser/monetsearchevent.pt:63
 msgid "no_events_found"
+msgstr ""
+
+#. Default: "(*) Always choose the period within which to search for the event"
+#: ./browser/searchbar.pt:119
+msgid "searchform_help"
+msgstr ""
+
+#. Default: "Results for the search:"
+#: ./browser/monetsearchevent.pt:42
+msgid "summary_label"
+msgstr ""
+
+#. Default: "from ${date_from} to ${date_to}"
+#: ./browser/monetsearchevents.py:247
+msgid "summary_search_from_to"
+msgstr ""
+
+#. Default: "in ${date}"
+#: ./browser/monetsearchevents.py:254
+msgid "summary_search_in"
 msgstr ""
 
 #. Default: "Friday"

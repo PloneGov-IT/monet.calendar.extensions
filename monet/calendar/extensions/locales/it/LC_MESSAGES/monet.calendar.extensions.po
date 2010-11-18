@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2010-09-22 09:25+0000\n"
+"POT-Creation-Date: 2010-11-18 10:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,26 +14,11 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: monet.calendar.extensions\n"
 
-#. Default: "from $date_from to $date_to"
-#: ./browser/monetsearchevents.py:250
-msgid "summary_search_from_to"
-msgstr "dal ${date_from} al ${date_to}"
-
-#. Default: "in $date"
-#: ./browser/monetsearchevents.py:257
-msgid "summary_search_in"
-msgstr "il ${date}"
-
-#. Results for the search: "
-#: ./browser/monetsearchevents.pt:42
-msgid "summary_label"
-msgstr "Risultati per la ricerca: "
-
-#: ./browser/monetsearchevents.py:37
+#: ./browser/monetsearchevents.py:39
 msgid "Afternoon"
 msgstr "Pomeriggio"
 
-#: ./browser/monetsearchevents.py:39
+#: ./browser/monetsearchevents.py:41
 msgid "All day long"
 msgstr "Tutto il giorno"
 
@@ -61,15 +46,15 @@ msgstr "Congressi e Convegni"
 msgid "Dance"
 msgstr "Danza"
 
-#: ./browser/monetsearchevents.py:38
+#: ./browser/monetsearchevents.py:40
 msgid "Evening"
 msgstr "Sera"
 
-#: ./browser/monetsearchevent.pt:130
+#: ./browser/monetsearchevent.pt:155
 msgid "Event"
 msgstr "Evento"
 
-#: ./browser/monetsearchevent.pt:98
+#: ./browser/monetsearchevent.pt:114
 msgid "Event type"
 msgstr "Tipo di evento"
 
@@ -91,7 +76,7 @@ msgstr "Mercati"
 msgid "Memorial days"
 msgstr "Anniversari e Commemorazioni"
 
-#: ./browser/monetsearchevents.py:36
+#: ./browser/monetsearchevents.py:38
 msgid "Morning"
 msgstr "Mattino"
 
@@ -116,11 +101,11 @@ msgstr "Teatro"
 msgid "Trade fairs, expositions and markets"
 msgstr "Fiere, Esposizioni e Mostre Mercato"
 
-#: ./browser/monetsearchevent.pt:94
+#: ./browser/monetsearchevent.pt:110
 msgid "When"
 msgstr "Orari"
 
-#: ./browser/monetsearchevent.pt:85
+#: ./browser/monetsearchevent.pt:101
 msgid "Where"
 msgstr "Dove"
 
@@ -155,7 +140,7 @@ msgid "label_in"
 msgstr "In"
 
 #. Default: "Search"
-#: ./browser/searchbar.pt:120
+#: ./browser/searchbar.pt:110
 msgid "label_search"
 msgstr "Cerca"
 
@@ -173,6 +158,29 @@ msgstr "Al"
 #: ./browser/monetsearchevent.pt:63
 msgid "no_events_found"
 msgstr "Nessun evento è stato trovato."
+
+#. Default: "(*) Always choose the period within which to search for the event"
+#: ./browser/searchbar.pt:119
+msgid "searchform_help"
+msgstr "(*) Scegli sempre il periodo entro cui cercare l'evento"
+
+#. Results for the search: "
+#. Default: "Results for the search:"
+#: ./browser/monetsearchevent.pt:42
+msgid "summary_label"
+msgstr "Risultati per la ricerca: "
+
+#. Default: "from ${date_from} to ${date_to}"
+#: ./browser/monetsearchevents.py:247
+#, fuzzy
+msgid "summary_search_from_to"
+msgstr "dal ${date_from} al ${date_to}"
+
+#. Default: "in ${date}"
+#: ./browser/monetsearchevents.py:254
+#, fuzzy
+msgid "summary_search_in"
+msgstr "il ${date}"
 
 #. Default: "Friday"
 msgid "weekday_fri"
