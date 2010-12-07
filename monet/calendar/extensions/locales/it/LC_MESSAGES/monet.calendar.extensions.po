@@ -210,3 +210,7 @@ msgstr "Martedì"
 msgid "weekday_wed"
 msgstr "Mercoledì"
 
+#. Default: "Monet event view"
+msgid "Monet event view"
+msgstr "Vista eventi Monet"
+
