@@ -100,7 +100,6 @@
                     </p>
 					
                     <div class="documentByLine">
-                    
 					<span tal:content="item/location" /><span tal:condition="item/location" tal:replace="string: - " />
 					<span tal:content="item_object/getAddress" />
 					<tal:data condition="python:item_start==item_end"> <span i18n:translate="event_on">on</span> <span tal:content="python:toLocalizedTime(item_start,long_format=0)" /> </tal:data>
