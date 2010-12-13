@@ -34,8 +34,7 @@
                          templateId=templateId, macro='text-field-view');
                          text here/aq_explicit/getText|nothing"
              tal:condition="text"
-             tal:attributes="class python:test(here.Format() in ('text/structured',
-                                                   'text/x-rst', ), 'stx' + kss_class, 'plain' + kss_class)">
+             tal:attributes="class python:'text/x-rst'">
             <div metal:define-slot="inside" tal:replace="structure text">The body</div>
         </div>
 
@@ -72,7 +71,7 @@
 
                     <a href="#"
                        tal:condition="python:item_type != 'Link'"
-                       tal:attributes="href python:test(item_type in use_view_action, item_url+'/view', item_url);">
+                       tal:attributes="href item_url;">
                         <img src="" alt=""
                              tal:condition="exists:item_object/image_thumb"
                              tal:replace="structure python: path('nocall:item_object/tag')(scale='thumb', css_class='tileImage')" />
@@ -93,7 +92,7 @@
                         <a href="#"
                            class="summary url"
                            tal:condition="python:item_type != 'Link'"
-                           tal:attributes="href python:test(item_type in use_view_action, item_url+'/view', item_url);"
+                           tal:attributes="href item_url;"
                            tal:content="item_title_or_id">
                             Item Title
                         </a>
@@ -166,7 +165,7 @@
 
                     <p class="tileFooter">
                         <a href=""
-                           tal:attributes="href python:test(item_type in use_view_action, item_url+'/view', item_url);"
+                           tal:attributes="href item_url;"
                            i18n:translate="read_more">
                         Read More&hellip;
                         </a>
