@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="monet.calendar.extensions">
 
 <body>
 
@@ -77,15 +77,6 @@
                              tal:replace="structure python: path('nocall:item_object/tag')(scale='thumb', css_class='tileImage')" />
                     </a>
 
-                    <a href="#"
-                       class="link-plain"
-                       tal:condition="python:item_type == 'Link'"
-                       tal:attributes="href item/getRemoteUrl">
-                        <img src="" alt=""
-                             tal:condition="exists:item_object/image_thumb"
-                             tal:replace="structure python: path('nocall:item_object/tag')(scale='thumb', css_class='tileImage')" />
-                    </a>
-
                     <h2 class="tileHeadline"
                         metal:define-macro="listitem">
 
@@ -97,13 +88,6 @@
                             Item Title
                         </a>
 
-                        <a href="#"
-                           class="link-plain"
-                           tal:condition="python:item_type == 'Link'"
-                           tal:content="item_title_or_id"
-                           tal:attributes="href item/getRemoteUrl;">
-                            External Link
-                        </a>
                     </h2>
 					
 					<p class="tileBody" tal:condition="item_description">
@@ -116,60 +100,13 @@
                     </p>
 					
                     <div class="documentByLine">
-                    <!--tal:event condition="python: item_type == 'Event'">
-                         <span tal:condition="python: item_type == 'Event'"
-                               i18n:translate="label_event_byline">
-                             (<span tal:content="string:${item/location}"
-                                    class="location"
-                                    i18n:name="location">Oslo</span><tal:comma
-                                    tal:replace="string:, "
-                                    tal:condition="item/location" />from
-                              <abbr class="dtstart"
-                                    tal:attributes="title python:item_start"
-                                    tal:content="python:toLocalizedTime(item_start,long_format=1)"
-                                    i18n:name="start">from date</abbr> to
-                              <abbr class="dtend"
-                                    tal:attributes="title python:item_end"
-                                    tal:content="python:toLocalizedTime(item_end,long_format=1)"
-                                    i18n:name="end">to date</abbr>)
-                         </span>
-                    </tal:event-->
-					
+                    
 					<span tal:content="item/location" /><span tal:condition="item/location" tal:replace="string: - " />
 					<span tal:content="item_object/getAddress" />
-					<tal:data condition="python:item_start==item_end"> il <span tal:content="python:toLocalizedTime(item_start,long_format=0)" /> </tal:data>
-					<tal:periodo condition="python:item_start!=item_end"> dal <span tal:content="python:toLocalizedTime(item_start,long_format=0)" /> al <span tal:content="python:toLocalizedTime(item_end,long_format=0)" /></tal:periodo>
+					<tal:data condition="python:item_start==item_end"> <span i18n:translate="event_on">on</span> <span tal:content="python:toLocalizedTime(item_start,long_format=0)" /> </tal:data>
+					<tal:periodo condition="python:item_start!=item_end"> <span i18n:translate="event_from">from</span> <span tal:content="python:toLocalizedTime(item_start,long_format=0)" /> <span i18n:translate="event_to">to</span> <span tal:content="python:toLocalizedTime(item_end,long_format=0)" /></tal:periodo>
 					
-                    <tal:newsitem condition="python: item_type == 'News Item'">
-                        <tal:name tal:condition="item_creator"
-                            tal:define="author python:mtool.getMemberInfo(item_creator)">
-                          <span i18n:translate="label_by_author">
-                            by
-                          <a href="#"
-                             tal:attributes="href string:${portal_url}/author/${item_creator}"
-                             tal:content="python:author and author['fullname'] or item_creator"
-                             tal:omit-tag="not:author"
-                             i18n:name="author">
-                            Bob Dobalina
-                          </a>
-                          </span>
-                        </tal:name>
-                        &mdash;
-                        <span tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
-                        August 16, 2001 at 23:35:59
-                        </span>
-                    </tal:newsitem>
                     </div>
-
-                    
-
-                    <p class="tileFooter">
-                        <a href=""
-                           tal:attributes="href item_url;"
-                           i18n:translate="read_more">
-                        Read More&hellip;
-                        </a>
-                    </p>
 
                     <div class="visualClear"><!-- --></div>
 

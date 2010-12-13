@@ -9,14 +9,14 @@
   <browser:menuItem
     for="*"
     menu="plone_displayviews"
-    title="Monet event view"
-    action="@@moneteventi_view"
-    description="Visualizza gli eventi."
+    title="Event view"
+    action="@@topic_event_view"
+    description=""
     /> 
   
   <browser:page
 	for="*"
-	name="moneteventi_view"
+	name="topic_event_view"
 	template="folder_monet_event_view.pt"
 	permission="zope2.View"
 	/>
