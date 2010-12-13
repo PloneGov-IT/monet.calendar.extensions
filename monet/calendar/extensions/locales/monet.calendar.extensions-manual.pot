@@ -122,3 +122,7 @@ msgstr ""
 
 msgid "date_format_long"
 msgstr ""
+
+#. Default: "Event view"
+msgid "Event view"
+msgstr ""

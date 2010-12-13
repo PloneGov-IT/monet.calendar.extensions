@@ -206,7 +206,3 @@ msgstr ""
 #. Default: "Wednesday"
 msgid "weekday_wed"
 msgstr ""
-
-#. Default: "Monet event view"
-msgid "Monet event view"
-msgstr ""
