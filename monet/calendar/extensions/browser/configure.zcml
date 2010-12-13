@@ -7,7 +7,7 @@
   
   
   <browser:menuItem
-    for="*"
+    for="Products.ATContentTypes.interface.topic.IATTopic"
     menu="plone_displayviews"
     title="Event view"
     action="@@topic_event_view"
@@ -15,7 +15,7 @@
     /> 
   
   <browser:page
-	for="*"
+	for="Products.ATContentTypes.interface.topic.IATTopic"
 	name="topic_event_view"
 	template="folder_monet_event_view.pt"
 	permission="zope2.View"
