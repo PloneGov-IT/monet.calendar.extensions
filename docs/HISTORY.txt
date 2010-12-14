@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.6.1 (2010-12-14)
+------------------
+
+* fixed "event view" for Plone base event [filippo.gallottini]
+
 0.6.0 (2010-12-13)
 ------------------
 
