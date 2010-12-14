@@ -100,8 +100,11 @@
                     </p>
 					
                     <div class="documentByLine">
-					<span tal:content="item/location" /><span tal:condition="item/location" tal:replace="string: - " />
-					<span tal:content="item_object/getAddress" />
+					<span tal:content="item/location" />
+					<tal:new_event on-error="nothing">
+						<span tal:condition="item/location" tal:replace="string: - " />
+						<span tal:content="item_object/getAddress" />
+					</tal:new_event>
 					<tal:data condition="python:item_start==item_end"> <span i18n:translate="event_on">on</span> <span tal:content="python:toLocalizedTime(item_start,long_format=0)" /> </tal:data>
 					<tal:periodo condition="python:item_start!=item_end"> <span i18n:translate="event_from">from</span> <span tal:content="python:toLocalizedTime(item_start,long_format=0)" /> <span i18n:translate="event_to">to</span> <span tal:content="python:toLocalizedTime(item_end,long_format=0)" /></tal:periodo>
 					
