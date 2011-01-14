@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.6.1'
+version = '0.7.0dev'
 
 setup(name='monet.calendar.extensions',
       version=version,
@@ -11,6 +11,7 @@ setup(name='monet.calendar.extensions',
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Programming Language :: Python",
+        "Framework :: Plone",
         ],
       keywords='',
       author='RedTurtle Technology',

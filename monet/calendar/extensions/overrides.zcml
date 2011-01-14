@@ -2,12 +2,6 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:plone="http://namespaces.plone.org/plone">
       
-  <plone:portlet
-      name="portlets.Calendar"
-      interface="plone.app.portlets.portlets.calendar.ICalendarPortlet"
-      assignment=".monetcalendar.Assignment"
-      renderer=".monetcalendar.Renderer"
-      addview=".monetcalendar.AddForm"
-      />
+  <!-- Deprecated: will be removed in future versions -->
 
 </configure>
