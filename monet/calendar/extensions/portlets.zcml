@@ -8,7 +8,7 @@
 
   <plone:portletRenderer
      portlet="plone.app.portlets.portlets.calendar.ICalendarPortlet"
-     layer="..interfaces.IMonetCalendarExtensionsLayer"
+     layer=".interfaces.IMonetCalendarExtensionsLayer"
      class=".monetcalendar.Renderer"
      />
 

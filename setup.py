@@ -10,8 +10,9 @@ setup(name='monet.calendar.extensions',
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
-        "Programming Language :: Python",
         "Framework :: Plone",
+        "Programming Language :: Python",
+        'License :: OSI Approved :: GNU General Public License (GPL)',
         ],
       keywords='',
       author='RedTurtle Technology',

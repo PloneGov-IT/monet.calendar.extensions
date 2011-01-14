@@ -15,7 +15,7 @@
      />
   
   <include package=".browser" />
-  <include package=".portlets" />
+  <include file="portlets.zcml" />
 
   <class class="Products.ATContentTypes.interface.folder.IATFolder">
       <allow interface=".interfaces.IMonetCalendarSection" />
