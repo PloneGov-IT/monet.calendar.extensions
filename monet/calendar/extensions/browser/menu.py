@@ -2,16 +2,17 @@
 
 from zope.interface import implements
 from zope.component import getMultiAdapter
-from Products.CMFCore.utils import getToolByName
 from zope.app.publisher.browser.menu import BrowserMenu
 from zope.app.publisher.browser.menu import BrowserSubMenuItem
-from monet.calendar.extensions import eventMessageFactory as _
+
+from plone.browserlayer import utils as browserlayerutils
+from Products.CMFCore.utils import getToolByName
+from Products.ATContentTypes.interface.folder import IATFolder
+
 from monet.calendar.extensions.interfaces import ICalendarMenu, ICalendarSubMenuItem
 from monet.calendar.extensions.interfaces import IMonetCalendarExtensionsLayer
 from monet.calendar.extensions.interfaces import IMonetCalendarSearchRoot, IMonetCalendarSection
-from plone.browserlayer import utils as browserlayerutils
-
-from OFS.interfaces import IFolder
+from monet.calendar.extensions import eventMessageFactory as _
 
 class CalendarMenu(BrowserMenu):
     implements(ICalendarMenu)
@@ -106,7 +107,7 @@ class CalendarSubMenuItem(BrowserSubMenuItem):
         return self.context.absolute_url() + "/manage_calendaring_form"
 
     def available(self):
-        if not IFolder.providedBy(self.context):
+        if not IATFolder.providedBy(self.context):
             return False
         return IMonetCalendarExtensionsLayer in browserlayerutils.registered_layers()
 

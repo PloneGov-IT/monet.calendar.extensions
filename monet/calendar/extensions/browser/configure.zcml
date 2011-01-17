@@ -1,14 +1,14 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
-    i18n_domain="monet.calendar.extensions">
+    i18n_domain="plone">
 
   <include package="plone.app.contentmenu" />
 
   <browser:menuItem
     for="Products.ATContentTypes.interface.topic.IATTopic"
     menu="plone_displayviews"
-    title="Event view"
+    title="Events view"
     action="@@topic_event_view"
     description=""
     /> 
@@ -16,7 +16,7 @@
   <browser:page
 	for="Products.ATContentTypes.interface.topic.IATTopic"
 	name="topic_event_view"
-	template="folder_monet_event_view.pt"
+	template="topic_monet_event_view.pt"
 	permission="zope2.View"
 	/>
   
@@ -52,7 +52,7 @@
 	/>
 
   <browser:pages
-      for="OFS.interfaces.IFolder"
+      for="Products.ATContentTypes.interface.folder.IATFolder"
       permission="monet.calendar.extensions.ManageCalendars"
       class=".manage_calendars.ManageCalendarsView">
      	<browser:page attribute="make_search_root"  name="make_calendar_search_root" />
@@ -68,7 +68,7 @@
      class=".menu.CalendarMenu"
      />
 
-  <adapter for="OFS.interfaces.IFolder *"
+  <adapter for="Products.ATContentTypes.interface.folder.IATFolder *"
      name="plone.contentmenu.calendaring"
      factory=".menu.CalendarSubMenuItem"
      provides="plone.app.contentmenu.interfaces.IContentMenuItem" />

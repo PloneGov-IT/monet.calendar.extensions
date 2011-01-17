@@ -34,7 +34,8 @@ class ManageCalendarsView(BrowserView):
         alsoProvides(context, IMonetCalendarSection)
         context.reindexObject(idxs=['object_provides'])
         self.putils.addPortalMessage(_(u'Status changed'))
-        self.putils.addPortalMessage(_(u'You may want to change the current "Layout" to "Calendar view"'))
+        self.putils.addPortalMessage(_(u'warn_layout_change',
+                                       default=u'You may want to change the current layout to "Calendar view"'))
         self.request.response.redirect(context.absolute_url())
     
     def remove_calendarsection(self):
