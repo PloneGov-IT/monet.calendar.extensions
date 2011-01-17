@@ -7,6 +7,7 @@ Changelog
 * added UI for mark and unmark folders [keul]
 * deprecated overrides.zcml [keul]
 * the calendar view is registered for all folders [keul]
+* the "topic_event_view" ca be used also on folders [keul]
 
 0.6.1 (2010-12-14)
 ------------------

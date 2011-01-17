@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2010-11-18 10:09+0000\n"
+"POT-Creation-Date: 2011-01-17 09:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,6 +58,10 @@ msgstr "Evento"
 msgid "Event type"
 msgstr "Tipo di evento"
 
+#. Default: "Event view"
+msgid "Event view"
+msgstr "Vista eventi"
+
 msgid "Exhibitions"
 msgstr "Mostre"
 
@@ -95,6 +99,14 @@ msgstr "Premiazioni di concorsi"
 msgid "Sports and games"
 msgstr "Manifestazioni sportive"
 
+#: ./browser/manage_calendars.py:22
+msgid "Status changed"
+msgstr "Stato modificato"
+
+#: ./browser/manage_calendars.py:47
+msgid "The view of the folder has been changed"
+msgstr "La vista della cartella è stata modificata"
+
 msgid "Theatre"
 msgstr "Teatro"
 
@@ -112,10 +124,35 @@ msgstr "Dove"
 msgid "date_format_long"
 msgstr "${A} ${d} ${B} ${Y}"
 
+#. Default: "There are currently no items in this folder."
+#: ./browser/folder_monet_event_view.pt:123
+msgid "description_no_items_in_folder"
+msgstr "Non ci sono elementi in questa cartella."
+
+#. Default: "from"
+#: ./browser/folder_monet_event_view.pt:109
+msgid "event_from"
+msgstr "dal"
+
+#. Default: "on"
+#: ./browser/folder_monet_event_view.pt:108
+msgid "event_on"
+msgstr "il"
+
+#. Default: "to"
+#: ./browser/folder_monet_event_view.pt:109
+msgid "event_to"
+msgstr "al"
+
 #. Default: "-- All events --"
 #: ./browser/viewlets.py:20
 msgid "label_all_events"
 msgstr "-- Tutti gli eventi --"
+
+#. Default: "Calendar"
+#: ./browser/menu.py:98
+msgid "label_calendar_menu"
+msgstr "Calendario"
 
 #. Default: "Dates are not valid, please retry."
 msgid "label_failed_arguments"
@@ -138,6 +175,26 @@ msgstr "Dal"
 #: ./browser/searchbar.pt:23
 msgid "label_in"
 msgstr "In"
+
+#. Default: "Mark as calendar root"
+#: ./browser/menu.py:62
+msgid "label_make_caledarsearchroot"
+msgstr "Imposta come radice del calendario"
+
+#. Default: "Mark as calendar section"
+#: ./browser/menu.py:30
+msgid "label_make_caledarsection"
+msgstr "Imposta come sezione calendario"
+
+#. Default: "Unmark as calendar root"
+#: ./browser/menu.py:78
+msgid "label_remove_caledarsearchroot"
+msgstr "Rimuovi stato radice calendario"
+
+#. Default: "Unmark as calendar section"
+#: ./browser/menu.py:45
+msgid "label_remove_caledarsection"
+msgstr "Rimuovi stato calendario"
 
 #. Default: "Search"
 #: ./browser/searchbar.pt:110
@@ -172,15 +229,33 @@ msgstr "Risultati per la ricerca: "
 
 #. Default: "from ${date_from} to ${date_to}"
 #: ./browser/monetsearchevents.py:247
-#, fuzzy
 msgid "summary_search_from_to"
 msgstr "dal ${date_from} al ${date_to}"
 
 #. Default: "in ${date}"
 #: ./browser/monetsearchevents.py:254
-#, fuzzy
 msgid "summary_search_in"
 msgstr "il ${date}"
+
+#. Default: "Mark this section as a root for searching events. Calendar inside this section will not find event defined above."
+#: ./browser/menu.py:64
+msgid "title_caledarsearchroot"
+msgstr "Imposta questa sezione come radice per la ricerca di eventi. Un calendario dentro a questa sezione not troverà eventi definiti al di sopra della sezione."
+
+#. Default: "Mark this section as a calendar."
+#: ./browser/menu.py:32
+msgid "title_caledarsection"
+msgstr "Imposta questa sezione come calendario"
+
+#. Default: "Manage calendar options for this content."
+#: ./browser/menu.py:99
+msgid "title_calendar_menu"
+msgstr "Gestisci opzioni di calendario per la sezione"
+
+#. Default: "You may want to change the current layout to \"Calendar view\""
+#: ./browser/manage_calendars.py:37
+msgid "warn_layout_change"
+msgstr "Ora potresti voler cambiare la vista corrente a \"Vista calendario\""
 
 #. Default: "Friday"
 msgid "weekday_fri"
@@ -209,21 +284,4 @@ msgstr "Martedì"
 #. Default: "Wednesday"
 msgid "weekday_wed"
 msgstr "Mercoledì"
-
-#. Default: "Event view"
-msgid "Event view"
-msgstr "Vista eventi"
-
-#. Default: "on"
-msgid "event_on"
-msgstr "il"
-
-#. Default: "from"
-msgid "event_from"
-msgstr "dal"
-
-#. Default: "to"
-msgid "event_to"
-msgstr "al"
-
 

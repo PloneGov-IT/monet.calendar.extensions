@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2010-11-18 10:09+0000\n"
+"POT-Creation-Date: 2011-01-17 09:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,6 +58,10 @@ msgstr ""
 msgid "Event type"
 msgstr ""
 
+#. Default: "Event view"
+msgid "Event view"
+msgstr ""
+
 msgid "Exhibitions"
 msgstr ""
 
@@ -95,6 +99,14 @@ msgstr ""
 msgid "Sports and games"
 msgstr ""
 
+#: ./browser/manage_calendars.py:22
+msgid "Status changed"
+msgstr ""
+
+#: ./browser/manage_calendars.py:47
+msgid "The view of the folder has been changed"
+msgstr ""
+
 msgid "Theatre"
 msgstr ""
 
@@ -112,9 +124,34 @@ msgstr ""
 msgid "date_format_long"
 msgstr ""
 
+#. Default: "There are currently no items in this folder."
+#: ./browser/folder_monet_event_view.pt:123
+msgid "description_no_items_in_folder"
+msgstr ""
+
+#. Default: "from"
+#: ./browser/folder_monet_event_view.pt:109
+msgid "event_from"
+msgstr ""
+
+#. Default: "on"
+#: ./browser/folder_monet_event_view.pt:108
+msgid "event_on"
+msgstr ""
+
+#. Default: "to"
+#: ./browser/folder_monet_event_view.pt:109
+msgid "event_to"
+msgstr ""
+
 #. Default: "-- All events --"
 #: ./browser/viewlets.py:20
 msgid "label_all_events"
+msgstr ""
+
+#. Default: "Calendar"
+#: ./browser/menu.py:98
+msgid "label_calendar_menu"
 msgstr ""
 
 #. Default: "Dates are not valid, please retry."
@@ -137,6 +174,26 @@ msgstr ""
 #. Default: "In"
 #: ./browser/searchbar.pt:23
 msgid "label_in"
+msgstr ""
+
+#. Default: "Mark as calendar root"
+#: ./browser/menu.py:62
+msgid "label_make_caledarsearchroot"
+msgstr ""
+
+#. Default: "Mark as calendar section"
+#: ./browser/menu.py:30
+msgid "label_make_caledarsection"
+msgstr ""
+
+#. Default: "Unmark as calendar root"
+#: ./browser/menu.py:78
+msgid "label_remove_caledarsearchroot"
+msgstr ""
+
+#. Default: "Unmark as calendar section"
+#: ./browser/menu.py:45
+msgid "label_remove_caledarsection"
 msgstr ""
 
 #. Default: "Search"
@@ -179,6 +236,26 @@ msgstr ""
 msgid "summary_search_in"
 msgstr ""
 
+#. Default: "Mark this section as a root for searching events. Calendar inside this section will not find event defined above."
+#: ./browser/menu.py:64
+msgid "title_caledarsearchroot"
+msgstr ""
+
+#. Default: "Mark this section as a calendar."
+#: ./browser/menu.py:32
+msgid "title_caledarsection"
+msgstr ""
+
+#. Default: "Manage calendar options for this content."
+#: ./browser/menu.py:99
+msgid "title_calendar_menu"
+msgstr ""
+
+#. Default: "You may want to change the current layout to \"Calendar view\""
+#: ./browser/manage_calendars.py:37
+msgid "warn_layout_change"
+msgstr ""
+
 #. Default: "Friday"
 msgid "weekday_fri"
 msgstr ""
@@ -206,3 +283,4 @@ msgstr ""
 #. Default: "Wednesday"
 msgid "weekday_wed"
 msgstr ""
+

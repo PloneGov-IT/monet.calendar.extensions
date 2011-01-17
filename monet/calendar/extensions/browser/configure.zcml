@@ -6,7 +6,7 @@
   <include package="plone.app.contentmenu" />
 
   <browser:menuItem
-    for="Products.ATContentTypes.interface.topic.IATTopic"
+    for="Products.Archetypes.interfaces._base.IBaseFolder"
     menu="plone_displayviews"
     title="Events view"
     action="@@topic_event_view"
@@ -14,9 +14,9 @@
     /> 
   
   <browser:page
-	for="Products.ATContentTypes.interface.topic.IATTopic"
+	for="Products.Archetypes.interfaces._base.IBaseFolder"
 	name="topic_event_view"
-	template="topic_monet_event_view.pt"
+	template="monet_events_view.pt"
 	permission="zope2.View"
 	/>
   
