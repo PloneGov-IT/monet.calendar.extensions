@@ -14,4 +14,3 @@ class Renderer(Renderer, UsefulForSearchEvents):
 
     def render(self):
         return xhtml_compress(self._template())
-

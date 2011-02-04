@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2011-02-04 09:41+0000\n"
+"POT-Creation-Date: 2011-02-04 10:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -144,6 +144,26 @@ msgstr ""
 msgid "event_to"
 msgstr ""
 
+#. Default: "Mark this section as a root for searching events. Calendar inside this section will not find event defined above."
+#: ./browser/menu.py:64
+msgid "help_make_caledarsearchroot"
+msgstr ""
+
+#. Default: "Mark this section as a calendar."
+#: ./browser/menu.py:32
+msgid "help_make_caledarsection"
+msgstr ""
+
+#. Default: "Remove the status of root for searching events."
+#: ./browser/menu.py:80
+msgid "help_remove_caledarsearchroot"
+msgstr ""
+
+#. Default: "Unmark this section from being a calendar section."
+#: ./browser/menu.py:47
+msgid "help_remove_caledarsection"
+msgstr ""
+
 #. Default: "-- All events --"
 #: ./browser/viewlets.py:20
 msgid "label_all_events"
@@ -234,16 +254,6 @@ msgstr ""
 #. Default: "in ${date}"
 #: ./browser/monetsearchevents.py:254
 msgid "summary_search_in"
-msgstr ""
-
-#. Default: "Mark this section as a root for searching events. Calendar inside this section will not find event defined above."
-#: ./browser/menu.py:64
-msgid "title_caledarsearchroot"
-msgstr ""
-
-#. Default: "Mark this section as a calendar."
-#: ./browser/menu.py:32
-msgid "title_caledarsection"
 msgstr ""
 
 #. Default: "Manage calendar options for this content."

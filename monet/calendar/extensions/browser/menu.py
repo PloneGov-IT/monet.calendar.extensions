@@ -29,7 +29,7 @@ class CalendarMenu(BrowserMenu):
             menu.append({
                 "title"       : _(u"label_make_caledarsection",
                                     default=u"Mark as calendar section"),
-                "description" : _(u"title_caledarsection",
+                "description" : _(u"help_make_caledarsection",
                                     default=u"Mark this section as a calendar."),
                 "action"      : url+"/make_calendar_section",
                 "selected"    : False,
@@ -44,7 +44,7 @@ class CalendarMenu(BrowserMenu):
             menu.append({
                 "title"       : _(u"label_remove_caledarsection",
                                     default=u"Unmark as calendar section"),
-                "description" : _(u"title_caledarsection",
+                "description" : _(u"help_remove_caledarsection",
                                     default=u"Unmark this section from being a calendar section."),
                 "action"      : url+"/remove_calendar_section",
                 "selected"    : False,
@@ -61,7 +61,7 @@ class CalendarMenu(BrowserMenu):
             menu.append({
                 "title"       : _(u"label_make_caledarsearchroot",
                                     default=u"Mark as calendar root"),
-                "description" : _(u"title_caledarsearchroot",
+                "description" : _(u"help_make_caledarsearchroot",
                                     default=u"Mark this section as a root for searching events. "
                                             u"Calendar inside this section will not find event defined above."),
                 "action"      : url+"/make_calendar_search_root",
@@ -77,7 +77,7 @@ class CalendarMenu(BrowserMenu):
             menu.append({
                 "title"       : _(u"label_remove_caledarsearchroot",
                                     default=u"Unmark as calendar root"),
-                "description" : _(u"title_caledarsearchroot",
+                "description" : _(u"help_remove_caledarsearchroot",
                                     default=u"Remove the status of root for searching events."),
                 "action"      : url+"/remove_calendar_search_root",
                 "selected"    : False,
