@@ -9,6 +9,7 @@ Changelog
 * the calendar view is registered for all folders [keul]
 * the "topic_event_view" can be used also on folders [keul]
 * fixed interfaces import way to be Plone 4 compatible [keul]
+* search viewlet not breaking anymore if getEventType is not in the catalog [keul]
 
 0.6.1 (2010-12-14)
 ------------------

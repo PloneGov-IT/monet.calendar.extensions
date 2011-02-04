@@ -69,7 +69,10 @@ class SearchBar(ViewletBase, UsefulForSearchEvents):
                                              context=self)
         first_element = [('',label),]
         #get the EventType
-        used_get_event_type = pc.uniqueValuesFor('getEventType')
+        try:
+            used_get_event_type = pc.uniqueValuesFor('getEventType')
+        except KeyError:
+            used_get_event_type = []
         for event_type in used_get_event_type:
             if not isinstance(event_type,unicode):
                 event_type = event_type.decode('utf8')
