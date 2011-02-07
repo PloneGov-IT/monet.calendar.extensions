@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.7.0 (Unreleased)
+0.7.0 (2011-02-07)
 ------------------
 
 * added UI for mark and unmark folders [keul]

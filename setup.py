@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.7.0dev'
+version = '0.7.0'
 
 setup(name='monet.calendar.extensions',
       version=version,
