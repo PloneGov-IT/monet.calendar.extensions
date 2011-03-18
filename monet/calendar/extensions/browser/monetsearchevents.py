@@ -112,7 +112,8 @@ class MonetFormSearchValidation(BrowserView):
         time = DateTime(time.strftime("%Y-%m-%d"))
 
         mapping = {}
-        formatstring = translate('date_format_long', 'monet.calendar.extensions', mapping, self.request)
+        formatstring = translate('date_format_long', 'monet.calendar.extensions', mapping,
+                                 self.request, default="${A} ${B} ${d} ${Y}")
         
         # get the format elements used in the formatstring
         formatelements = _interp_regex.findall(formatstring)
@@ -153,7 +154,8 @@ class MonetFormSearchValidation(BrowserView):
             mapping[key] = translate(mapping[key], 'plonelocales', context=self.request, default=mapping[key])
     
         # translate the time string
-        return translate('date_format_long', 'monet.calendar.extensions', mapping, self.request)
+        return translate('date_format_long', 'monet.calendar.extensions', mapping,
+                         self.request, default="${A} ${B} ${d} ${Y}")
 
     def __call__(self, *args, **kw):
         response = self.request.response

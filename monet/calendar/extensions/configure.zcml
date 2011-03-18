@@ -14,6 +14,7 @@
         title="Manage MoNet Calendars"
      />
   
+  <include package="monet.calendar.event" />
   <include package=".browser" />
   <include file="portlets.zcml" />
 
@@ -27,7 +28,7 @@
       name="default"
       title="Monet Calendar Extensions"
       directory="profiles/default"
-      description=""
+      description="Additional features for the Monet Event"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 

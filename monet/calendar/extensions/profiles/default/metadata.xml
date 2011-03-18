@@ -1,4 +1,7 @@
 <?xml version="1.0"?>
 <metadata>
-  <version>0.7.0</version>
+  <version>0.8.0</version>
+  <dependencies>
+      <dependency>profile-monet.calendar.event:default</dependency>
+  </dependencies>
 </metadata>

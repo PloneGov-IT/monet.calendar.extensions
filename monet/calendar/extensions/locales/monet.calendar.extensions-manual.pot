@@ -121,7 +121,7 @@ msgid "Event"
 msgstr ""
 
 msgid "date_format_long"
-msgstr ""
+msgstr "${A} ${B} ${d} ${Y}"
 
 #. Default: "Event view"
 msgid "Event view"
