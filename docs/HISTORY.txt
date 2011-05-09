@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.9.0 (2011-05-09)
+------------------
+
+* some minor refactoring, to make the calendar view usable by `monet.calendar.portlet`__ [keul]
+* calendar view splitted in a couple of macros [keul]
+
+__ http://pypi.python.org/pypi/monet.calendar.portlet
+
 0.8.0 (2011-03-18)
 ------------------
 

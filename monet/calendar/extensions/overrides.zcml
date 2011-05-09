@@ -1,7 +1,0 @@
-<configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:plone="http://namespaces.plone.org/plone">
-      
-  <!-- Deprecated: will be removed in future versions -->
-
-</configure>

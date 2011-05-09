@@ -1,7 +1,7 @@
 Introduction
 ============
 
-This is an extension part of the `monet.calendar.star`__ suite. For a complete overview of the
+This is an extension part of the `Monet Calendar`__ suite. For a complete overview of the
 project, see the suite page.
 
 __ http://plone.org/products/monet.calendar.star
@@ -11,7 +11,7 @@ This product give to Plone:
 * a replacement of the calendar portlet, that simply are link to search inside a Monet Calendar
 * a viewlet for performing search
 * all the calendar features and views, that works with `monet.calendar.event`__
-* ...more underground features
+* ... more underground features
 
 __ http://pypi.python.org/pypi/monet.calendar.event
 

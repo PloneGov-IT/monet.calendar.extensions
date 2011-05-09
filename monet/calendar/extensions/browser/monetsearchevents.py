@@ -99,7 +99,7 @@ class MonetFormSearchValidation(BrowserView):
 
     def writeDate(self, day, month, year):
         """Write down the value of the date.
-        Date is normalized, removing days fraction data like gour timing
+        Date is normalized, removing days fraction data like hour timing
         """
         try:
             return datetime(int(year), int(month), int(day)).date()
@@ -180,6 +180,9 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
 
     template = ViewPageTemplateFile("monetsearchevent.pt")
     __call__ = template
+
+    def __getitem__(self, key):
+        return self.template.macros[key]
 
     def notEmptyArgumentsDate(self,day,month,year):
         """Check the date viewlets's parameters"""
