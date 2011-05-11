@@ -71,6 +71,7 @@
   <adapter for="Products.ATContentTypes.interface.folder.IATFolder *"
      name="plone.contentmenu.calendaring"
      factory=".menu.CalendarSubMenuItem"
+     permission="monet.calendar.extensions.ManageCalendars"
      provides="plone.app.contentmenu.interfaces.IContentMenuItem" />
 
   <browser:resourceDirectory

@@ -22,8 +22,6 @@ class CalendarMenu(BrowserMenu):
 
         menu=[]
         url = context.absolute_url()
-        context_state=getMultiAdapter((context, request),
-                name="plone_context_state")
 
         if not IMonetCalendarSection.providedBy(context):
             menu.append({
@@ -107,9 +105,12 @@ class CalendarSubMenuItem(BrowserSubMenuItem):
         return self.context.absolute_url() + "/manage_calendaring_form"
 
     def available(self):
-        if not IATFolder.providedBy(self.context):
-            return False
-        return IMonetCalendarExtensionsLayer in browserlayerutils.registered_layers()
+        context = self.context
+        member = getMultiAdapter((context, self.request), name="plone_portal_state").member()
+        if IATFolder.providedBy(context) and member.has_permission('monet.calendar.extensions.ManageCalendars',
+                                                                   context):
+            return IMonetCalendarExtensionsLayer in browserlayerutils.registered_layers()
+        return False
 
     def disabled(self):
         return False
