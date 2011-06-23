@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from monet.calendar.extensions.interfaces import IMonetCalendarSection, IMonetCalendarSearchRoot
+try:
+    from Products.LinguaPlone.interfaces import ITranslatable
+except:
+    pass
 from Acquisition import aq_chain, aq_inner
 from Products.CMFCore.utils import getToolByName
 
@@ -12,6 +16,11 @@ class UsefulForSearchEvents(object):
         for parent in aq_chain(aq_inner(self.context)):
             if IMonetCalendarSearchRoot.providedBy(parent):
                 return parent
+            try:
+                if ITranslatable.providedBy(parent):
+                    return parent
+            except:
+                pass
         return None
         
     def getCalendarSection(self,subsite):

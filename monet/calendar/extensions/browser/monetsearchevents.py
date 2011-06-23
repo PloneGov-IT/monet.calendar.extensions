@@ -239,6 +239,16 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
             if not key in ParameterDatesList:
                 if self.request.form.get(key):
                     query[key] = self.request.form.get(key)
+               
+        try:     
+            request_obj = context.unrestrictedTraverse(query['path'])
+        except:
+            request_obj = context
+        if not context.getLanguage() == request_obj.getLanguage():
+            if request_obj.hasTranslation(context.getLanguage()):
+                query['path'] = '/'.join(request_obj.getTranslation(context.getLanguage()).getPhysicalPath())
+        if query.has_key('set_language'):
+            del query['set_language']
         
         brains = pcatalog.searchResults(**query)
         return brains    
