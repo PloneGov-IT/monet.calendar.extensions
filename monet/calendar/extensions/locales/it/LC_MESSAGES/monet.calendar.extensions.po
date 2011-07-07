@@ -87,7 +87,7 @@ msgid "Conferences, conventions and seminars"
 msgstr "Congressi, convegni, conferenze, seminari"
 
 msgid "Street and exhibition markets"
-msgstr "Circo, spettacoli di strada
+msgstr "Circo, spettacoli di strada"
 
 msgid "Multiple events"
 msgstr "Eventi multipli"
