@@ -80,6 +80,24 @@ msgstr "Mercati"
 msgid "Memorial days"
 msgstr "Anniversari e Commemorazioni"
 
+msgid "Trade fairs, expositions"
+msgstr "Fiere, esposizioni"
+
+msgid "Conferences, conventions and seminars"
+msgstr "Congressi, convegni, conferenze, seminari"
+
+msgid "Street and exhibition markets"
+msgstr "Circo, spettacoli di strada
+
+msgid "Multiple events"
+msgstr "Eventi multipli"
+
+msgid "Religious festivals"
+msgstr "Festività religiose"
+
+msgid "Courses, work experience, workshops"
+msgstr "Corsi, stage, laboratori"
+
 #: ./browser/monetsearchevents.py:38
 msgid "Morning"
 msgstr "Mattino"
