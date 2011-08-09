@@ -22,30 +22,6 @@ msgstr "Pomeriggio"
 msgid "All day long"
 msgstr "Tutto il giorno"
 
-msgid "Books"
-msgstr "Libri"
-
-msgid "Children's events"
-msgstr "Iniziative per bambini"
-
-msgid "Cinema and videos"
-msgstr "Cinema, Video e Proiezioni"
-
-msgid "Circuses and street performances"
-msgstr "Circo, Spettacoli di strada e Luna Park"
-
-msgid "Concerts"
-msgstr "Concerti"
-
-msgid "Conferences, seminars and workshops"
-msgstr "Conferenze, Seminari, Incontri e Lezioni"
-
-msgid "Conventions and round tables"
-msgstr "Congressi e Convegni"
-
-msgid "Dance"
-msgstr "Danza"
-
 #: ./browser/monetsearchevents.py:40
 msgid "Evening"
 msgstr "Sera"
@@ -62,42 +38,9 @@ msgstr "Tipo di evento"
 msgid "Event view"
 msgstr "Vista eventi"
 
-msgid "Exhibitions"
-msgstr "Mostre"
-
-msgid "Festivals"
-msgstr "Festival, rassegna"
-
-msgid "Folklore and festivals"
-msgstr "Sagre e Feste"
-
-msgid "Guided tours"
-msgstr "Visite guidate"
-
-msgid "Markets"
-msgstr "Mercati"
-
-msgid "Memorial days"
-msgstr "Anniversari e Commemorazioni"
-
 #: ./browser/monetsearchevents.py:38
 msgid "Morning"
 msgstr "Mattino"
-
-msgid "Music"
-msgstr "Musica"
-
-msgid "Openings, unveilings"
-msgstr "Inaugurazioni"
-
-msgid "Performances"
-msgstr "Spettacoli"
-
-msgid "Prizes and competitions"
-msgstr "Premiazioni di concorsi"
-
-msgid "Sports and games"
-msgstr "Manifestazioni sportive"
 
 #: ./browser/manage_calendars.py:22
 msgid "Status changed"
@@ -106,12 +49,6 @@ msgstr "Stato modificato"
 #: ./browser/manage_calendars.py:47
 msgid "The view of the folder has been changed"
 msgstr "La vista della cartella è stata modificata"
-
-msgid "Theatre"
-msgstr "Teatro"
-
-msgid "Trade fairs, expositions and markets"
-msgstr "Fiere, Esposizioni e Mostre Mercato"
 
 #: ./browser/monetsearchevent.pt:110
 msgid "When"
