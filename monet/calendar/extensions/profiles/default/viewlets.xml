@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <object>
-  <order manager="plone.contentviews" skinname="*">
-    <viewlet name="monet.bar.searchevents" insert-before="*" />
+  <order manager="plone.portaltop" skinname="*">
+    <viewlet name="monet.bar.searchevents" insert-after="*" />
   </order>
 </object>

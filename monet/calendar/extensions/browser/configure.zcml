@@ -23,7 +23,7 @@
   <browser:viewlet
     for="monet.calendar.event.interfaces.IMonetCalendar"
 	name="monet.bar.searchevents"
-	manager="plone.app.layout.viewlets.interfaces.IContentViews"
+	manager="plone.app.layout.viewlets.interfaces.IPortalTop"
 	class=".viewlets.SearchBar"
     template="searchbar.pt"
     permission="zope2.View"
