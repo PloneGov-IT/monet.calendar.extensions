@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2011-03-18 11:26+0000\n"
+"POT-Creation-Date: 2011-11-22 16:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Luca Fabbri <luca.fabbri@redturtle.net>\n"
 "Language-Team: RedTurtle Technology <sviluppoplone@redturtle.net>\n"
@@ -14,31 +14,27 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: monet.calendar.extensions\n"
 
-#: ./browser/monetsearchevents.py:39
+#: ./browser/monetsearchevents.py:36
 msgid "Afternoon"
 msgstr "Pomeriggio"
 
-#: ./browser/monetsearchevents.py:41
+#: ./browser/monetsearchevents.py:38
 msgid "All day long"
 msgstr "Tutto il giorno"
 
-#: ./browser/monetsearchevents.py:40
+#: ./browser/monetsearchevents.py:37
 msgid "Evening"
 msgstr "Sera"
 
-#: ./browser/monetsearchevent.pt:155
+#: ./browser/monetsearchevent.pt:156
 msgid "Event"
 msgstr "Evento"
 
-#: ./browser/monetsearchevent.pt:114
+#: ./browser/monetsearchevent.pt:115
 msgid "Event type"
 msgstr "Tipo di evento"
 
-#. Default: "Event view"
-msgid "Event view"
-msgstr "Vista eventi"
-
-#: ./browser/monetsearchevents.py:38
+#: ./browser/monetsearchevents.py:35
 msgid "Morning"
 msgstr "Mattino"
 
@@ -50,17 +46,13 @@ msgstr "Stato modificato"
 msgid "The view of the folder has been changed"
 msgstr "La vista della cartella è stata modificata"
 
-#: ./browser/monetsearchevent.pt:110
+#: ./browser/monetsearchevent.pt:111
 msgid "When"
 msgstr "Orari"
 
-#: ./browser/monetsearchevent.pt:101
+#: ./browser/monetsearchevent.pt:102
 msgid "Where"
 msgstr "Dove"
-
-#. Default: "${A} ${B} ${d} ${Y}"
-msgid "date_format_long"
-msgstr "${A} ${d} ${B} ${Y}"
 
 #. Default: "There are currently no items in this folder."
 #: ./browser/monet_events_view.pt:123
@@ -83,24 +75,24 @@ msgid "event_to"
 msgstr "al"
 
 #. Default: "Mark this section as a root for searching events. Calendar inside this section will not find event defined above."
-#: ./browser/menu.py:64
+#: ./browser/menu.py:61
 msgid "help_make_caledarsearchroot"
 msgstr ""
-"Imposta questa sezione come una radice di ricerca per gli eventi. \n"
-"I calendari dentro a questa sezione non troveranno eventi definiti al di sopra di questo livello. "
+"Imposta questa sezione come una radice di ricerca per gli eventi.\n"
+"I calendari dentro a questa sezione non troveranno eventi definiti al di sopra di questo livello."
 
 #. Default: "Mark this section as a calendar."
-#: ./browser/menu.py:32
+#: ./browser/menu.py:29
 msgid "help_make_caledarsection"
 msgstr "Imposta questa sezione come calendario."
 
 #. Default: "Remove the status of root for searching events."
-#: ./browser/menu.py:80
+#: ./browser/menu.py:77
 msgid "help_remove_caledarsearchroot"
 msgstr "Rimuovi lo stato di radice di ricerca per eventi."
 
 #. Default: "Unmark this section from being a calendar section."
-#: ./browser/menu.py:47
+#: ./browser/menu.py:44
 msgid "help_remove_caledarsection"
 msgstr "Rimuovi la sezione dallo stato di calendario."
 
@@ -110,21 +102,9 @@ msgid "label_all_events"
 msgstr "-- Tutti gli eventi --"
 
 #. Default: "Calendar"
-#: ./browser/menu.py:98
+#: ./browser/menu.py:95
 msgid "label_calendar_menu"
 msgstr "Calendario"
-
-#. Default: "Dates are not valid, please retry."
-msgid "label_failed_arguments"
-msgstr "Le date non sono valide, prego riprova."
-
-#. Default: "The second date (TO) must be greater than or equal to the first date (FROM). Please re-enter dates."
-msgid "label_failed_gtinterval"
-msgstr "La seconda data (A) deve essere maggiore della prima data (DA). Prego, re-inserire le date"
-
-#. Default: "The search of events must be inside a range or 60 days. Please re-enter dates."
-msgid "label_failed_interval"
-msgstr "La ricerca di eventi deve limitarsi ad un intervallo di 60 giorni. Prego re-inserire le date."
 
 #. Default: "From"
 #: ./browser/searchbar.pt:24
@@ -137,22 +117,22 @@ msgid "label_in"
 msgstr "In"
 
 #. Default: "Mark as calendar root"
-#: ./browser/menu.py:62
+#: ./browser/menu.py:59
 msgid "label_make_caledarsearchroot"
 msgstr "Imposta come radice del calendario"
 
 #. Default: "Mark as calendar section"
-#: ./browser/menu.py:30
+#: ./browser/menu.py:27
 msgid "label_make_caledarsection"
 msgstr "Imposta come sezione calendario"
 
 #. Default: "Unmark as calendar root"
-#: ./browser/menu.py:78
+#: ./browser/menu.py:75
 msgid "label_remove_caledarsearchroot"
 msgstr "Rimuovi stato radice calendario"
 
 #. Default: "Unmark as calendar section"
-#: ./browser/menu.py:45
+#: ./browser/menu.py:42
 msgid "label_remove_caledarsection"
 msgstr "Rimuovi stato calendario"
 
@@ -172,7 +152,7 @@ msgid "label_to"
 msgstr "Al"
 
 #. Default: "No events were found."
-#: ./browser/monetsearchevent.pt:63
+#: ./browser/monetsearchevent.pt:64
 msgid "no_events_found"
 msgstr "Nessun evento è stato trovato."
 
@@ -183,22 +163,22 @@ msgstr "(*) Scegli sempre il periodo entro cui cercare l'evento"
 
 #. Results for the search: "
 #. Default: "Results for the search:"
-#: ./browser/monetsearchevent.pt:42
+#: ./browser/monetsearchevent.pt:40
 msgid "summary_label"
 msgstr "Risultati per la ricerca: "
 
 #. Default: "from ${date_from} to ${date_to}"
-#: ./browser/monetsearchevents.py:247
+#: ./browser/monetsearchevents.py:259
 msgid "summary_search_from_to"
 msgstr "dal ${date_from} al ${date_to}"
 
 #. Default: "in ${date}"
-#: ./browser/monetsearchevents.py:254
+#: ./browser/monetsearchevents.py:266
 msgid "summary_search_in"
 msgstr "il ${date}"
 
 #. Default: "Manage calendar options for this content."
-#: ./browser/menu.py:99
+#: ./browser/menu.py:96
 msgid "title_calendar_menu"
 msgstr "Gestisci opzioni di calendario per la sezione"
 
@@ -206,32 +186,4 @@ msgstr "Gestisci opzioni di calendario per la sezione"
 #: ./browser/manage_calendars.py:37
 msgid "warn_layout_change"
 msgstr "Ora potresti voler cambiare la vista corrente a \"Vista calendario\""
-
-#. Default: "Friday"
-msgid "weekday_fri"
-msgstr "Venerdì"
-
-#. Default: "Monday"
-msgid "weekday_mon"
-msgstr "Lunedì"
-
-#. Default: "Saturday"
-msgid "weekday_sat"
-msgstr "Sabato"
-
-#. Default: "Sunday"
-msgid "weekday_sun"
-msgstr "Domenica"
-
-#. Default: "Thursday"
-msgid "weekday_thu"
-msgstr "Giovedì"
-
-#. Default: "Tuesday"
-msgid "weekday_tue"
-msgstr "Martedì"
-
-#. Default: "Wednesday"
-msgid "weekday_wed"
-msgstr "Mercoledì"
 

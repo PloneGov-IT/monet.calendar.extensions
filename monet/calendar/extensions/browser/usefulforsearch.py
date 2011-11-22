@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from monet.calendar.extensions.interfaces import IMonetCalendarSection, IMonetCalendarSearchRoot
-try:
-    from Products.LinguaPlone.interfaces import ITranslatable
-except:
-    pass
 from Acquisition import aq_chain, aq_inner
 from Products.CMFCore.utils import getToolByName
+from plone.app.layout.navigation.interfaces import INavigationRoot
+from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 
 class UsefulForSearchEvents(object):
     """Utility class for grouping usefull features"""
@@ -16,11 +14,9 @@ class UsefulForSearchEvents(object):
         for parent in aq_chain(aq_inner(self.context)):
             if IMonetCalendarSearchRoot.providedBy(parent):
                 return parent
-            try:
-                if ITranslatable.providedBy(parent):
-                    return parent
-            except:
-                pass
+            # If linguaplone is there we need to stop before reaching the site, but onto the en/es/it folders...
+            if INavigationRoot.providedBy(parent) and not IPloneSiteRoot.providedBy(parent):
+                return parent
         return None
         
     def getCalendarSection(self,subsite):
@@ -35,7 +31,10 @@ class UsefulForSearchEvents(object):
         return None
         
     def _getCalendarSectionParentNoSubSite(self):
-        """Return the first folder found in the site (no sub-site) that implements the interface IMonetCalendarSection"""
+        """
+        Return the first folder found in the site root (no sub-site)
+        that implements the interface IMonetCalendarSection
+        """
         portal=getToolByName(self.context, 'portal_url').getPortalObject()
         pcatalog = getToolByName(self, 'portal_catalog')
         query = {}

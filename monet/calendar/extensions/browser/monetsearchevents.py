@@ -1,23 +1,20 @@
 # -*- coding: utf-8 -*-
 
-import logging
 from datetime import datetime, timedelta
 from zope.i18n import translate
 
 from DateTime import DateTime
-from DateTime.interfaces import IDateTime
 from Products.CMFPlone.i18nl10n import _interp_regex, datetime_formatvariables, name_formatvariables
-from Products.CMFPlone.i18nl10n import weekdayname_msgid, monthname_msgid
+from Products.CMFPlone.i18nl10n import weekdayname_msgid, monthname_msgid, weekdayname_msgid_abbr, monthname_msgid_abbr
 
 from zope.component import getMultiAdapter
 from zope.i18nmessageid import MessageFactory
 
-from Acquisition import aq_inner, aq_parent
+from Acquisition import aq_inner
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.log import log
 from Products.statusmessages.interfaces import IStatusMessage
 from Products.Archetypes.atapi import DisplayList
 

@@ -6,7 +6,6 @@ from zope.app.publisher.browser.menu import BrowserMenu
 from zope.app.publisher.browser.menu import BrowserSubMenuItem
 
 from plone.browserlayer import utils as browserlayerutils
-from Products.CMFCore.utils import getToolByName
 from Products.ATContentTypes.interface.folder import IATFolder
 
 from monet.calendar.extensions.interfaces import ICalendarMenu, ICalendarSubMenuItem
