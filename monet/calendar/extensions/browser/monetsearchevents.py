@@ -23,6 +23,12 @@ from monet.calendar.extensions import eventMessageFactory as _
 from monet.calendar.extensions.browser.usefulforsearch import UsefulForSearchEvents
 
 try:
+    import Products.LinguaPlone
+    LINGUAPLONE = True
+except ImportError:
+    LINGUAPLONE = False
+    
+try:
     # python2.6
     import json
 except ImportError:
@@ -230,7 +236,7 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
         query['object_provides'] = IMonetEvent.__identifier__
         if self.request.form.get('path') is None:
             query['path'] = self.getSubSitePath()
-
+            
         # Now copy al other request parameter in the catalog query
         for key in self.request.form.keys():
             if not key in ParameterDatesList:
@@ -241,9 +247,14 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
             request_obj = context.unrestrictedTraverse(query['path'])
         except:
             request_obj = context
-        if not context.getLanguage() == request_obj.getLanguage():
-            if request_obj.hasTranslation(context.getLanguage()):
-                query['path'] = '/'.join(request_obj.getTranslation(context.getLanguage()).getPhysicalPath())
+        if LINGUAPLONE:
+            if not context.getLanguage() == request_obj.getLanguage():
+                if request_obj.hasTranslation(context.getLanguage()):
+                    query['path'] = '/'.join(request_obj.getTranslation(context.getLanguage()).getPhysicalPath())
+        else:
+            if not context.Language() == request_obj.Language():
+                if request_obj.hasTranslation(context.Language()):
+                    query['path'] = '/'.join(request_obj.getTranslation(context.Language()).getPhysicalPath())
         if query.has_key('set_language'):
             del query['set_language']
         

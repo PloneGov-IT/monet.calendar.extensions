@@ -15,6 +15,7 @@ class SearchBar(ViewletBase, UsefulForSearchEvents):
         ViewletBase.__init__(self, context, request, view, manager)
         now = DateTime()
         self.today = now.strftime("%Y-%m-%d").split("-")
+        self.pl = getToolByName(context,'portal_languages')
     
     def monetAllEvents(self):
         return _(u'label_all_events', default=u'-- All events --')
@@ -84,5 +85,7 @@ class SearchBar(ViewletBase, UsefulForSearchEvents):
         used_event_types.sort(key=lambda event: event[1].lower())
         return first_element + used_event_types
     
-            
+    def getCurrentLang(self):
+        return self.pl.getLanguageCookie()
+        
       

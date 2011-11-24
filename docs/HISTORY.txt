@@ -6,6 +6,7 @@ Changelog
 
 * removed a broken LinguaPlone integration, now replaced with a less intrusive ones
   that check for ``INavigationRoot`` and ``IPloneSiteRoot`` interfaces [keul]
+* added a check on LinguaPlone to permit the use of ``getLanguage`` or not [mirco]
 
 0.9.4 (2011-10-03)
 ------------------
