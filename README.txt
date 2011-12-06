@@ -18,13 +18,25 @@ __ http://pypi.python.org/pypi/monet.calendar.event
 Credits
 =======
   
-Developed with the support of `Rete Civica Mo-Net - Comune di Modena`__;
-Rete Civica Mo-Net supports the `PloneGov initiative`__.
+Developed with the support of:
 
-.. image:: http://www.comune.modena.it/grafica/logoComune/logoComunexweb.jpg 
-   :alt: Comune di Modena - logo
+* `Rete Civica Mo-Net - Comune di Modena`__
+
+  .. image:: http://www.comune.modena.it/grafica/logoComune/logoComunexweb.jpg 
+     :alt: Comune di Modena - logo
+
+* `Provincia di Ferrara`__
+
+  .. image:: http://people.provincia.fe.it/people/img/logo_provincia.png
+     :alt: Provincia di Ferrara - logo
+
+* `Regione Emilia Romagna`__
+
+All of them supports the `PloneGov initiative`__.
 
 __ http://www.comune.modena.it/
+__ http://www.provincia.fe.it/
+__ http://www.regione.emilia-romagna.it/
 __ http://www.plonegov.it/
 
 Authors
