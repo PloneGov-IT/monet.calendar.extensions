@@ -35,3 +35,24 @@ msgstr "${A} ${B} ${d} ${Y}"
 #. Default: "Event view"
 msgid "Event view"
 msgstr ""
+
+msgid "Friday"
+msgstr ""
+
+msgid "Monday"
+msgstr ""
+
+msgid "Saturday"
+msgstr ""
+
+msgid "Sunday"
+msgstr ""
+
+msgid "Thursday"
+msgstr ""
+
+msgid "Tuesday"
+msgstr ""
+
+msgid "Wednesday"
+msgstr ""

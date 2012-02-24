@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2011-11-22 16:18+0000\n"
+"POT-Creation-Date: 2012-02-24 14:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Luca Fabbri <luca.fabbri@redturtle.net>\n"
 "Language-Team: RedTurtle Technology <sviluppoplone@redturtle.net>\n"
@@ -14,15 +14,15 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: monet.calendar.extensions\n"
 
-#: ./browser/monetsearchevents.py:36
+#: ./browser/monetsearchevents.py:42
 msgid "Afternoon"
 msgstr "Pomeriggio"
 
-#: ./browser/monetsearchevents.py:38
+#: ./browser/monetsearchevents.py:44
 msgid "All day long"
 msgstr "Tutto il giorno"
 
-#: ./browser/monetsearchevents.py:37
+#: ./browser/monetsearchevents.py:43
 msgid "Evening"
 msgstr "Sera"
 
@@ -34,17 +34,42 @@ msgstr "Evento"
 msgid "Event type"
 msgstr "Tipo di evento"
 
-#: ./browser/monetsearchevents.py:35
+#. Default: "Event view"
+msgid "Event view"
+msgstr "Vista Evento"
+
+msgid "Friday"
+msgstr "Giovedì"
+
+msgid "Monday"
+msgstr "Lunedì"
+
+#: ./browser/monetsearchevents.py:41
 msgid "Morning"
 msgstr "Mattino"
+
+msgid "Saturday"
+msgstr "Sabato"
 
 #: ./browser/manage_calendars.py:22
 msgid "Status changed"
 msgstr "Stato modificato"
 
+msgid "Sunday"
+msgstr "Domenica"
+
 #: ./browser/manage_calendars.py:47
 msgid "The view of the folder has been changed"
 msgstr "La vista della cartella è stata modificata"
+
+msgid "Thursday"
+msgstr "Giovedì"
+
+msgid "Tuesday"
+msgstr "Martedì"
+
+msgid "Wednesday"
+msgstr "Mercoledì"
 
 #: ./browser/monetsearchevent.pt:111
 msgid "When"
@@ -54,23 +79,27 @@ msgstr "Orari"
 msgid "Where"
 msgstr "Dove"
 
+#. Default: "${A} ${B} ${d} ${Y}"
+msgid "date_format_long"
+msgstr "${A} ${B} ${d} ${Y}"
+
 #. Default: "There are currently no items in this folder."
-#: ./browser/monet_events_view.pt:123
+#: ./browser/monet_events_view.pt:125
 msgid "description_no_items_in_folder"
 msgstr "Non ci sono elementi in questa cartella."
 
 #. Default: "from"
-#: ./browser/monet_events_view.pt:109
+#: ./browser/monet_events_view.pt:111
 msgid "event_from"
 msgstr "dal"
 
 #. Default: "on"
-#: ./browser/monet_events_view.pt:108
+#: ./browser/monet_events_view.pt:110
 msgid "event_on"
 msgstr "il"
 
 #. Default: "to"
-#: ./browser/monet_events_view.pt:109
+#: ./browser/monet_events_view.pt:111
 msgid "event_to"
 msgstr "al"
 
@@ -97,7 +126,7 @@ msgid "help_remove_caledarsection"
 msgstr "Rimuovi la sezione dallo stato di calendario."
 
 #. Default: "-- All events --"
-#: ./browser/viewlets.py:20
+#: ./browser/viewlets.py:21
 msgid "label_all_events"
 msgstr "-- Tutti gli eventi --"
 
@@ -105,6 +134,18 @@ msgstr "-- Tutti gli eventi --"
 #: ./browser/menu.py:95
 msgid "label_calendar_menu"
 msgstr "Calendario"
+
+#. Default: "Dates are not valid, please retry."
+msgid "label_failed_arguments"
+msgstr "Le date non sono valide, riprova."
+
+#. Default: "The second date (TO) must be greater than or equal to the first date (FROM). Please re-enter dates."
+msgid "label_failed_gtinterval"
+msgstr "Ta seconda data (AL) deve essere maggiore o uguale alla prima data (DAL). Correggi le date inserite."
+
+#. Default: "The search of events must be inside a range or 60 days. Please re-enter dates."
+msgid "label_failed_interval"
+msgstr "La ricreca degli eventi deve essere contenuta in un range di 60 giorni. Correggi le date inserite."
 
 #. Default: "From"
 #: ./browser/searchbar.pt:24
@@ -168,12 +209,12 @@ msgid "summary_label"
 msgstr "Risultati per la ricerca: "
 
 #. Default: "from ${date_from} to ${date_to}"
-#: ./browser/monetsearchevents.py:259
+#: ./browser/monetsearchevents.py:270
 msgid "summary_search_from_to"
 msgstr "dal ${date_from} al ${date_to}"
 
 #. Default: "in ${date}"
-#: ./browser/monetsearchevents.py:266
+#: ./browser/monetsearchevents.py:277
 msgid "summary_search_in"
 msgstr "il ${date}"
 
