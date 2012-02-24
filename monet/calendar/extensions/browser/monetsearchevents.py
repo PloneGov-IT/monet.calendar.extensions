@@ -356,7 +356,7 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
     def getWeekdayName(self,date):
         msgid = date.isoweekday() == 7 and self._translation_service.day_msgid(0) or self._translation_service.day_msgid(date.isoweekday())
         english = date.isoweekday() == 7 and self._translation_service.weekday_english(0) or self._translation_service.weekday_english(date.isoweekday())
-        return _(msgid, default=english)
+        return PLMF(msgid, default=english)
         
     def getMonthName(self,date):
         msgid   = self._translation_service.month_msgid(date.month)
