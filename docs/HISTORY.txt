@@ -1,10 +1,11 @@
 Changelog
 =========
 
-0.9.7 (2012-02-24) unreleased
+0.9.7 (2012-05-09) 
 ------------------
 
 * load transaltion for day of week from plonelocales [mirco]
+* insert manual translation [mirco]
 
 0.9.6 (2012-01-30)
 ------------------
