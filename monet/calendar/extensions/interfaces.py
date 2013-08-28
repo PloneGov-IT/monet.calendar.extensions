@@ -3,8 +3,13 @@
 from zope.interface import Interface
 from monet.calendar.event.interfaces import IMonetCalendar
 
-from zope.app.publisher.interfaces.browser import IBrowserMenu
-from zope.app.publisher.interfaces.browser import IBrowserSubMenuItem
+try:
+    from zope.browsermenu.interfaces import IBrowserMenu
+    from zope.browsermenu.interfaces import IBrowserSubMenuItem
+except ImportError:
+    # Plone < 4.3
+    from zope.app.publisher.interfaces.browser import IBrowserMenu
+    from zope.app.publisher.interfaces.browser import IBrowserSubMenuItem
 
 class IMonetCalendarSection(IMonetCalendar):
     """Identifies folders on which you can use the view search events"""

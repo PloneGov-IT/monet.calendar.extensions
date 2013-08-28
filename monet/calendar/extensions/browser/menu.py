@@ -2,8 +2,13 @@
 
 from zope.interface import implements
 from zope.component import getMultiAdapter
-from zope.app.publisher.browser.menu import BrowserMenu
-from zope.app.publisher.browser.menu import BrowserSubMenuItem
+
+try:
+    from zope.browsermenu.menu import BrowserMenu
+    from zope.browsermenu.menu import BrowserSubMenuItem
+except ImportError:
+    from zope.app.publisher.browser.menu import BrowserMenu
+    from zope.app.publisher.browser.menu import BrowserSubMenuItem
 
 from plone.browserlayer import utils as browserlayerutils
 from Products.ATContentTypes.interface.folder import IATFolder

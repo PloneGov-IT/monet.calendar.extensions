@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.10.0 (Unreleased)
+------------------
+
+* Plone 4.3 compatibility [keul]
+
 0.9.7 (2012-05-09) 
 ------------------
 
