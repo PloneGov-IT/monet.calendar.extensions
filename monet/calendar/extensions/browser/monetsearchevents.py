@@ -43,7 +43,7 @@ SlotsVocab = {'morning':_(u'Morning'),
               'night':_(u'Evening'),
               'allday':_(u'All day long')}
 
-ParameterDatesList = ['fromYear',
+parameterDatesList = ['fromYear',
                       'fromMonth',
                       'fromDay',
                       'toYear',
@@ -204,7 +204,7 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
         if form.get('date'):
             date = form.get('date').split('-')
             date = datetime(int(date[0]),int(date[1]),int(date[2])).date()
-            
+
         if self.notEmptyArgumentsDate(form.get('fromDay'), form.get('fromMonth'), form.get('fromYear')) or \
                         self.notEmptyArgumentsDate(form.get('toDay'), form.get('toMonth'), form.get('toYear')):
             date_from = self.writeDate(form.get('fromDay'), form.get('fromMonth'), form.get('fromYear'))
@@ -227,22 +227,44 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
             return dates
         return {'date': datetime.now().date()}
 
+    def _all_dates_from_to(self, dates):
+        if 'date_from' in dates:
+            date_from = dates['date_from']
+        if 'date_to' in dates:
+            date_to = dates['date_to']
+        if 'date_from' not in dates and 'date_to' not in dates:
+            date_from = dates['date']
+            date_to = dates['date']     
+        
+        new_date = dates['date']
+        delta = timedelta(days=1)
+        all_dates = [DateTime(datetime.combine(new_date, datetime.min.time())).strftime('%Y-%m-%d')]
+        if date_to:
+            while new_date!=date_to:
+                new_date = new_date + delta
+                all_dates.append(DateTime(datetime.combine(new_date, datetime.min.time())).strftime('%Y-%m-%d'))
+        
+        return all_dates
+
     def getEventsInParent(self):
         """Return all events found in the parent folder
         """
         context = aq_inner(self.context)
         pcatalog = getToolByName(self, 'portal_catalog')
         query = {}
+        form = self.request.form
         query['object_provides'] = IMonetEvent.__identifier__
-        if self.request.form.get('path') is None:
+        if form.get('path') is None:
             query['path'] = self.getSubSitePath()
-            
+
         # Now copy al other request parameter in the catalog query
-        for key in self.request.form.keys():
-            if not key in ParameterDatesList:
-                if self.request.form.get(key):
-                    query[key] = self.request.form.get(key)
-               
+        for key in form.keys():
+            if not key in parameterDatesList and form.get(key):
+                query[key] = form.get(key)
+
+        dates = self._all_dates_from_to(self.getFromTo())
+        query['EventDuration'] = dates
+
         try:     
             request_obj = context.unrestrictedTraverse(query['path'])
         except:
@@ -257,11 +279,11 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
                     query['path'] = '/'.join(request_obj.getTranslation(context.Language()).getPhysicalPath())
         if query.has_key('set_language'):
             del query['set_language']
-        
+
         brains = pcatalog.searchResults(**query)
         return brains    
     
-    def getSummarySearchDates(self,dates):
+    def getSummarySearchDates(self, dates):
         """Return a part of the summary of the search from request
         """
         if dates.get('date_from') and dates.get('date_to'):

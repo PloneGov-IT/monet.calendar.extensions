@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.9.7'
+version = '0.10.0.dev0'
 
 setup(name='monet.calendar.extensions',
       version=version,
-      description="Provide search additional features for monet.calendar.star solution",
+      description="Provide additional search features for monet.calendar.star solution",
       long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -14,10 +14,12 @@ setup(name='monet.calendar.extensions',
         "Framework :: Plone :: 3.3",
         "Framework :: Plone :: 4.0",
         "Framework :: Plone :: 4.1",
+        "Framework :: Plone :: 4.2",
+        "Framework :: Plone :: 4.3",
         "Programming Language :: Python",
         'License :: OSI Approved :: GNU General Public License (GPL)',
         ],
-      keywords='',
+      keywords='plone plonegov calendar event',
       author='RedTurtle Technology',
       author_email='sviluppoplone@redturtle.it',
       url='http://plone.org/products/monet.calendar.star',
@@ -28,7 +30,7 @@ setup(name='monet.calendar.extensions',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'monet.calendar.event',
+          'monet.calendar.event>=0.5.0.dev0',
           # -*- Extra requirements: -*-
       ],
       entry_points="""

@@ -67,7 +67,7 @@
 	        var dateField = $('<input type="hidden" value="" />');
 	        $(elem).append(dateField);
 	        dateField.datepicker({showOn: 'button', 
-	                              buttonImage: call_context+'/popup_calendar.gif', 
+	                              buttonImage: portal_url+'/++resource++rt.calendarinandout.images/popup_calendar.gif', 
 	                              buttonImageOnly: true,
 	                              showAnim: '',    
 	                              dateFormat: 'yy-mm-dd',

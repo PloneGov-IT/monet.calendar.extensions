@@ -21,8 +21,10 @@
 			<tr>
 		      <th><label for="SearchableText" i18n:translate="label_search_event">Search event</label></th>
 		      <th><label for="getEventType" i18n:translate="label_in">In</label></th>
-		      <th><label for="fromDay" i18n:translate="label_from">From</label> (*)</th>
-		      <th><label for="toDay" i18n:translate="label_to">To</label> (*)</th>
+		      <th><label for="fromDay" i18n:translate="label_from">From</label>
+			      <span aria-describedby="searchFormHelp">(*)</span></th>
+		      <th><label for="toDay" i18n:translate="label_to">To</label>
+			      <span aria-describedby="searchFormHelp">(*)</span></th>
 		      <th />
 			</tr>
 			<tr>
@@ -116,9 +118,11 @@
 		      </td>
 			</tr>
 		</table>
-		<span class="SearchFormHelp" i18n:translate="searchform_help">(*) Always choose the period within which to search for the event</span>
+		<div id="searchFormHelp"
+		      class="SearchFormHelp formHelp"
+			  i18n:translate="searchform_help">(*) Always choose the period within which to search for the event</div>
 		
-	    <input class="searchBarPath"
+	    <input class="searchBarPath searchButton"
 			name="path"
 			id="path"
 			type="hidden"
