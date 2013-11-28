@@ -46,7 +46,7 @@
 	                   },
 	                   function(data, textStatus) {
 	                        if (data.error) {
-	                           $.plonesimplemessage(data.title, data.error, $("#dateErrors"));
+	                           plonesimplemessage(data.title, data.error, $("#dateErrors"));
 	                           $("#searchEvents").addClass("searchDisabled");                                                
 	                        } else {
 	                            $("#dateErrors").slideUp('fast');

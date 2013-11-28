@@ -41,6 +41,7 @@
 	for="monet.calendar.extensions.interfaces.IMonetCalendarSection"
 	name="monetsearchevents"
 	class=".monetsearchevents.MonetSearchEvents"
+	template="monetsearchevent.pt"
 	permission="zope2.View"
 	/>
 

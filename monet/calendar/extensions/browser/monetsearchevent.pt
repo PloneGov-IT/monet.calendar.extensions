@@ -48,7 +48,7 @@
     	</tal:event_type>
 
 		<tal:main-macro metal:define-macro="calendar"
-                        define="dates fromTo|view/getFromTo;
+                        define="dates fromTo|view/dates;
                                 date dates/date;
                                 events view/getEventsInParent;">
 

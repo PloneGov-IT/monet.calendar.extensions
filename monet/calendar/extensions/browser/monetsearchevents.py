@@ -12,7 +12,6 @@ from zope.i18nmessageid import MessageFactory
 
 from Acquisition import aq_inner
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from Products.CMFCore.utils import getToolByName
 from Products.statusmessages.interfaces import IStatusMessage
@@ -21,6 +20,7 @@ from Products.Archetypes.atapi import DisplayList
 from monet.calendar.event.interfaces import IMonetEvent
 from monet.calendar.extensions import eventMessageFactory as _
 from monet.calendar.extensions.browser.usefulforsearch import UsefulForSearchEvents
+from monet.calendar.extensions import logger
 
 try:
     import Products.LinguaPlone
@@ -53,6 +53,7 @@ parameterDatesList = ['fromYear',
 def daterange(start_date, end_date):
     for n in range((end_date - start_date).days):
         yield start_date + timedelta(n)
+
 
 class MonetFormSearchValidation(BrowserView):
     """Simple view for perform AJAX form validation"""
@@ -107,7 +108,7 @@ class MonetFormSearchValidation(BrowserView):
         try:
             return datetime(int(year), int(month), int(day)).date()
         except StandardError:
-            self.context.plone_log("Error in date conversion: %s-%s-%s" % (year, month, day))
+            logger.warning("Error in date conversion: %s-%s-%s" % (year, month, day))
             return ''
 
     def toCalendarLocalizedTime(self, time):
@@ -181,13 +182,20 @@ class MonetFormSearchValidation(BrowserView):
 class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
     """View for the events search page"""
 
-    template = ViewPageTemplateFile("monetsearchevent.pt")
-    __call__ = template
+    def __init__(self, context, request):
+        MonetFormSearchValidation.__init__(self, context, request)
+        self.dates = None
+
+    def __call__(self, *args, **kw):
+        self.dates = self.getFromTo() # this will also perform a redirect
+        if not self.dates:
+            return
+        return self.index()
 
     def __getitem__(self, key):
-        return self.template.macros[key]
+        return self.index.macros[key]
 
-    def notEmptyArgumentsDate(self,day,month,year):
+    def notEmptyArgumentsDate(self, day, month, year):
         """Check the date viewlets's parameters"""
         if day or month or year:
             return True
@@ -215,6 +223,7 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
                 # BBB: silly redirect... must perform validation BEFORE page rendering!
                 url = getMultiAdapter((self.context, self.request), name='absolute_url')()
                 self.request.response.redirect(url + '/@@monetsearchevents')
+                return False
         
         # One day search only
         if date_from and date_to and date_to==date_from:
