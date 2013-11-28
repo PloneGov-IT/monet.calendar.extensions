@@ -16,7 +16,6 @@
   
   <include package="monet.calendar.event" />
   <include package=".browser" />
-  <include file="portlets.zcml" />
 
   <class class="Products.ATContentTypes.interface.folder.IATFolder">
       <allow interface=".interfaces.IMonetCalendarSection" />

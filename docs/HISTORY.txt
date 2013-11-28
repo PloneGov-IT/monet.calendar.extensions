@@ -8,6 +8,8 @@ Changelog
 * Event search now use the ``EventDuration`` index.
   This will probably boost performance a lot [keul]
 * ``EventDuration`` registration moved to event package [keul]
+* Removed calendar portlet, moved to
+  ``monet.calendar.portlet`` package [keul]
 
 0.9.7 (2012-05-09) 
 ------------------
