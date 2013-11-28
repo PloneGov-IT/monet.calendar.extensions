@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2012-05-09 09:18+0000\n"
+"POT-Creation-Date: 2013-11-28 14:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,22 +83,22 @@ msgid "event_to"
 msgstr ""
 
 #. Default: "Mark this section as a root for searching events. Calendar inside this section will not find event defined above."
-#: ./browser/menu.py:61
+#: ./browser/menu.py:66
 msgid "help_make_caledarsearchroot"
 msgstr ""
 
 #. Default: "Mark this section as a calendar."
-#: ./browser/menu.py:29
+#: ./browser/menu.py:34
 msgid "help_make_caledarsection"
 msgstr ""
 
 #. Default: "Remove the status of root for searching events."
-#: ./browser/menu.py:77
+#: ./browser/menu.py:82
 msgid "help_remove_caledarsearchroot"
 msgstr ""
 
 #. Default: "Unmark this section from being a calendar section."
-#: ./browser/menu.py:44
+#: ./browser/menu.py:49
 msgid "help_remove_caledarsection"
 msgstr ""
 
@@ -108,7 +108,7 @@ msgid "label_all_events"
 msgstr ""
 
 #. Default: "Calendar"
-#: ./browser/menu.py:95
+#: ./browser/menu.py:100
 msgid "label_calendar_menu"
 msgstr ""
 
@@ -135,27 +135,27 @@ msgid "label_in"
 msgstr ""
 
 #. Default: "Mark as calendar root"
-#: ./browser/menu.py:59
+#: ./browser/menu.py:64
 msgid "label_make_caledarsearchroot"
 msgstr ""
 
 #. Default: "Mark as calendar section"
-#: ./browser/menu.py:27
+#: ./browser/menu.py:32
 msgid "label_make_caledarsection"
 msgstr ""
 
 #. Default: "Unmark as calendar root"
-#: ./browser/menu.py:75
+#: ./browser/menu.py:80
 msgid "label_remove_caledarsearchroot"
 msgstr ""
 
 #. Default: "Unmark as calendar section"
-#: ./browser/menu.py:42
+#: ./browser/menu.py:47
 msgid "label_remove_caledarsection"
 msgstr ""
 
 #. Default: "Search"
-#: ./browser/searchbar.pt:110
+#: ./browser/searchbar.pt:112
 msgid "label_search"
 msgstr ""
 
@@ -165,7 +165,7 @@ msgid "label_search_event"
 msgstr ""
 
 #. Default: "To"
-#: ./browser/searchbar.pt:25
+#: ./browser/searchbar.pt:26
 msgid "label_to"
 msgstr ""
 
@@ -175,7 +175,7 @@ msgid "no_events_found"
 msgstr ""
 
 #. Default: "(*) Always choose the period within which to search for the event"
-#: ./browser/searchbar.pt:119
+#: ./browser/searchbar.pt:121
 msgid "searchform_help"
 msgstr ""
 
@@ -185,17 +185,17 @@ msgid "summary_label"
 msgstr ""
 
 #. Default: "from ${date_from} to ${date_to}"
-#: ./browser/monetsearchevents.py:270
+#: ./browser/monetsearchevents.py:301
 msgid "summary_search_from_to"
 msgstr ""
 
 #. Default: "in ${date}"
-#: ./browser/monetsearchevents.py:277
+#: ./browser/monetsearchevents.py:308
 msgid "summary_search_in"
 msgstr ""
 
 #. Default: "Manage calendar options for this content."
-#: ./browser/menu.py:96
+#: ./browser/menu.py:101
 msgid "title_calendar_menu"
 msgstr ""
 
