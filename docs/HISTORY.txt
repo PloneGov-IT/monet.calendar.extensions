@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.10.0 (Unreleased)
-------------------
+0.10.0 (2014-10-08)
+-------------------
 
 * Plone 4.3 compatibility [keul]
 * Event search now use the ``EventDuration`` index.
