@@ -202,9 +202,12 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
         else:
             return False
 
-    def getFromTo(self):
+    def getFromTo(self, fromTo=None):
         """Create dates from the parameters"""
-        
+        ###
+        if fromTo:        
+            return fromTo
+        ###
         date = date_from = date_to = ''
         dates = {'date':'','date_from':'','date_to':''}
         form = self.request.form
@@ -255,9 +258,11 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
         
         return all_dates
 
-    def getEventsInParent(self):
+    ### BBB
+    def getEventsInParent(self, fromTo=None):
         """Return all events found in the parent folder
         """
+     
         context = aq_inner(self.context)
         pcatalog = getToolByName(self, 'portal_catalog')
         query = {}
@@ -271,7 +276,8 @@ class MonetSearchEvents(MonetFormSearchValidation, UsefulForSearchEvents):
             if not key in parameterDatesList and form.get(key):
                 query[key] = form.get(key)
 
-        dates = self._all_dates_from_to(self.getFromTo())
+        ### BBB
+        dates = self._all_dates_from_to(self.getFromTo(fromTo=fromTo))
         query['EventDuration'] = dates
 
         try:     
