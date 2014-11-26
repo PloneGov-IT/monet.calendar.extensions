@@ -3,8 +3,9 @@ Changelog
 
 0.10.1 (unreleased)
 -------------------
-
-- Nothing changed yet.
+* add search events portlet [lucabel]
+* some pep8 cleaning [lucabel]
+* fix problem with passing date to the portlet in monet.calendar.portlet [lucabel]
 
 
 0.10.0 (2014-10-08)
@@ -17,7 +18,7 @@ Changelog
 * Removed calendar portlet, moved to
   ``monet.calendar.portlet`` package [keul]
 
-0.9.7 (2012-05-09) 
+0.9.7 (2012-05-09)
 ------------------
 
 * load transaltion for day of week from plonelocales [mirco]
@@ -92,21 +93,21 @@ __ http://pypi.python.org/pypi/monet.calendar.portlet
 
 * added "event view" to topic items [filippo.gallottini]
 
-0.5.2 (2010-11-18) 
+0.5.2 (2010-11-18)
 ------------------
 
-* help added on form searchevents.pt [mirof] 
+* help added on form searchevents.pt [mirof]
 
-0.5.1 (2010-11-11) 
+0.5.1 (2010-11-11)
 ------------------
 
-* text fix into searchevents.pt [mirco] 
+* text fix into searchevents.pt [mirco]
 * made alphabetic order for the "event type" of the viewlet for event search [mirco]
 
 0.5.0 (2010-11-09)
 ------------------
 
-* added a general message: "no results found" [mirco] 
+* added a general message: "no results found" [mirco]
 * hided the days with "no events found" when we search a range of date [mirco]
 * extended the interval of dates into the search; from 30 to 60 days [mirco]
 * inserted a summary of performed search on above the results [mirco]
@@ -114,7 +115,7 @@ __ http://pypi.python.org/pypi/monet.calendar.portlet
 0.4.0 (2010-09-29)
 ------------------
 
-* fixed classes name to Plone standard camelCase format [keul] 
+* fixed classes name to Plone standard camelCase format [keul]
 * removed day-browse commands [keul]
 * now a search on more days will display all days [keul]
 * XHTML validation fixes [keul]
