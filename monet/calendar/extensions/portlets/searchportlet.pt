@@ -112,6 +112,7 @@
                   </div>
                   <div class="inputsubmit">
                         <input class="searchButton allowMultiSubmit"
+                        name="submit"
                         id="searchEvents"
                         type="submit"
                         value="Search"
