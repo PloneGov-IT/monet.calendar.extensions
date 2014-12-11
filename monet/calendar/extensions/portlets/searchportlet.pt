@@ -1,5 +1,5 @@
 <dl class="portlet portletMonetCalendarSearchPortlet"
-    i18n:domain="monet.calendar.portlet">
+    i18n:domain="monet.calendar.extensions">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
@@ -119,9 +119,6 @@
                         i18n:attributes="value label_search;"
                         />
                   </div>
-            <div id="searchFormHelp"
-                  class="SearchFormHelp formHelp"
-                  i18n:translate="searchform_help">(*) Always choose the period within which to search for the event</div>
             <input class="searchBarPath searchButton"
                 name="path"
                 id="path"
