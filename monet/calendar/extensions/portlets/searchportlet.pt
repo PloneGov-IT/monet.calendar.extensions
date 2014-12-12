@@ -3,7 +3,7 @@
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
-        <h4 i8n:translate="label_search_event">Search event</h4>
+        <h4 i18n:translate="label_search_event">Search event</h4>
         <span class="portletTopRight"></span>
     </dt>
     <dd class="portletItem"
