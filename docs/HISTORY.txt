@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.10.4.dev (unreleased)
+-------------------
+* fix validation error [lucabel]
+
 0.10.3.dev (unreleased)
 -------------------
 * fix some typo [lucabel]

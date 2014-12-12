@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: monet.calendar.extensions
-Version: 0.10.2.dev
+Version: 0.10.3.dev
 Summary: Provide additional search features for monet.calendar.star solution
 Home-page: http://plone.org/products/monet.calendar.star
 Author: RedTurtle Technology
@@ -59,6 +59,10 @@ Description: Introduction
         
         Changelog
         =========
+        
+        0.10.3.dev (unreleased)
+        -------------------
+        * fix some typo [lucabel]
         
         0.10.1 (unreleased)
         -------------------

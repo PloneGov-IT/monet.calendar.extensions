@@ -3,7 +3,7 @@
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
-        <h4 i18n:translate="label_search_event">Search event</h4>
+        <span i18n:translate="label_search_event">Search event</span>
         <span class="portletTopRight"></span>
     </dt>
     <dd class="portletItem"
@@ -50,7 +50,7 @@
                  </div>
                  <div class="searchbydayfrom searchBarFrom">
                       <label for="fromDay" i18n:translate="label_from">From</label>
-                      <span aria-describedby="searchFormHelp">(*)</span>
+                      <span>(*)</span>
                       <select class="searchBarFromDay"
                           name="fromDay:int"
                         id="fromDay">
@@ -81,7 +81,7 @@
                   </div>
                   <div class="searchbydayto searchBarTo">
                      <label for="toDay" i18n:translate="label_to">To</label>
-                     <span aria-describedby="searchFormHelp">(*)</span>
+                     <span>(*)</span>
                      <select class="searchBarToDay"
                              name="toDay:int"
                              id="toDay">
