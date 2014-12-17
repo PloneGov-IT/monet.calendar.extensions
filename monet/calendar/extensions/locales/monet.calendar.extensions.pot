@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2014-12-01 14:09+0000\n"
+"POT-Creation-Date: 2014-12-17 11:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,6 +40,10 @@ msgstr ""
 
 #: ./browser/monetsearchevents.py:41
 msgid "Morning"
+msgstr ""
+
+#: ./portlets/searchportlet.pt:29
+msgid "Search search"
 msgstr ""
 
 #: ./browser/manage_calendars.py:22
@@ -126,13 +130,23 @@ msgstr ""
 
 #. Default: "From"
 #: ./browser/searchbar.pt:23
-#: ./portlets/searchportlet.pt:52
+#: ./portlets/searchportlet.pt:54
 msgid "label_from"
+msgstr ""
+
+#. Default: "From Month"
+#: ./portlets/searchportlet.pt:65
+msgid "label_from_month"
+msgstr ""
+
+#. Default: "From Year"
+#: ./portlets/searchportlet.pt:75
+msgid "label_from_year"
 msgstr ""
 
 #. Default: "In"
 #: ./browser/searchbar.pt:22
-#: ./portlets/searchportlet.pt:37
+#: ./portlets/searchportlet.pt:39
 msgid "label_in"
 msgstr ""
 
@@ -158,19 +172,30 @@ msgstr ""
 
 #. Default: "Search"
 #: ./browser/searchbar.pt:111
-#: ./portlets/searchportlet.pt:114
+#: ./portlets/searchportlet.pt:120
 msgid "label_search"
 msgstr ""
 
 #. Default: "Search event"
 #: ./browser/searchbar.pt:21
+#: ./portlets/searchportlet.pt:6
 msgid "label_search_event"
 msgstr ""
 
 #. Default: "To"
 #: ./browser/searchbar.pt:25
-#: ./portlets/searchportlet.pt:83
+#: ./portlets/searchportlet.pt:87
 msgid "label_to"
+msgstr ""
+
+#. Default: "To Month"
+#: ./portlets/searchportlet.pt:98
+msgid "label_to_month"
+msgstr ""
+
+#. Default: "To Year"
+#: ./portlets/searchportlet.pt:108
+msgid "label_to_year"
 msgstr ""
 
 #. Default: "No events were found."
@@ -180,7 +205,6 @@ msgstr ""
 
 #. Default: "(*) Always choose the period within which to search for the event"
 #: ./browser/searchbar.pt:120
-#: ./portlets/searchportlet.pt:122
 msgid "searchform_help"
 msgstr ""
 

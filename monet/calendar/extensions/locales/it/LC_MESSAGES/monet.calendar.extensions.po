@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: monet.calendar.extensions\n"
-"POT-Creation-Date: 2014-12-01 14:09+0000\n"
+"POT-Creation-Date: 2014-12-17 11:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Luca Fabbri <luca.fabbri@redturtle.net>\n"
 "Language-Team: RedTurtle Technology <sviluppoplone@redturtle.net>\n"
@@ -42,6 +42,10 @@ msgstr "Vista Evento"
 #: ./browser/monetsearchevents.py:41
 msgid "Morning"
 msgstr "Mattino"
+
+#: ./portlets/searchportlet.pt:29
+msgid "Search site"
+msgstr "Cerca nel sito"
 
 #: ./browser/manage_calendars.py:22
 msgid "Status changed"
@@ -129,13 +133,23 @@ msgstr "La ricerca degli eventi deve essere compresa in un intervallo di 60 gior
 
 #. Default: "From"
 #: ./browser/searchbar.pt:23
-#: ./portlets/searchportlet.pt:52
+#: ./portlets/searchportlet.pt:54
 msgid "label_from"
 msgstr "Dal"
 
+#. Default: "From Month"
+#: ./portlets/searchportlet.pt:65
+msgid "label_from_month"
+msgstr "Dal mese"
+
+#. Default: "From Year"
+#: ./portlets/searchportlet.pt:75
+msgid "label_from_year"
+msgstr "Dall'anno"
+
 #. Default: "In"
 #: ./browser/searchbar.pt:22
-#: ./portlets/searchportlet.pt:37
+#: ./portlets/searchportlet.pt:39
 msgid "label_in"
 msgstr "In"
 
@@ -161,20 +175,31 @@ msgstr "Rimuovi stato calendario"
 
 #. Default: "Search"
 #: ./browser/searchbar.pt:111
-#: ./portlets/searchportlet.pt:114
+#: ./portlets/searchportlet.pt:120
 msgid "label_search"
 msgstr "Cerca"
 
 #. Default: "Search event"
 #: ./browser/searchbar.pt:21
+#: ./portlets/searchportlet.pt:6
 msgid "label_search_event"
 msgstr "Cerca evento"
 
 #. Default: "To"
 #: ./browser/searchbar.pt:25
-#: ./portlets/searchportlet.pt:83
+#: ./portlets/searchportlet.pt:87
 msgid "label_to"
 msgstr "Al"
+
+#. Default: "To Month"
+#: ./portlets/searchportlet.pt:98
+msgid "label_to_month"
+msgstr "Al mese"
+
+#. Default: "To Year"
+#: ./portlets/searchportlet.pt:108
+msgid "label_to_year"
+msgstr "All'anno"
 
 #. Default: "No events were found."
 #: ./browser/monetsearchevent.pt:65
@@ -183,7 +208,6 @@ msgstr "Nessun evento è stato trovato."
 
 #. Default: "(*) Always choose the period within which to search for the event"
 #: ./browser/searchbar.pt:120
-#: ./portlets/searchportlet.pt:122
 msgid "searchform_help"
 msgstr "(*) Scegli sempre il periodo entro cui cercare l'evento"
 
