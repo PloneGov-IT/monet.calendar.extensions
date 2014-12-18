@@ -8,7 +8,7 @@ from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 
 class UsefulForSearchEvents(object):
     """Utility class for grouping usefull features"""
-        
+
     def _getSubSiteParentFolder(self):
         """Return the first parent folder found that implements the interface IMonetCalendarSearchRoot"""
         for parent in aq_chain(aq_inner(self.context)):
@@ -18,7 +18,7 @@ class UsefulForSearchEvents(object):
             if INavigationRoot.providedBy(parent) and not IPloneSiteRoot.providedBy(parent):
                 return parent
         return None
-        
+
     def getCalendarSection(self,subsite):
         """Return the first folder found that implements the interface IMonetCalendarSection"""
         pcatalog = getToolByName(self.context, 'portal_catalog')
@@ -29,7 +29,7 @@ class UsefulForSearchEvents(object):
         if brains:
             return brains[0]
         return None
-        
+
     def _getCalendarSectionParentNoSubSite(self):
         """
         Return the first folder found in the site root (no sub-site)
@@ -44,7 +44,7 @@ class UsefulForSearchEvents(object):
         if brains:
             return brains[0]
         return None
-    
+
     def getCalendarSectionPath(self):
         subsite = self._getSubSiteParentFolder()
         if subsite:
@@ -56,7 +56,7 @@ class UsefulForSearchEvents(object):
         else:
             portal=getToolByName(self.context, 'portal_url').getPortalObject()
             return portal.absolute_url()
-        
+
     def getSubSitePath(self):
         subsite = self._getSubSiteParentFolder()
         if subsite:

@@ -1,0 +1,136 @@
+<dl class="portlet portletMonetCalendarSearchPortlet"
+    i18n:domain="monet.calendar.extensions">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span i18n:translate="label_search_event">Search event</span>
+        <span class="portletTopRight"></span>
+    </dt>
+    <dd class="portletItem"
+        tal:define="starting_year nothing;
+                    ending_year nothing;
+                    future_years nothing;
+                    date_components_support_view nocall:context/@@date_components_support;
+                    values python:date_components_support_view.result(None, 0, starting_year, ending_year, future_years);
+                    years values/years;
+                    years python:years[1:];
+                    months values/months;
+                    months python:months[1:];
+                    days values/days;
+                    days python:days[1:];
+                    calendar_section_path view/getCalendarSectionPath;
+                    subsite_path view/getSubSitePath">
+        <form id="searchBar"
+              action="monetsearchevents"
+              tal:attributes="action string: ${calendar_section_path}/@@monetsearchevents"
+              class="searchBar">
+            <div class="listing searchBarTable">
+                  <div class="searchField searchbytext">
+                    <input class="searchBarText"
+                        name="SearchableText"
+                        id="SearchableText"
+                        type="text"
+                        title="Search site"
+                        i18n:attributes="title"
+                        tal:attributes="value request/SearchableText|nothing;"
+                        />
+                  </div>
+                  <div class="searchbytype">
+                     <label for="getEventType" i18n:translate="label_in">In</label>
+                      <select class="searchBarIn"
+                        name="getEventType"
+                        id="getEventType"
+                        tal:define="usedEventTypes python: view.usedEventTypes()">
+                            <option value="#"
+                                    tal:repeat="eventT usedEventTypes"
+                                    tal:content="python: eventT[1]"
+                                    tal:attributes="value python: eventT[0];
+                                                    selected python: eventT[0] == view.getDefaultEventType();">
+                                    dummy
+                            </option>
+                    </select>
+                 </div>
+                 <div class="searchbydayfrom searchBarFrom">
+                      <label for="fromDay" i18n:translate="label_from">From</label>
+                      <span>(*)</span>
+                      <select class="searchBarFromDay"
+                          name="fromDay:int"
+                        id="fromDay">
+                            <option value="#"
+                                    tal:repeat="day days"
+                                    tal:attributes="value day/value;
+                                                    selected python: view.getDefaultDataParameter(day,'fromDay')"
+                                    tal:content="day/id">day</option>
+                    </select>
+                    <label for="fromMonth" class="hiddenStructure" i18n:translate="label_from_month">From Month</label>
+                    <select class="searchBarFromMonth"
+                          name="fromMonth:int"
+                        id="fromMonth">
+                            <option value="#"
+                                    tal:repeat="month months"
+                                    tal:attributes="value month/value;
+                                                    selected python: view.getDefaultDataParameter(month,'fromMonth')"
+                                    tal:content="month/title">month name</option>
+                    </select>
+                    <label for="fromYear" class="hiddenStructure" i18n:translate="label_from_year">From Year</label>
+                    <select class="searchBarFromYear"
+                          name="fromYear:int"
+                        id="fromYear">
+                            <option value="#"
+                                      tal:repeat="year years"
+                                      tal:attributes="value year/value;
+                                                      selected python: view.getDefaultDataParameter(year,'fromYear')"
+                                      tal:content="year/id">year</option>
+                    </select>
+                  </div>
+                  <div class="searchbydayto searchBarTo">
+                     <label for="toDay" i18n:translate="label_to">To</label>
+                     <span>(*)</span>
+                     <select class="searchBarToDay"
+                             name="toDay:int"
+                             id="toDay">
+                            <option value="#"
+                                    tal:repeat="day days"
+                                    tal:attributes="value day/value;
+                                                    selected python: view.getDefaultDataParameter(day,'toDay')"
+                                    tal:content="day/id">day</option>
+                    </select>
+                    <label for="toMonth" class="hiddenStructure" i18n:translate="label_to_month">To Month</label>
+                    <select class="searchBarToMonth"
+                          name="toMonth:int"
+                        id="toMonth">
+                            <option value="#"
+                                    tal:repeat="month months"
+                                    tal:attributes="value month/value;
+                                                    selected python: view.getDefaultDataParameter(month,'toMonth')"
+                                    tal:content="month/title">month name</option>
+                    </select>
+                    <label for="toYear" class="hiddenStructure" i18n:translate="label_to_year">To Year</label>
+                    <select class="searchBarToYear"
+                          name="toYear:int"
+                        id="toYear">
+                            <option value="#"
+                                      tal:repeat="year years"
+                                      tal:attributes="value year/value;
+                                                      selected python: view.getDefaultDataParameter(year,'toYear')"
+                                      tal:content="year/id">year</option>
+                    </select>
+                  </div>
+                  <div class="inputsubmit">
+                        <input class="searchButton allowMultiSubmit"
+                        name="submit"
+                        id="searchEvents"
+                        type="submit"
+                        value="Search"
+                        i18n:attributes="value label_search;"
+                        />
+                  </div>
+            <input class="searchBarPath searchButton"
+                name="path"
+                id="path"
+                type="hidden"
+                tal:attributes="value subsite_path;"
+                />
+        </form>
+    </dd>
+</dl>
