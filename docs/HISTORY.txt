@@ -1,6 +1,10 @@
 Changelog
 =========
+0.10.6 (17/12/2014)
+-------------------
+- release new version with search portlet [lucabel]
 0.10.5.dev (unreleased)
+
 -------------------
 * fix accessibility problems [lucabel]
 
